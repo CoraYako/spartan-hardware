@@ -2,6 +2,7 @@ import AccountIcon from '@/public/icons/Account'
 import CartIcon from '@/public/icons/Cart'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 export const MenuNav = () => {
   return (
@@ -10,10 +11,12 @@ export const MenuNav = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 1.3 }}
     >
-      <Item>
-        <AccountIcon />
-        Mi cuenta
-      </Item>
+      <Link passHref href="/login">
+        <Item>
+          <AccountIcon />
+          Mi cuenta
+        </Item>
+      </Link>
       <Item>
         <CartIcon />
         Mi carrito
