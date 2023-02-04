@@ -22,7 +22,7 @@ const ContainerInput = styled.div`
   position: relative;
   svg {
     cursor: pointer;
-    background: var(--primaryColor1);
+    background: var(--primaryGreen1);
     position: absolute;
     right: 1.5rem;
     border-radius: 10px;
@@ -31,7 +31,7 @@ const ContainerInput = styled.div`
 const Input = styled(motion.input)`
   height: 3rem;
   width: 100%;
-  background-color: var(--gray2);
+  background-color: var(--secondaryViolet2);
   box-shadow: none;
   border: none;
   color: #fff;
