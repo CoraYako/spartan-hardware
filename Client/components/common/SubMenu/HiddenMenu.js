@@ -100,7 +100,7 @@ const Menu = styled(motion.aside)`
   height: 89vh;
   background-color: var(--mainBlack);
   color: var(--primaryGreen1);
-  top: 12rem;
+  top: 4rem;
   left: 0;
   span {
     width: 100%;
