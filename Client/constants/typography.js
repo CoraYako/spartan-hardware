@@ -1,4 +1,4 @@
-const fontFamily = 'Raleway' //TODO: A definir
+const fontFamily = 'Raleway'
 const fontSize1 = '1.4rem'
 const fontSize2 = '1.6rem'
 const fontSize3 = '1.8rem'
