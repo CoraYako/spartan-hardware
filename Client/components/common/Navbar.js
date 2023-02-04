@@ -4,7 +4,7 @@ import Logo from '@/public/images/main-logo.png'
 import { SearchNav } from './SearchNav'
 import { MenuNav } from './MenuNav'
 import { motion } from 'framer-motion'
-import { Submenu } from './Categories/Submenu'
+import { Submenu } from './SubMenu/Submenu'
 import Link from 'next/link'
 
 export const Navbar = () => {
@@ -35,6 +35,7 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
   .container-nav {
     padding: 0.5rem 4rem;
     display: flex;

@@ -26,7 +26,7 @@ const itemVariants = {
 const sideVariants = {
   closed: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.09,
       staggerDirection: -1,
     },
   },

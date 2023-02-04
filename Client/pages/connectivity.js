@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { motion } from 'framer-motion'
 
 export default function ConnectivityPage() {
   return (
@@ -9,7 +10,15 @@ export default function ConnectivityPage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>Estoy en categoria Conectividad</div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        key="connectivity"
+        style={{ width: '100%' }}
+      >
+        Estoy en categoria Conectividad
+      </motion.div>
     </>
   )
 }

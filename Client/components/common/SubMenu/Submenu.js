@@ -2,15 +2,19 @@ import styled from 'styled-components'
 import { useCycle } from 'framer-motion'
 import { MenuButton } from './MenuButton'
 import { HiddenMenu } from './HiddenMenu'
+import { ButtonViolet } from './ButtonViolet'
+import { Switch } from './Switch'
 
 export const Submenu = () => {
   const [open, cycleOpen] = useCycle(false, true)
   return (
     <Container>
-      <div className="menu" onClick={cycleOpen}>
+      <div className="categories" onClick={cycleOpen}>
         <MenuButton isOpen={open} />
-        <p>MENU DE CATEGORIAS</p>
+        <p>MENU DE CATEGORÍAS</p>
       </div>
+      <ButtonViolet />
+      <Switch />
       <HiddenMenu open={open} action={cycleOpen} />
     </Container>
   )
@@ -22,7 +26,8 @@ const Container = styled.div`
   padding: 1rem 4rem;
   display: flex;
   align-items: center;
-  .menu {
+  position: relative;
+  .categories {
     user-select: none;
     display: flex;
     gap: 10px;

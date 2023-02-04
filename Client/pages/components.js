@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { motion } from 'framer-motion'
 
 export default function ComponentsPage() {
   return (
@@ -9,7 +10,15 @@ export default function ComponentsPage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>Estoy en categoria Componentes de PC </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        key="components"
+        style={{ width: '100%' }}
+      >
+        Estoy en categoria Componentes de PC{' '}
+      </motion.div>
     </>
   )
 }
