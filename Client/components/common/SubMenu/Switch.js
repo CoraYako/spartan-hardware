@@ -63,11 +63,13 @@ const Container = styled.div`
   min-width: 170px;
   cursor: pointer;
   display: flex;
+  align-items: center;
   user-select: none;
   gap: 10px;
   justify-content: space-between;
 
   p {
     font-weight: 700;
+    font-size: 16px;
   }
 `

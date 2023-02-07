@@ -29,18 +29,20 @@ export const Navbar = () => {
 }
 
 const Nav = styled.nav`
-  height: 12rem;
-  background-color: var(--secondaryViolet1);
+  height: 15rem;
+  background-color: var(--mainBlack);
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+
   .container-nav {
     padding: 0.5rem 4rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin: auto 0;
   }
 `
