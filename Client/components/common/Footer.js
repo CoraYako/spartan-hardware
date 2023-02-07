@@ -10,7 +10,7 @@ export const Footer = () => {
     <FooterContainer>
       
       <div className='container'>
-        <Item1>
+        <Item>
           <h6  className='title'> Contáctanos!</h6>
           &nbsp;
           <Link href="#">
@@ -28,8 +28,8 @@ export const Footer = () => {
           </Link>
           <br/>
           <a href='mailito:empresas@maximus.com.ar'>empresas@maximus.com.ar</a>
-        </Item1>
-        <Item2>
+        </Item>
+        <Item>
           <h6 className='title'>Nuestros Horarios</h6>
           &nbsp;
           <Link href='#'>
@@ -43,8 +43,8 @@ export const Footer = () => {
             Lun a Vier, 10:00 AM a 19:00 PM<br/>
             Sab 10:00 AM - 14:30 PM</p>
           </Link>
-        </Item2>
-        <Item3>
+        </Item>
+        <Item>
           <h6 className='title'>Ayuda</h6>
           &nbsp;
           <Link href='#'>
@@ -58,26 +58,22 @@ export const Footer = () => {
           <Link href='#'>
             <p>Boton de Arrepentimiento</p>
           </Link>
-        </Item3>
-        <Item4>
-          <h6 className='title'>Seguinos en las Redes</h6>
-          
-          <Link href='#'>
+        </Item>
+        <Item>
+          <h6 className='title'>Seguinos en las Redes</h6>          
+          <Link className='inst' href='#'>
             <IcoInstagram />          
           </Link>
-          <Link href='#'>
+          <Link className='face' href='#'>
             <IcoFace />
           </Link>
-          <Link href='#'>
+          <Link className='inst' href='#'>
             <IcoYoutube />
           </Link>
           <Link href='#'>
             <IcoTik />
           </Link>
-        </Item4>
-        <Item5>
-          
-        </Item5>
+        </Item>
       </div>
 
     </FooterContainer>
@@ -93,15 +89,15 @@ const FooterContainer = styled.div`
   .container{
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 120px;
     font-size: 12px;
 
   }
  `
-const Item1 = styled.div` 
+const Item = styled.div` 
   .title {
     font-style: italic;
-    color: var(--primaryGreen2);
+    color: var(--primaryGreen2)
   }
   p:hover{
     color:var(--primaryGreen2)
@@ -109,34 +105,11 @@ const Item1 = styled.div`
   a:hover{
     color:var(--primaryGreen2)
   }
-`
-const Item2 = styled.div`
-  .title{
-    font-style: italic;
-    color: var(--primaryGreen2);
+  .inst:hover{
+    color:red;
   }
-  p:hover{
-    color:var(--primaryGreen2)
+  .face:hover{
+    color:blue;
   }
-`
-const Item3 = styled.div`
-  .title{
-    font-style: italic;
-    color: var(--primaryGreen2);
-  }
-  p:hover{
-    color:var(--primaryGreen2)
-  }
-`
-const Item4 = styled.div`
-  .title{
-    font-style: italic;
-    color: var(--primaryGreen2);
-  }
-`
-const Item5 = styled.div`
-  .title{
-    font-style: italic;
-    color: var(--primaryGreen2);
-  }
+
 `
