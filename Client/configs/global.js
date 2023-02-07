@@ -2,7 +2,7 @@ import { css } from 'styled-components'
 
 const global = css`
   :root {
-    --mainBg: #ffffff;
+    --mainBg: #ededed;
     --mainBlack: #000000;
     --primaryGreen1: #25da2d;
     --primaryGreen2: #73e278;
