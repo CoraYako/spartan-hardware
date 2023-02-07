@@ -26,7 +26,7 @@ const itemVariants = {
 const sideVariants = {
   closed: {
     transition: {
-      staggerChildren: 0.09,
+      staggerChildren: 0.05,
       staggerDirection: -1,
     },
   },
@@ -52,7 +52,7 @@ export const HiddenMenu = ({ open, action }) => {
           }}
           exit={{
             width: 0,
-            transition: { delay: 0.7, duration: 0.3 },
+            transition: { delay: 0.7, duration: 0.2 },
           }}
         >
           <ContainerItems
@@ -112,13 +112,14 @@ const ContainerItems = styled(motion.div)`
   display: flex;
   flex-direction: column;
   padding: 3rem 3rem;
-  gap: 1.5rem;
+  gap: 2.5rem;
 `
 
 const Text = styled(motion.p)`
   display: flex;
   align-items: center;
   color: ${(props) => (props?.selected ? '#fff' : '')};
+  font-size: 16px;
   .bar {
     display: ${(props) => (props?.selected ? 'inherit' : 'none')};
     width: 2px;

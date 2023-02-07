@@ -21,6 +21,7 @@ const Container = styled.div`
     color: #fff;
     font-weight: 700;
     text-align: center;
+    font-size: 16px;
   }
   .gradient {
     border-top: 40px solid var(--tertiaryNavy1);

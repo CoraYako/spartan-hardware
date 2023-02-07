@@ -17,31 +17,43 @@ export default `
   }
 
   h1 {
-    font-size: ${typography.fontSize9};
+    font-size: ${typography.fontSize4};
     font-weight: ${typography.fontWeightBold};
+    line-height: ${typography.lineHeightH1};
   }
 
   h2 {
     font-size: ${typography.fontSize8};
+    font-weight: ${typography.fontWeightBold};
+    line-height: ${typography.lineHeightH2};
   }
 
   h3 {
     font-size: ${typography.fontSize6};
+    line-height: ${typography.lineHeightH3};
+    font-weight: ${typography.fontWeightSemiBold};
   }
 
   h4 {
     font-size: ${typography.fontSize5};
+    line-height: ${typography.lineHeightH4};
+    font-weight: ${typography.fontWeightRegular};
   }
 
   h5 {
     font-size: ${typography.fontSize4};
+    line-height: ${typography.lineHeightH4};
+    font-weight: ${typography.fontWeightRegular};
   }
 
   h6 {
     font-size: ${typography.fontSize3};
+    line-height: ${typography.lineHeightH4};
+    font-weight: ${typography.fontWeightRegular};
   }
   p {
-    font-size: ${typography.fontSize2};
+    font-size: 0.875rem;
+    line-height: 1.313rem;
   }
 
   strong {
