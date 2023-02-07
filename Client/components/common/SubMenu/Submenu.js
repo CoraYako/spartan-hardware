@@ -21,7 +21,7 @@ export const Submenu = () => {
 }
 
 const Container = styled.div`
-  background-color: var(--mainBlack);
+  background-color: var(--secondaryViolet1);
   color: var(--gray3);
   padding: 1rem 4rem;
   display: flex;
@@ -32,9 +32,11 @@ const Container = styled.div`
     display: flex;
     gap: 10px;
     cursor: pointer;
+    align-items: flex-end;
 
     p {
       font-weight: 700;
+      font-size: 16px;
     }
   }
 `

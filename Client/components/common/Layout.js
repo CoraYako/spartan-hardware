@@ -1,13 +1,14 @@
 import { AnimatePresence } from 'framer-motion'
 import styled from 'styled-components'
 import { Navbar } from './Navbar'
+import { Footer } from './Footer'
 
 const Layout = ({ children }) => {
   return (
     <PageContainer>
       <Navbar />
       <AnimatePresence mode="wait">{children}</AnimatePresence>
-      {/* FOOTER */}
+      <Footer />
     </PageContainer>
   )
 }
