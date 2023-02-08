@@ -48,6 +48,7 @@ export const HiddenMenu = ({ open, action }) => {
           initial={{ width: 0 }}
           animate={{
             width: 300,
+            borderRadius: '0 0 50px 0',
             transition: { duration: 0.2 },
           }}
           exit={{
@@ -96,11 +97,11 @@ export const HiddenMenu = ({ open, action }) => {
 }
 
 const Menu = styled(motion.aside)`
-  position: absolute;
-  height: 89vh;
+  position: fixed;
+  height: 500px;
   background-color: var(--mainBlack);
   color: var(--primaryGreen1);
-  top: 4rem;
+  top: 15rem;
   left: 0;
   span {
     width: 100%;
