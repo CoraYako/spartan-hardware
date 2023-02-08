@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { ProductCard } from '@/components/common/ProductCard'
+import { Outstanding } from '@/components/public/Outstanding'
 
 export default function Home() {
   return (
@@ -18,7 +18,7 @@ export default function Home() {
         key="home"
         style={{ width: '100%' }}
       >
-        <ProductCard />
+        <Outstanding />
       </motion.div>
     </>
   )

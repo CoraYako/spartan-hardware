@@ -35,7 +35,8 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
+  position: fixed;
+  top: 0;
 
   .container-nav {
     padding: 0.5rem 4rem;
