@@ -13,13 +13,14 @@ export const Footer = () => {
         <Item>
           <h6  className='title'> Contáctanos!</h6>
           &nbsp;
-          <Link href="#">
+          &nbsp;
+          <Link href="https://goo.gl/maps/ee8VUcUW2sCa14XQ6">
             <p>Remedios de Escalada de San Martin 3875</p>
             <p>Floresta(CABA)</p>
           </Link>
           <br/> 
-          <Link href='#'>            
-            <p>Florida537 PB, Local 379</p>
+          <Link href='https://goo.gl/maps/bTbq5mB3SZBayFGZA'>            
+            <p>Florida 537 PB, Local 379</p>
             <p>Microcentro (CABA)</p>
           </Link>
           &nbsp;
@@ -31,6 +32,7 @@ export const Footer = () => {
         </Item>
         <Item>
           <h6 className='title'>Nuestros Horarios</h6>
+          &nbsp;
           &nbsp;
           <Link href='#'>
             <p>Floresta<br/>
@@ -47,6 +49,7 @@ export const Footer = () => {
         <Item>
           <h6 className='title'>Ayuda</h6>
           &nbsp;
+          &nbsp;
           <Link href='#'>
             <p>FAQ</p>
           </Link>
@@ -61,6 +64,7 @@ export const Footer = () => {
         </Item>
         <Item>
           <h6 className='title'>Seguinos en las Redes</h6>          
+          <br/>
           <Link className='inst' href='#'>
             <IcoInstagram />          
           </Link>
@@ -87,20 +91,30 @@ const FooterContainer = styled.div`
   padding: 2rem 0;
   margin-top: 10rem;
   .container{
+    margin-left: 3%;
+    margin-right: 3%;
     display: flex;
-    justify-content: center;
-    gap: 120px;
-    font-size: 12px;
+    
+    justify-content: space-between;
+    gap: 5em;
+
 
   }
  `
-const Item = styled.div` 
+const Item = styled.div`
+
   .title {
     font-style: italic;
     color: var(--primaryGreen2)
   }
+  p{
+    font-size: 12px;
+  }
   p:hover{
     color:var(--primaryGreen2)
+  }
+  a {
+    font-size: 12px;
   }
   a:hover{
     color:var(--primaryGreen2)
