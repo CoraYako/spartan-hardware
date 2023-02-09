@@ -3,10 +3,10 @@ import { motion } from 'framer-motion'
 
 export const MenuButton = ({
   isOpen = false,
-  width = 17,
-  height = 17,
-  strokeWidth = 3,
-  color = '#cacaca',
+  width = 15,
+  height = 15,
+  strokeWidth = 4,
+  color = '#9F9F9F',
   transition = null,
   lineProps = null,
   ...props

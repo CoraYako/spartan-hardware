@@ -2,13 +2,18 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
-export const Button = ({ text, action, to, secondary, isLoading }) => {
+export const Button = ({ text, action, to, secondary, isLoading = false }) => {
   return (
     <>
       {to ? (
-        <Link passHref href={to} secondary={secondary} isLoading={isLoading}>
+        <CustomLink
+          passHref
+          href={to}
+          secondary={secondary}
+          $isLoading={isLoading}
+        >
           {text}
-        </Link>
+        </CustomLink>
       ) : (
         <Btn
           whileHover={{
@@ -23,7 +28,7 @@ export const Button = ({ text, action, to, secondary, isLoading }) => {
           }}
           onClick={action}
           secondary={secondary}
-          isLoading={isLoading}
+          $isLoading={isLoading}
         >
           {text}
         </Btn>
@@ -45,6 +50,11 @@ const Btn = styled(motion.button)`
   letter-spacing: 0.02em;
   color: #fff;
   padding: 0.8rem 1.6rem;
-  background-color: var(--secondaryViolet1);
+  background-color: ${(props) =>
+    props.secondary === 'green'
+      ? 'var(--primaryGreen1)'
+      : (props.secondary === 'violet' && 'var(--tertiaryNavy1)') ||
+        'var(--secondaryViolet1)'};
   border-radius: 3px;
 `
+const CustomLink = styled(Link)``
