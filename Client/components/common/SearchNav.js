@@ -11,31 +11,43 @@ export const SearchNav = () => {
         transition={{ duration: 0.5, delay: 0.5 }}
         placeholder="Buscar..."
       />
-      <SearchIcon />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 1 }}
+        className="icon-container"
+      >
+        <SearchIcon />
+      </motion.div>
     </ContainerInput>
   )
 }
 
 const ContainerInput = styled.div`
-  width: 40%;
+  width: 57rem;
   display: flex;
   align-items: center;
   position: relative;
-  svg {
-    cursor: pointer;
+  .icon-container {
     background: var(--primaryGreen1);
+    cursor: pointer;
     position: absolute;
-    right: 1.5rem;
+    right: 0.5rem;
     border-radius: 10px;
+    height: 4.4rem;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `
 const Input = styled(motion.input)`
-  height: 3rem;
+  height: 4.2rem;
   width: 100%;
-  background-color: var(--secondaryViolet2);
+  background-color: #fff;
   box-shadow: none;
   border: none;
-  color: #fff;
+  color: var(--secondaryViolet1);
   padding: 2.5rem 1.5rem;
   border-radius: 10px;
   font-family: Raleway;
