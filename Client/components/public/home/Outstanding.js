@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import { ProductCard } from '../common/ProductCard'
-import { Anchor } from '../common/Anchor'
+import { ProductCard } from '../../common/ProductCard'
+import { Anchor } from '../../common/Anchor'
 
 export const Outstanding = ({ props }) => {
   return (
@@ -22,18 +22,17 @@ const Main = styled(motion.section)`
   display: flex;
   flex-direction: column;
   margin: 25rem auto 0;
+  padding: 0 2.5rem;
   .title {
     display: flex;
     gap: 13px;
-  }
-  h2 {
-    padding-left: 103px;
   }
 
   .outstanding {
     display: flex;
     flex-direction: row;
     gap: 16px;
-    padding: 3.5rem;
+    padding: 3.5rem 0;
+    flex-wrap: wrap;
   }
 `

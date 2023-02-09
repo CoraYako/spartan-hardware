@@ -36,7 +36,7 @@ const CardContainer = styled(motion.article)`
   height: auto;
   width: 29.4rem;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
-  margin: 3rem auto;
+  margin: 3rem 0;
   background-color: var(--gray4);
 
   .price {
