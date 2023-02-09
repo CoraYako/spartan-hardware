@@ -26,7 +26,7 @@ const itemVariants = {
 const sideVariants = {
   closed: {
     transition: {
-      staggerChildren: 0.09,
+      staggerChildren: 0.05,
       staggerDirection: -1,
     },
   },
@@ -48,11 +48,12 @@ export const HiddenMenu = ({ open, action }) => {
           initial={{ width: 0 }}
           animate={{
             width: 300,
+            borderRadius: '0 0 50px 0',
             transition: { duration: 0.2 },
           }}
           exit={{
             width: 0,
-            transition: { delay: 0.7, duration: 0.3 },
+            transition: { delay: 0.7, duration: 0.2 },
           }}
         >
           <ContainerItems
@@ -96,12 +97,15 @@ export const HiddenMenu = ({ open, action }) => {
 }
 
 const Menu = styled(motion.aside)`
-  position: absolute;
-  height: 89vh;
-  background-color: var(--mainBlack);
+  position: fixed;
+  backdrop-filter: blur(2px);
+  height: 500px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3));
+  background-color: #000000cf;
   color: var(--primaryGreen1);
-  top: 4rem;
+  top: 14rem;
   left: 0;
+  z-index: 10;
   span {
     width: 100%;
     height: 1px;
@@ -112,13 +116,14 @@ const ContainerItems = styled(motion.div)`
   display: flex;
   flex-direction: column;
   padding: 3rem 3rem;
-  gap: 1.5rem;
+  gap: 2.5rem;
 `
 
 const Text = styled(motion.p)`
   display: flex;
   align-items: center;
   color: ${(props) => (props?.selected ? '#fff' : '')};
+  font-size: 16px;
   .bar {
     display: ${(props) => (props?.selected ? 'inherit' : 'none')};
     width: 2px;

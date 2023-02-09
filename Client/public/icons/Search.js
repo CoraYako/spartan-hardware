@@ -3,13 +3,10 @@ import { motion } from 'framer-motion'
 const SearchIcon = (props) => (
   <motion.svg
     xmlns="http://www.w3.org/2000/svg"
-    width={38}
-    height={38}
+    width={24}
+    height={24}
     viewBox="0 0 24 24"
     {...props}
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.5, delay: 1 }}
   >
     <path
       fill="currentColor"

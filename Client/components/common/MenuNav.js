@@ -9,18 +9,23 @@ export const MenuNav = () => {
     <Container
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, delay: 1.3 }}
+      transition={{ duration: 0.5, delay: 1 }}
     >
       <Link passHref href="/login">
         <Item>
+          <span className="bar" />
           <AccountIcon />
-          Mi cuenta
+          <p>Mi cuenta</p>
         </Item>
       </Link>
       <Item>
+        <span className="bar" />
         <CartIcon />
-        Mi carrito
+        <p>Mi carrito</p>
       </Item>
+      <motion.div whileHover={{ scale: 1.1 }} className="number-cart">
+        <p>10</p>
+      </motion.div>
     </Container>
   )
 }
@@ -29,11 +34,39 @@ const Container = styled(motion.div)`
   color: #fff;
   display: flex;
   align-items: center;
-  gap: 6rem;
+  gap: 0.9rem;
+  .number-cart {
+    cursor: pointer;
+    background-color: var(--primaryGreen1);
+    color: var(--secondaryViolet1);
+    padding: 12px;
+    border-radius: 6px;
+    margin-left: 1rem;
+  }
 `
 
 const Item = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+  transition: all ease-in-out 0.3s;
+
+  path {
+    transition: all 0.3s ease-in-out;
+  }
+  .bar {
+    width: 1px;
+    height: 5rem;
+    background-color: #989898;
+    margin-right: 1rem;
+  }
+  &:hover {
+    color: var(--primaryGreen1);
+    .bar {
+      background-color: var(--primaryGreen1);
+    }
+    path {
+      fill: var(--primaryGreen1);
+    }
+  }
 `

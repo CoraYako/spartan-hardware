@@ -55,6 +55,18 @@ table {
 * {
   box-sizing: border-box;
 }
-
+::-webkit-scrollbar { 
+	-webkit-appearance: none;
+	width:12px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #454545;
+  border: 1px solid #818181;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+	border-radius: 1px;
+	background: #e8e8e800;
+}
 
 `

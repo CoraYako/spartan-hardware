@@ -17,31 +17,50 @@ export default `
   }
 
   h1 {
-    font-size: ${typography.fontSize9};
+    font-size: ${typography.fontSizeh1};
     font-weight: ${typography.fontWeightBold};
+    line-height: ${typography.lineHeightH1};
   }
 
   h2 {
-    font-size: ${typography.fontSize8};
+    font-size: ${typography.fontSizeh2};
+    font-weight: ${typography.fontWeightBold};
+    line-height: ${typography.lineHeightH2};
   }
 
   h3 {
-    font-size: ${typography.fontSize6};
+    font-size: ${typography.fontSizeh3};
+    line-height: ${typography.lineHeightH3};
+    font-weight: ${typography.fontWeightSemiBold};
   }
 
   h4 {
-    font-size: ${typography.fontSize5};
+    font-size: ${typography.fontSizeh3};
+    line-height: ${typography.lineHeightH4};
+    font-weight: ${typography.fontWeightRegular};
   }
 
   h5 {
-    font-size: ${typography.fontSize4};
+    font-size: ${typography.fontSizeh3};
+    line-height: ${typography.lineHeightH4};
+    font-weight: ${typography.fontWeightRegular};
   }
 
   h6 {
     font-size: ${typography.fontSize3};
+    line-height: ${typography.lineHeightH4};
+    font-weight: ${typography.fontWeightRegular};
   }
   p {
-    font-size: ${typography.fontSize2};
+    font-size: ${typography.fontP};
+    line-height: ${typography.lineHeightP};
+    font-weight: ${typography.fontWeightRegular};
+  }
+  span {
+    font-size: ${typography.fontSizeSpan};
+    letter-spacing: ${typography.letterSpacingSpan};
+    font-weight: ${typography.fontWeightBold};
+    line-height: ${typography.lineHeightP}
   }
 
   strong {
