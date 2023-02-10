@@ -11,7 +11,7 @@ export const Footer = () => {
       
       <div className='container'>
         <Item>
-          <h6  className='title'> Contáctanos!</h6>
+          <h2  className='title'> Contáctanos!</h2>
           &nbsp;
           &nbsp;
           <Link href="https://goo.gl/maps/ee8VUcUW2sCa14XQ6">
@@ -31,7 +31,7 @@ export const Footer = () => {
           <a href='mailito:empresas@maximus.com.ar'>empresas@maximus.com.ar</a>
         </Item>
         <Item>
-          <h6 className='title'>Nuestros Horarios</h6>
+          <h2 className='title'>Nuestros Horarios</h2>
           &nbsp;
           &nbsp;
           <Link href='#'>
@@ -47,7 +47,7 @@ export const Footer = () => {
           </Link>
         </Item>
         <Item>
-          <h6 className='title'>Ayuda</h6>
+          <h2 className='title'>Ayuda</h2>
           &nbsp;
           &nbsp;
           <Link href='#'>
@@ -63,7 +63,7 @@ export const Footer = () => {
           </Link>
         </Item>
         <Item>
-          <h6 className='title'>Seguinos en las Redes</h6>          
+          <h2 className='title'>Seguinos en las Redes</h2>          
           <br/>
           <Link className='inst' href='#'>
             <IcoInstagram />          
@@ -79,7 +79,6 @@ export const Footer = () => {
           </Link>
         </Item>
       </div>
-
     </FooterContainer>
   )
 }
@@ -88,42 +87,38 @@ const FooterContainer = styled.div`
   background-color: var(--secondaryViolet1);
   width: 100%;
   color: white;
-  padding: 2rem 0;
-  margin-top: 10rem;
+  padding: 5rem 0;
+  margin-top: 20rem;
   .container{
-    margin-left: 3%;
-    margin-right: 3%;
-    display: flex;
-    
+    margin-left: 2em;
+    margin-right: 2em;
+    display: flex;    
     justify-content: space-between;
     gap: 5em;
-
-
   }
  `
 const Item = styled.div`
-
   .title {
     font-style: italic;
-    color: var(--primaryGreen2)
+    font-size: 20px;
+    color: var(--primaryGreen1)
   }
   p{
     font-size: 12px;
   }
   p:hover{
-    color:var(--primaryGreen2)
+    color:var(--primaryGreen1)
   }
   a {
     font-size: 12px;
   }
   a:hover{
-    color:var(--primaryGreen2)
+    color:var(--primaryGreen1)
   }
   .inst:hover{
     color:red;
   }
   .face:hover{
-    color:blue;
+    color: blue;
   }
-
 `
