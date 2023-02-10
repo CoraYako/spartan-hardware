@@ -18,7 +18,7 @@ export const Navbar = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Link passHref href="/">
-              <Image src={Logo} width={60} height={60} alt="logo" />
+              <Image src={Logo} width={160} height={40} alt="logo" />
             </Link>
           </motion.div>
           <SearchNav />
@@ -37,7 +37,7 @@ const Nav = styled.nav`
   justify-content: space-between;
   position: fixed;
   top: 0;
-
+  z-index: 10;
   .container-nav {
     background-color: var(--secondaryViolet1);
     padding: 2.3rem 2.2rem;
@@ -52,5 +52,6 @@ const Nav = styled.nav`
     flex-direction: row;
     width: auto;
     gap: 3.5rem;
+    align-items: center;
   }
 `
