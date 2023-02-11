@@ -66,9 +66,7 @@ public class User implements UserDetails {
     @Column(name = "last_name")
     private String lastName;
 
-    @NotNull
     @OneToMany(mappedBy = "user")
-    @JoinColumn(name = "address")
     private List<Address> addresses;
 
     @Column(name = "phone_number")
