@@ -106,4 +106,9 @@ public class User implements UserDetails {
     public boolean isCredentialsNonExpired() {
         return false;
     }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
 }
