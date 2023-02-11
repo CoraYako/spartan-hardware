@@ -45,6 +45,6 @@ public class Address {
     @JoinColumn(name = "user")
     private User user;
 
-    @Column(name = "default")
+    @Column(name = "default_address")
     private boolean defaultAddress;
 }
