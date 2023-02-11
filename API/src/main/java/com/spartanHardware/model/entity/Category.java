@@ -1,4 +1,4 @@
-package com.spartanHardware.api.model.entity;
+package com.spartanHardware.model.entity;
 
 public enum Category {
     NOTEBOOK,
