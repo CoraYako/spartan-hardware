@@ -1,5 +1,6 @@
 package com.spartanHardware.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -10,14 +11,15 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.Where;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
-@MappedSuperclass
-@Table(name = "products")
+@Entity
+@Table(name = "product")
 @Setter
 @Getter
-@SQLDelete(sql = "UPDATE products SET available = false WHERE id = ?")
+@SQLDelete(sql = "UPDATE product SET available = false WHERE id = ?")
 @Where(clause = "available = true")
 public class Product {
 
@@ -30,9 +32,23 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @NotNull
-    @Column(name = "category")
-    private Category category;
+    @Column(name = "brand")
+    private String brand;
+
+    @Column(name = "model")
+    private String model;
+
+    @ManyToOne
+    @JoinColumn(name = "parent_category_id")
+    private ParentCategory parentCategory;
+
+    @ManyToOne
+    @JoinColumn(name = "sub_category_id")
+    private SubCategory subCategory;
+
+    @OneToMany(mappedBy = "product")
+    @JsonIgnoreProperties("product")
+    private List<ProductAttribute> attributes;
 
     @NotNull
     @Column(name = "price")
@@ -41,21 +57,27 @@ public class Product {
     @Column(name = "price_with_discount")
     private Double priceWithDiscount;
 
+    @Column(name = "sku")
+    private String sku;
+
     @Column(name = "photo")
     private String photo;
 
-    @Column(name = "stock")
-    private Integer stock;
+    @Column(name = "quantity")
+    private Integer quantity;
+
+    @Column(name = "in_stock_since")
+    private LocalDateTime inStockSince;
 
     @Column(name = "available")
     private Boolean available;
 
     @CreationTimestamp
-    @Column(name = "creation_date")
+    @Column(name = "created_on_date")
     private LocalDateTime creationDate;
 
     @UpdateTimestamp
-    @Column(name = "update_date")
+    @Column(name = "updated_on_date")
     private LocalDateTime updateDate;
 
 }
