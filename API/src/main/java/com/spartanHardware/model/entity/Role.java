@@ -1,5 +1,5 @@
 package com.spartanHardware.model.entity;
 
 public enum Role {
-    ADMIN,USER
+    ADMIN,USER,CUSTOMER,WAREHOUSE_MANAGER
 }
