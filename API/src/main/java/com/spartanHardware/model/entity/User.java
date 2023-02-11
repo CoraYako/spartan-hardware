@@ -2,15 +2,15 @@ package com.spartanHardware.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -25,9 +25,11 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "user")
-@SQLDelete(sql = "UPDATE users SET deleted = true WHERE id = ?")
-@Where(clause = "deleted = false")
+@SQLDelete(sql = "UPDATE users SET enabled = false WHERE id = ?")
+@Where(clause = "enabled = true")
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -47,7 +49,7 @@ public class User implements UserDetails {
     @JoinTable(
             name = "user_authority",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name="authority_id")
+            inverseJoinColumns = @JoinColumn(name = "authority_id")
     )
     @JsonIgnoreProperties("users")
     private Set<Authority> authorities;
@@ -58,27 +60,27 @@ public class User implements UserDetails {
 
     @NotNull
     @Column(name = "first_name")
-    private String first_name;
+    private String firstName;
 
     @NotNull
     @Column(name = "last_name")
-    private String last_name;
+    private String lastName;
 
     @NotNull
     @OneToMany(mappedBy = "user")
-    @JoinColumn (name = "address")
+    @JoinColumn(name = "address")
     private List<Address> addresses;
-    
+
     @Column(name = "phone_number")
-    private String phone_number;
+    private String phoneNumber;
 
     @CreationTimestamp
-    @Column(name = "creation_date")
-    private LocalDateTime creation_date;
+    @Column(name = "created_at")
+    private LocalDateTime creationDate;
 
     @UpdateTimestamp
-    @Column(name = "update_date")
-    private LocalDateTime update_date;
+    @Column(name = "updated_at")
+    private LocalDateTime updateDate;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -87,7 +89,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return email;
     }
 
     @Override

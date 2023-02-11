@@ -1,22 +1,20 @@
 package com.spartanHardware.model.entity;
 
 import jakarta.persistence.*;
-
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "address")
-@SQLDelete(sql = "UPDATE users SET deleted = true WHERE id = ?")
-@Where(clause = "deleted = false")
 public class Address {
 
     @Id
@@ -32,8 +30,8 @@ public class Address {
     @Column(name = "number")
     private String number;
 
-    @Column(name = "departament_number")
-    private String departament_number;
+    @Column(name = "department_number")
+    private String departmentNumber;
 
     @NotNull
     @Column(name = "city")
@@ -47,4 +45,6 @@ public class Address {
     @JoinColumn(name = "user")
     private User user;
 
+    @Column(name = "default")
+    private boolean defaultAddress;
 }

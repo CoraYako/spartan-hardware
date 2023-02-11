@@ -1,4 +1,4 @@
-package com.spartanHardware.api;
+package com.spartanHardware;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

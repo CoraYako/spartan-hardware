@@ -1,4 +1,4 @@
-package com.spartanHardware.api.model.entity;
+package com.spartanHardware.model.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
