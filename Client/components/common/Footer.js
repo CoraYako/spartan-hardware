@@ -11,119 +11,123 @@ export const Footer = () => {
       
       <div className='container'>
         <Item>
-          <h6  className='title'> Contáctanos!</h6>
+          <h2  className='title'> Contáctanos!</h2>
           &nbsp;
           &nbsp;
           <Link href="https://goo.gl/maps/ee8VUcUW2sCa14XQ6">
             <p>Remedios de Escalada de San Martin 3875</p>
+            <p><br/></p>
             <p>Floresta(CABA)</p>
+            <p><br/></p>
           </Link>
-          <br/> 
           <Link href='https://goo.gl/maps/bTbq5mB3SZBayFGZA'>            
             <p>Florida 537 PB, Local 379</p>
+            <p><br/></p>
             <p>Microcentro (CABA)</p>
           </Link>
-          &nbsp;
           <Link href='#'>
+            <p><br/></p>
             <p>Whatsaap: +54 11 2357-5588</p>
+            <p><br/></p>
           </Link>
-          <br/>
-          <a href='mailito:empresas@maximus.com.ar'>empresas@maximus.com.ar</a>
+          <p><a href="mailto:empresas@maximus.com.ar">empresas@maximus.com.ar</a></p>
         </Item>
         <Item>
-          <h6 className='title'>Nuestros Horarios</h6>
+          <h2 className='title'>Nuestros Horarios</h2>
           &nbsp;
           &nbsp;
           <Link href='#'>
-            <p>Floresta<br/>
-            Lun a Vie. 9:00 AM 18:00PM<br/>
-            Sab 10:00 AM - 14:30PM.</p>
+            <p> Floresta Lun a Vie. 9:00 AM 18:00PM</p>
+            <p><br/></p>
+            <p>Sab 10:00 AM - 14:30PM.</p>
           </Link>
-          &nbsp;
+            <br/>
           <Link href='#'>
-            <p>Florida Local<br/>
-            Lun a Vier, 10:00 AM a 19:00 PM<br/>
-            Sab 10:00 AM - 14:30 PM</p>
+            <p>Florida Local
+            Lun a Vier, 10:00 AM a 19:00 PM</p>
+            <p><br/></p>
+            <p>Sab 10:00 AM - 14:30 PM</p>
           </Link>
         </Item>
         <Item>
-          <h6 className='title'>Ayuda</h6>
+          <h2 className='title'>Ayuda</h2>
           &nbsp;
           &nbsp;
           <Link href='#'>
             <p>FAQ</p>
           </Link>
-          &nbsp;
+          <p><br/></p>
           <Link href='#'>
             <p>Trámite Garantía</p>
           </Link>
-          &nbsp;
+          <p><br/></p>
           <Link href='#'>
             <p>Boton de Arrepentimiento</p>
           </Link>
         </Item>
         <Item>
-          <h6 className='title'>Seguinos en las Redes</h6>          
+          <h2 className='title'>Seguinos en las Redes</h2>          
           <br/>
-          <Link className='inst' href='#'>
-            <IcoInstagram />          
-          </Link>
+          <p>Consulta mas sobre nosotros, nuestros productos</p>
+          <p><br/></p>
+          <p>Y contenido adicional en nuestras resdes sociales</p>
+          <p><br/></p>
           <Link className='face' href='#'>
             <IcoFace />
           </Link>
           <Link className='inst' href='#'>
-            <IcoYoutube />
+            <IcoInstagram />      
           </Link>
           <Link href='#'>
             <IcoTik />
           </Link>
+          <Link className='inst' href='#'>
+            <IcoYoutube />
+          </Link>
         </Item>
       </div>
-
     </FooterContainer>
   )
 }
 
 const FooterContainer = styled.div`
-  background-color: var(--secondaryViolet1);
+  background-color: var(--black);
   width: 100%;
   color: white;
-  padding: 2rem 0;
-  margin-top: 10rem;
+  padding: 5rem 0;
+  left: -1px;
+  margin-top: 26rem;
   .container{
-    margin-left: 3%;
-    margin-right: 3%;
-    display: flex;
-    
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom:4rem;
+    margin-top: -1rem;
+    display: flex;    
     justify-content: space-between;
     gap: 5em;
-
-
   }
  `
 const Item = styled.div`
-
   .title {
-    font-style: italic;
-    color: var(--primaryGreen2)
+    font-size: 20px;
+    color: var(--primaryGreen1)
   }
   p{
     font-size: 12px;
   }
   p:hover{
-    color:var(--primaryGreen2)
+    color:var(--primaryGreen1)
   }
   a {
     font-size: 12px;
   }
   a:hover{
-    color:var(--primaryGreen2)
+    color:var(--primaryGreen1)
   }
   .inst:hover{
     color:red;
   }
   .face:hover{
-    color:blue;
+    color: blue;
   }
-
 `
