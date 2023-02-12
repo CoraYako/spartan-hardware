@@ -30,7 +30,7 @@ public class ShopOrder {
     @Column(name = "order_date")
     private LocalDateTime orderDate;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "payment_method_id")
     private PaymentMethod paymentMethod;
 

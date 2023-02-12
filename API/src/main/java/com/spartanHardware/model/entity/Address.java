@@ -42,7 +42,7 @@ public class Address {
     private String province;
 
     @ManyToOne
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(name = "default_address")
