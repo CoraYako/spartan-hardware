@@ -13,6 +13,7 @@ const global = css`
     --tertiaryNavy1: #6422f8;
     --tertiaryNavy2: #8149fe;
     --tertiaryNavy3: #a57cff;
+    --black: #222222;
     --gray1: #454545;
     --gray2: #636363;
     --gray3: #818181;
