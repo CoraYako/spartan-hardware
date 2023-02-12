@@ -80,6 +80,18 @@ public class User implements UserDetails {
     @Column(name = "updated_at")
     private LocalDateTime updateDate;
 
+    @OneToMany(mappedBy = "user")
+    private List<Review> reviews;
+
+    @OneToMany(mappedBy = "user")
+    private List<ShopOrder> shopOrders;
+
+    @OneToMany(mappedBy = "user")
+    private List<ShoppingCart> shoppingCarts;
+
+    @OneToMany(mappedBy = "user")
+    private List<PaymentMethod> paymentMethods;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
