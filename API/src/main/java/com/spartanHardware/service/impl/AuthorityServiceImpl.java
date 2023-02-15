@@ -14,12 +14,6 @@ public class AuthorityServiceImpl implements IAuthorityService {
     @Autowired
     private AuthorityRepository repository;
 
-    @Autowired
-    private DTOToAuthorityMapper toAuthorityMapper;
-
-    @Autowired
-    private AuthorityToDTOMapper toDTOMapper;
-
     @Override
     public Authority createAuthority(Authority authority) {
         Authority savedAuthority = repository.save(authority);
