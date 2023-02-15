@@ -15,7 +15,8 @@ public class DTOToUserMapper implements Function<UserRequestDTO, User> {
         user.setEmail(dto.email());
         user.setFirstName(dto.firstName());
         user.setLastName(dto.lastName());
-        user.setEnabled(Boolean.TRUE);
+        user.setPassword(dto.password());
+        user.setEnabled(true);
         return user;
     }
 }

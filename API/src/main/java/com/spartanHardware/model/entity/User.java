@@ -28,8 +28,8 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "user")
-@SQLDelete(sql = "UPDATE users SET enabled = false WHERE id = ?")
-@Where(clause = "enabled = true")
+@SQLDelete(sql = "UPDATE users SET enable = false WHERE id = ?")
+@Where(clause = "enable = true")
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -104,17 +104,17 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
