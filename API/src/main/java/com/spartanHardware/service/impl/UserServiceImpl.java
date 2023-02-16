@@ -10,6 +10,7 @@ import com.spartanHardware.model.mapper.UserToDTOMapper;
 import com.spartanHardware.repository.AuthorityRepository;
 import com.spartanHardware.repository.UserRepository;
 import com.spartanHardware.service.IUserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,25 +24,20 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements IUserService, UserDetailsService {
 
-    @Autowired
-    private UserRepository repository;
+    private final UserRepository repository;
 
-    @Autowired
-    private AuthorityRepository authorityRepository;
+    private final AuthorityRepository authorityRepository;
 
-    @Autowired
-    private PasswordEncoder encoder;
+    private final PasswordEncoder encoder;
 
-    @Autowired
-    private UserToDTOMapper toDTOMapper;
+    private final UserToDTOMapper toDTOMapper;
 
-    @Autowired
-    private DTOToUserMapper toUserMapper;
+    private final DTOToUserMapper toUserMapper;
 
-    @Autowired
-    private MessageSource message;
+    private final MessageSource message;
 
     @Override
     @Transactional
