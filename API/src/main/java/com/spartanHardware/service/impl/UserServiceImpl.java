@@ -5,13 +5,11 @@ import com.spartanHardware.model.dto.response.UserResponseDTO;
 import com.spartanHardware.model.entity.Authority;
 import com.spartanHardware.model.entity.User;
 import com.spartanHardware.model.enums.Role;
-import com.spartanHardware.model.mapper.DTOToUserMapper;
-import com.spartanHardware.model.mapper.UserToDTOMapper;
+import com.spartanHardware.model.mapper.UserMapper;
 import com.spartanHardware.repository.AuthorityRepository;
 import com.spartanHardware.repository.UserRepository;
 import com.spartanHardware.service.IUserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,7 +18,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.*;
 
 @Service
@@ -28,15 +25,9 @@ import java.util.*;
 public class UserServiceImpl implements IUserService, UserDetailsService {
 
     private final UserRepository repository;
-
     private final AuthorityRepository authorityRepository;
-
     private final PasswordEncoder encoder;
-
-    private final UserToDTOMapper toDTOMapper;
-
-    private final DTOToUserMapper toUserMapper;
-
+    private final UserMapper mapper;
     private final MessageSource message;
 
     @Override
@@ -45,11 +36,11 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
         if(!repository.existsByEmail(dto.email())){
 
         }
-        User user = toUserMapper.apply(dto);
+        User user = mapper.toUser(dto);
         user.setPassword(encoder.encode(dto.password()));
         addRoleToUser(Role.USER.getSimpleRoleName(), user);
         User savedUser = repository.save(user);
-        return toDTOMapper.apply(savedUser);
+        return mapper.toDto(savedUser);
     }
 
     @Override
@@ -58,11 +49,11 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
         if(!repository.existsByEmail(dto.email())){
 
         }
-        User user = toUserMapper.apply(dto);
+        User user = mapper.toUser(dto);
         user.setPassword(encoder.encode(dto.password()));
         addRoleToUser(Role.ADMIN.getSimpleRoleName(), user);
         User savedUser = repository.save(user);
-        return toDTOMapper.apply(savedUser);
+        return mapper.toDto(savedUser);
     }
 
     @Transactional
