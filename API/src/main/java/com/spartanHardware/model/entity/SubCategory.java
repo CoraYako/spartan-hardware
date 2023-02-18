@@ -3,18 +3,29 @@ package com.spartanHardware.model.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
-@Entity
-@Table(name = "sub_category")
+@AllArgsConstructor
+@NoArgsConstructor
 @Setter
 @Getter
+@Entity
+@Table(name = "sub_category")
 public class SubCategory {
+
+    // TODO: 18/2/2023 Find the best practice to initialize the HashMap
+    public SubCategory(String subCategory) {
+        this.subCategory = subCategory;
+        this.products = new ArrayList<>();
+    }
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -23,7 +34,7 @@ public class SubCategory {
 
     @NotNull
     @Column(name = "sub_category")
-    private String sub_category;
+    private String subCategory;
 
     @ManyToOne
     @JoinColumn(name = "parent_category_id")
@@ -33,3 +44,5 @@ public class SubCategory {
     @JsonIgnoreProperties("subCategory")
     private List<Product> products;
 }
+
+
