@@ -11,7 +11,7 @@ export default function Document() {
           crossOrigin="true"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@100;200;300;400;500;600&family=DM+Serif+Display&family=Raleway:wght@200;300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;400&family=Raleway:wght@200;300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </Head>

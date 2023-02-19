@@ -1,13 +1,10 @@
 const fontFamily = 'Raleway'
-const fontSize1 = '1.4rem'
-const fontSize2 = '1.6rem'
-const fontSize3 = '1.8rem'
-const fontSize4 = '2.3rem'
-const fontSize5 = '2.5rem'
-const fontSize6 = '3.1rem'
-const fontSize7 = '3.6rem'
-const fontSize8 = '3.9rem'
-const fontSize9 = '4.9rem'
+const fontSizeh1 = '34px'
+const fontSizeh2 = '20px'
+const fontSizeh3 = '18px'
+const fontP = '14px'
+const fontAnchor = '13px'
+const fontSizeSpan = '8px'
 const fontSizeBase = '62.5%'
 const fontWeightBold = 700
 const fontWeightSemiBold = 600
@@ -15,22 +12,21 @@ const fontWeightNormal = 500
 const fontWeightRegular = 400
 const lineHeightCondensed = 1.3
 const lineHeightNormal = 1.5
-const lineHeightH1 = '2.875rem'
-const lineHeightH2 = '1.688rem'
-const lineHeightH3 = '1.5rem'
-const lineHeightH4 = '1.688rem'
+const lineHeightH1 = '46px'
+const lineHeightH2 = '27px'
+const lineHeightH3 = '24px'
+const lineHeightH4 = '27px'
+const lineHeightP = '16px'
+const letterSpacingSpan = '8%'
 
 export default {
   fontFamily,
-  fontSize1,
-  fontSize2,
-  fontSize3,
-  fontSize4,
-  fontSize5,
-  fontSize6,
-  fontSize7,
-  fontSize8,
-  fontSize9,
+  fontSizeh1,
+  fontSizeh2,
+  fontSizeh3,
+  fontP,
+  fontAnchor,
+  fontSizeSpan,
   fontSizeBase,
   fontWeightBold,
   fontWeightSemiBold,
@@ -42,4 +38,6 @@ export default {
   lineHeightH2,
   lineHeightH3,
   lineHeightH4,
+  lineHeightP,
+  letterSpacingSpan,
 }

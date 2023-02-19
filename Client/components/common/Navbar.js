@@ -11,16 +11,18 @@ export const Navbar = () => {
   return (
     <Nav>
       <div className="container-nav">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <Link passHref href="/">
-            <Image src={Logo} width={60} height={60} alt="logo" />
-          </Link>
-        </motion.div>
-        <SearchNav />
+        <div className="left-side">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Link passHref href="/">
+              <Image src={Logo} width={160} height={40} alt="logo" />
+            </Link>
+          </motion.div>
+          <SearchNav />
+        </div>
         <MenuNav />
       </div>
       <Submenu />
@@ -29,20 +31,27 @@ export const Navbar = () => {
 }
 
 const Nav = styled.nav`
-  height: 15rem;
-  background-color: var(--mainBlack);
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
-
+  position: fixed;
+  top: 0;
+  z-index: 10;
   .container-nav {
-    padding: 0.5rem 4rem;
+    background-color: var(--secondaryViolet1);
+    padding: 2.3rem 2.2rem;
+    height: 8.8rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: auto 0;
+  }
+  .left-side {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    gap: 3.5rem;
+    align-items: center;
   }
 `
