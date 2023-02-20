@@ -58,4 +58,7 @@ public class Address {
 
     @Column(name = "default_address")
     private boolean defaultAddress;
+
+    @Column(name = "enabled")
+    private Boolean enabled = true;
 }
