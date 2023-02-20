@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class AuthorityDataLoader implements CommandLineRunner {
+public class UserDataLoader implements CommandLineRunner {
 
     private final IAuthorityService service;
     private final IUserService userService;
