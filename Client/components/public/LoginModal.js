@@ -1,14 +1,18 @@
+import { useContext, useState } from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
-import ImageLogin from '@/public/images/BackGround_login.png'
-import Logo from '@/public/images/main-logo.png'
 import { useForm } from 'react-hook-form'
-import { Input } from '../common/Input'
-import { Button } from '../common/Button'
-import { GlobalContext } from '@/context/GlobalContext'
-import { useContext, useState } from 'react'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+
+import ImageLogin from '@/public/images/BackGround_login.png'
+import Logo from '@/public/images/main-logo.png'
+
+import { Input } from '../common/Input'
+import { Button } from '../common/Button'
+import { RegisterContent } from './RegisterContent'
+
+import { GlobalContext } from '@/context/GlobalContext'
 
 const schema = yup.object().shape({
   email: yup
@@ -50,7 +54,9 @@ export const LoginModal = () => {
       </div>
 
       {visible ? (
-        <div className="form"></div>
+        <div className="form">
+          <RegisterContent />
+        </div>
       ) : (
         <div className="form">
           <h2>Bienvenido</h2>
