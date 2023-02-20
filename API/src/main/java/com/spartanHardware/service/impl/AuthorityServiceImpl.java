@@ -4,7 +4,6 @@ import com.spartanHardware.model.entity.Authority;
 import com.spartanHardware.repository.AuthorityRepository;
 import com.spartanHardware.service.IAuthorityService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +16,7 @@ public class AuthorityServiceImpl implements IAuthorityService {
 
     @Override
     public Authority createAuthority(Authority authority) {
-        Authority savedAuthority = repository.save(authority);
-        return savedAuthority;
+        return repository.save(authority);
     }
 
     @Override
