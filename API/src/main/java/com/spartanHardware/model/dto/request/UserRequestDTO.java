@@ -1,9 +1,13 @@
 package com.spartanHardware.model.dto.request;
 
-public record UserRequestDTO(
-        String email,
-        String password,
-        String firstName,
-        String lastName
-) {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+public class UserRequestDTO {
+    private String email;
+    private String password;
+    private String firstName;
+    private String lastName;
 }
