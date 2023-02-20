@@ -1,5 +1,6 @@
 package com.spartanHardware.auth.security;
 
+import com.spartanHardware.model.enums.Role;
 import com.spartanHardware.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class AppSecurity {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/users/register", "/auth/register")
+                .requestMatchers("/auth/register-user")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
