@@ -1,6 +1,7 @@
 package com.spartanHardware.model.mapper;
 
 import com.spartanHardware.model.dto.request.UserRequestDTO;
+import com.spartanHardware.model.dto.request.UserRequestUpdateDto;
 import com.spartanHardware.model.dto.response.UserResponseDTO;
 import com.spartanHardware.model.entity.User;
 import org.springframework.security.core.GrantedAuthority;
@@ -35,7 +36,7 @@ public class UserMapper {
         return user;
     }
 
-    public User toUpdatedUser(UserRequestDTO dto, User user) {
+    public User toUpdatedUser(UserRequestUpdateDto dto, User user) {
         if(!Objects.isNull(dto.getEmail())) user.setEmail(dto.getEmail());
         if(!Objects.isNull(dto.getPassword())) user.setPassword(dto.getPassword());
         if(!Objects.isNull(dto.getFirstName())) user.setFirstName(dto.getFirstName());

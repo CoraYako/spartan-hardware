@@ -2,6 +2,7 @@ package com.spartanHardware.service.impl;
 
 import com.spartanHardware.exception.CustomException;
 import com.spartanHardware.model.dto.request.UserRequestDTO;
+import com.spartanHardware.model.dto.request.UserRequestUpdateDto;
 import com.spartanHardware.model.dto.response.UserResponseDTO;
 import com.spartanHardware.model.entity.Authority;
 import com.spartanHardware.model.entity.User;
@@ -61,7 +62,7 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
 
     @Override
     @Transactional
-    public UserResponseDTO updateUser(UserRequestDTO dto, Long id) {
+    public UserResponseDTO updateUser(UserRequestUpdateDto dto, Long id) {
         User user = getUserById(id);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if(!auth.getName().equalsIgnoreCase(user.getUsername()))

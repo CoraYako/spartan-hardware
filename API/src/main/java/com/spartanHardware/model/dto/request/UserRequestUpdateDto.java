@@ -7,14 +7,9 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class UserRequestDTO {
-    @NotNull
-    @Email
+public class UserRequestUpdateDto {
     private String email;
-    @NotNull
     private String password;
-    @NotNull
     private String firstName;
-    @NotNull
     private String lastName;
 }

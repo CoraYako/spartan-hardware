@@ -1,8 +1,10 @@
 package com.spartanHardware.controller;
 
 import com.spartanHardware.model.dto.request.UserRequestDTO;
+import com.spartanHardware.model.dto.request.UserRequestUpdateDto;
 import com.spartanHardware.model.dto.response.UserResponseDTO;
 import com.spartanHardware.service.IUserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +30,7 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<UserResponseDTO> updateUser(@RequestBody UserRequestDTO dto, @PathVariable Long id){
+    public ResponseEntity<UserResponseDTO> updateUser(@Valid @RequestBody UserRequestUpdateDto dto, @PathVariable Long id){
         UserResponseDTO user = service.updateUser(dto, id);
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
