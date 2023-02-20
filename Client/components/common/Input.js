@@ -8,7 +8,6 @@ export const Input = ({
   type,
   margin,
 }) => {
-  console.log(errors)
   return (
     <ContainerInput margin={margin}>
       <label> {label}</label>
@@ -23,6 +22,7 @@ const ContainerInput = styled.div`
   flex-direction: column;
   margin: ${(props) => props.margin};
   width: 100%;
+  min-width: 260px;
   position: relative;
   label {
     font-weight: 400;
