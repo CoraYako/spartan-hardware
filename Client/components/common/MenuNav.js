@@ -3,21 +3,30 @@ import CartIcon from '@/public/icons/Cart'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { GlobalContext } from '@/context/GlobalContext'
+import { useContext } from 'react'
 
 export const MenuNav = () => {
+  const { contextDataGlobal, setContextDataGlobal } = useContext(GlobalContext)
   return (
     <Container
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 1 }}
     >
-      <Link passHref href="/login">
-        <Item>
-          <span className="bar" />
-          <AccountIcon />
-          <p>Mi cuenta</p>
-        </Item>
-      </Link>
+      <Item
+        onClick={() =>
+          setContextDataGlobal({
+            ...contextDataGlobal,
+            showModal: true,
+            modalActive: 'login',
+          })
+        }
+      >
+        <span className="bar" />
+        <AccountIcon />
+        <p>Mi cuenta</p>
+      </Item>
       <Item>
         <span className="bar" />
         <CartIcon />

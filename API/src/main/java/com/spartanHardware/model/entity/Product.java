@@ -10,10 +10,13 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.Where;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
+import static java.lang.Boolean.TRUE;
+import static java.time.LocalDateTime.now;
 
 @Entity
 @Table(name = "product")
@@ -52,10 +55,10 @@ public class Product {
 
     @NotNull
     @Column(name = "price")
-    private Double price;
+    private BigDecimal price;
 
     @Column(name = "price_with_discount")
-    private Double priceWithDiscount;
+    private BigDecimal priceWithDiscount;
 
     @Column(name = "sku")
     private String sku;
@@ -66,15 +69,12 @@ public class Product {
     @Column(name = "quantity")
     private Integer quantity;
 
+    @CreationTimestamp
     @Column(name = "in_stock_since")
-    private LocalDateTime inStockSince;
+    private LocalDateTime inStockSince = now();
 
     @Column(name = "available")
-    private Boolean available;
-
-    @CreationTimestamp
-    @Column(name = "created_on_date")
-    private LocalDateTime creationDate;
+    private Boolean available = TRUE;
 
     @UpdateTimestamp
     @Column(name = "updated_on_date")
