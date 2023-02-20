@@ -28,7 +28,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "user")
-@SQLDelete(sql = "UPDATE users SET enable = false WHERE id = ?")
+@SQLDelete(sql = "UPDATE user SET enable = false WHERE id = ?")
 @Where(clause = "enable = true")
 public class User implements UserDetails {
     @Id
