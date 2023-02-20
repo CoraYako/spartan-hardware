@@ -33,6 +33,13 @@ public class Address {
     @Column(name = "department_number")
     private String departmentNumber;
 
+    @Column(name = "department_floor")
+    private String departmentFloor;
+
+    @NotNull
+    @Column(name = "postal_code")
+    private String postalCode;
+
     @NotNull
     @Column(name = "city")
     private String city;
