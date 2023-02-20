@@ -2,7 +2,17 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
-export const Button = ({ text, action, to, secondary, isLoading = false }) => {
+export const Button = ({
+  text = '',
+  action,
+  to = '',
+  secondary,
+  isLoading = false,
+  type = '',
+  width,
+  colorFocus,
+  margin,
+}) => {
   return (
     <>
       {to ? (
@@ -21,14 +31,17 @@ export const Button = ({ text, action, to, secondary, isLoading = false }) => {
             transition: { duration: 0.3 },
           }}
           whileTap={{
-            backgroundColor: '#ffffff00',
-            color: '#120628',
+            backgroundColor: `${colorFocus || '#ffffff00'}`,
+            color: `${secondary ? '#fff' : '#120628'}`,
             outline: '1px solid #120628',
             transition: { duration: 0.2 },
           }}
           onClick={action}
           secondary={secondary}
           $isLoading={isLoading}
+          type={type}
+          width={width}
+          margin={margin}
         >
           {text}
         </Btn>
@@ -39,7 +52,9 @@ export const Button = ({ text, action, to, secondary, isLoading = false }) => {
 
 const Btn = styled(motion.button)`
   border: none;
+  width: ${(props) => props.width};
   min-width: 9rem;
+  margin: ${(props) => props.margin};
   cursor: pointer;
   font-family: 'Prompt';
   font-style: normal;
