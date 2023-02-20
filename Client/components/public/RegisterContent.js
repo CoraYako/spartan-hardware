@@ -91,7 +91,7 @@ export const RegisterContent = () => {
           text="REGISTRARSE"
           width="200px"
           colorFocus="#25da2d"
-          margin="7px 0 24px"
+          margin="7px 0 0"
         />
       </form>
     </Container>

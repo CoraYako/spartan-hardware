@@ -19,7 +19,7 @@ const schema = yup.object().shape({
     .string()
     .email('Tiene que ser con formato de email')
     .required('El email es requerido'),
-  password: yup.string().min(8).max(32).required('La contraseña es requerida'),
+  password: yup.string().required('La contraseña es requerida'),
 })
 
 export const LoginModal = () => {
