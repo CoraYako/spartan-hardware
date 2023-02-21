@@ -5,6 +5,7 @@ import com.spartanHardware.model.dto.response.ProductResponseDto;
 import com.spartanHardware.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,5 +34,17 @@ public class ProductController {
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return ResponseEntity.status(NO_CONTENT).build();
+    }
+
+    @PatchMapping("/update/{id}")
+    public ResponseEntity<ProductResponseDto> updateProduct(@PathVariable Long id,
+                                                            @RequestBody ProductRequestDto productRequestDto) {
+        ProductResponseDto productResponseDto = productService.updateProduct(id, productRequestDto);
+        return ResponseEntity.status(OK).body(productResponseDto);
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<ProductResponseDto>> getAllProducts(@RequestParam(name = "page") int page) {
+        return ResponseEntity.status(OK).body(productService.getAllProducts(page));
     }
 }
