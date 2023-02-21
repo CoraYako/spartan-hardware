@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -15,6 +17,8 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "address")
+@SQLDelete(sql = "UPDATE address SET enabled = false WHERE id = ?")
+@Where(clause = "enabled = true")
 public class Address {
 
     @Id
@@ -54,4 +58,7 @@ public class Address {
 
     @Column(name = "default_address")
     private boolean defaultAddress;
+
+    @Column(name = "enabled")
+    private Boolean enabled = true;
 }
