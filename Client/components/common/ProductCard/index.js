@@ -4,12 +4,23 @@ import ImageMock from '@/public/images/img_keyboard_test.png'
 import Image from 'next/image'
 import { Details } from './Details'
 import { Button } from '../Button'
+import { Label } from '../Label'
 
-export const ProductCard = ({ img, title, details, price, isLoading }) => {
+export const ProductCard = ({
+  img,
+  title,
+  details,
+  price,
+  isLoading,
+  promotion,
+  fastSend,
+}) => {
   return (
     <CardContainer whileHover={{ scale: 1.05 }}>
+      {promotion && <Label typeLabel="promotion" msg="Promoción" />}
+      {fastSend && <Label typeLabel="shipping" msg="Entrega inmediata" />}
       <div className="top-info">
-        <Image src={ImageMock} alt="image-name" />
+        <Image src={img || ImageMock} alt="image-name" />
         <div className="divider" />
         <div className="text">
           <h3>{title || 'Teclado Mecanico Redragon Draconic K530'}</h3>
@@ -20,9 +31,7 @@ export const ProductCard = ({ img, title, details, price, isLoading }) => {
         <h3>$ 12.150</h3>
       </div>
       <div className="info">
-        <p>
-          No aplica <br /> impuestos
-        </p>
+        <p>No aplica impuestos</p>
       </div>
       <div className="button-container">
         <Button text="Detalle" />
@@ -38,6 +47,7 @@ const CardContainer = styled(motion.article)`
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
   margin: 3rem 0;
   background-color: var(--gray4);
+  position: relative;
 
   .price {
     background-color: var(--primaryGreen1);
