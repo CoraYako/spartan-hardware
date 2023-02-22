@@ -10,7 +10,7 @@ export const Input = ({
 }) => {
   return (
     <ContainerInput margin={margin}>
-      <label> {label}</label>
+      <label className="label_input"> {label}</label>
       <CustomInput {...register} placeholder={placeholder} type={type} />
       {errors && <p className="errors">{errors}</p>}
     </ContainerInput>
@@ -24,7 +24,7 @@ const ContainerInput = styled.div`
   width: 100%;
   min-width: 260px;
   position: relative;
-  label {
+  .label_input {
     font-weight: 400;
     font-size: 11px;
     line-height: 16px;
