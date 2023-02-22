@@ -1,6 +1,10 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { CatalogPcLow } from '@/components/public/CatalogPcLow'
+
+import BannerImg from '@/public/images/BannerPCSale.png'
+import { CatalogPcLow } from '@/components/public/PcRecommendSale/CatalogPcLow'
+import Link from 'next/link'
 
 export default function PcRecommend() {
   return (
@@ -18,6 +22,18 @@ export default function PcRecommend() {
         key="login"
         style={{ width: '100%' }}
       >
+        <Image
+          src={BannerImg}
+          alt="banner"
+          style={{ marginTop: '137px', width: '100%' }}
+          quality={100}
+        />
+        <p style={{ margin: '10px 0 0 20px' }}>
+          <Link passHref href="/">
+            Home
+          </Link>
+          / <strong>PC´s Recomendadas</strong>
+        </p>
         <CatalogPcLow />
       </motion.div>
     </>
