@@ -64,9 +64,14 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
     @Transactional
     public UserResponseDTO updateUser(UserRequestUpdateDto dto, Long id) {
         User user = getUserById(id);
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if(!auth.getName().equalsIgnoreCase(user.getUsername()))
             throw new CustomException(message.getMessage("entity.noAccess", new String[] {"modify"}, Locale.US), FORBIDDEN,LocalDateTime.now());
+
+        if(repository.existsByEmail(dto.getEmail()))
+            throw new CustomException(message.getMessage("entity.exists",null,Locale.US), BAD_REQUEST, LocalDateTime.now());
+
         User updatedUser = mapper.toUpdatedUser(dto,user);
         return mapper.toDto(repository.save(updatedUser));
     }
