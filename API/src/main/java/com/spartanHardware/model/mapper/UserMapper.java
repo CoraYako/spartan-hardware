@@ -3,6 +3,7 @@ package com.spartanHardware.model.mapper;
 import com.spartanHardware.model.dto.request.UserRequestDTO;
 import com.spartanHardware.model.dto.request.UserRequestUpdateDto;
 import com.spartanHardware.model.dto.response.UserResponseDTO;
+import com.spartanHardware.model.dto.response.UserResponseRegisterDTO;
 import com.spartanHardware.model.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,20 @@ public class UserMapper {
         );
     }
 
+    public UserResponseRegisterDTO toDtoRegister(User user) {
+        return new UserResponseRegisterDTO(
+                user.getUsername(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getAuthorities()
+                        .stream()
+                        .map(GrantedAuthority::getAuthority)
+                        .collect(Collectors.toList()),
+                user.getCreationDate(),
+                ""
+        );
+    }
+
     public User toUser(UserRequestDTO dto) {
         User user = new User();
         user.setEmail(dto.getEmail());
@@ -37,10 +52,10 @@ public class UserMapper {
     }
 
     public User toUpdatedUser(UserRequestUpdateDto dto, User user) {
-        if(!Objects.isNull(dto.getEmail())) user.setEmail(dto.getEmail());
-        if(!Objects.isNull(dto.getPassword())) user.setPassword(dto.getPassword());
-        if(!Objects.isNull(dto.getFirstName())) user.setFirstName(dto.getFirstName());
-        if(!Objects.isNull(dto.getLastName())) user.setLastName(dto.getLastName());
+        if(!Objects.isNull(dto.getEmail()) && !dto.getEmail().isEmpty()) user.setEmail(dto.getEmail());
+        if(!Objects.isNull(dto.getPassword()) && !dto.getPassword().isEmpty()) user.setPassword(dto.getPassword());
+        if(!Objects.isNull(dto.getFirstName()) && !dto.getFirstName().isEmpty()) user.setFirstName(dto.getFirstName());
+        if(!Objects.isNull(dto.getLastName()) && !dto.getLastName().isEmpty()) user.setLastName(dto.getLastName());
         return user;
     }
 

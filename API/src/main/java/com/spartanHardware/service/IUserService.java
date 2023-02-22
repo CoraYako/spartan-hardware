@@ -1,16 +1,20 @@
 package com.spartanHardware.service;
 
+import com.spartanHardware.model.dto.request.LoginRequestDto;
 import com.spartanHardware.model.dto.request.UserRequestDTO;
 import com.spartanHardware.model.dto.request.UserRequestUpdateDto;
+import com.spartanHardware.model.dto.response.LoginResponseDto;
 import com.spartanHardware.model.dto.response.UserResponseDTO;
+import com.spartanHardware.model.dto.response.UserResponseRegisterDTO;
 import com.spartanHardware.model.entity.User;
 
 import java.util.List;
 
 public interface IUserService {
 
-    UserResponseDTO registerUser(UserRequestDTO dto);
-    UserResponseDTO registerAdmin(UserRequestDTO dto);
+    UserResponseRegisterDTO registerUser(UserRequestDTO dto);
+    UserResponseRegisterDTO registerAdmin(UserRequestDTO dto);
+    LoginResponseDto loginUser(LoginRequestDto dto);
     UserResponseDTO updateUser(UserRequestUpdateDto dto, Long id);
     List<UserResponseDTO> getAllUsers();
     User getUserById(Long id);
