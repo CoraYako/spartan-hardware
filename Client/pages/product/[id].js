@@ -1,3 +1,4 @@
+import { Content } from '@/components/public/Product/Content'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
@@ -12,7 +13,8 @@ export default function Product() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>Estoy en el producto {id}</div>
+      <div style={{ marginTop: '137px' }}>Estoy en el producto {id}</div>
+      <Content />
     </>
   )
 }
