@@ -7,7 +7,6 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import styled from 'styled-components'
 import MockImage from '@/public/images/MockBaner.png'
-import MockImage2 from '@/public/images/MockImage1.png'
 
 // import required modules
 import { Autoplay, Pagination } from 'swiper'
@@ -51,7 +50,10 @@ export const CarouselProduct = () => {
 
 const CustomSwiper = styled(Swiper)`
   height: 400px;
-  max-width: 618px;
+  max-width: 550px;
+  .swiper-wrapper {
+    height: 350px;
+  }
   .swiper-slide {
     display: flex;
     align-items: center;
