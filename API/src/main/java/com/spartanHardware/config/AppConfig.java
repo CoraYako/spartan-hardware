@@ -14,6 +14,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 import java.util.Locale;
 
 @Configuration
@@ -22,6 +25,7 @@ public class AppConfig {
 
     private final UserRepository repository;
     private final MessageSource message;
+
     @Bean
     public UserDetailsService userDetailsService(){
         return username -> repository.findByEmail(username)
@@ -45,4 +49,27 @@ public class AppConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/api/v1/users/**")
+                        .allowedOrigins("https://c9-22-t-javareact.vercel.app")
+                        .allowedMethods("GET", "POST", "PATCH", "DELETE");
+                registry.addMapping("/api/v1/auth/**")
+                        .allowedOrigins("https://c9-22-t-javareact.vercel.app")
+                        .allowedMethods("GET", "POST", "PATCH", "DELETE");
+                registry.addMapping("/api/v1/addresses/**")
+                        .allowedOrigins("https://c9-22-t-javareact.vercel.app")
+                        .allowedMethods("GET", "POST", "PATCH", "DELETE");
+                registry.addMapping("/api/v1/products/**")
+                        .allowedOrigins("https://c9-22-t-javareact.vercel.app")
+                        .allowedMethods("GET", "POST", "PATCH", "DELETE");
+            }
+
+        };
+    }
+
 }
