@@ -36,7 +36,6 @@ public class AddressMapper {
         address.setPostalCode(dto.getPostalCode());
         address.setCity(dto.getCity());
         address.setProvince(dto.getProvince());
-        address.setDefaultAddress(false);
 
         return address;
     }
@@ -49,7 +48,7 @@ public class AddressMapper {
         if(!Objects.isNull(dto.getPostalCode())) address.setPostalCode(dto.getPostalCode());
         if(!Objects.isNull(dto.getCity())) address.setCity(dto.getCity());
         if(!Objects.isNull(dto.getProvince())) address.setProvince(dto.getProvince());
-        if(!Objects.isNull(dto.getDefaultAddress())) address.setDefaultAddress(dto.getDefaultAddress());
+        if(!Objects.isNull(dto.getDefaultAddress()) && dto.getDefaultAddress()) address.setDefaultAddress(dto.getDefaultAddress());
         return address;
     }
 
