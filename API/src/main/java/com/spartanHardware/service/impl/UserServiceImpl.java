@@ -91,11 +91,10 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
 
     @Override
     @Transactional
-    public UserResponseDTO updateUser(UserRequestUpdateDto dto, Long id) {
+    public UserResponseDTO updateUser(UserRequestUpdateDto dto, Long id, User loggedUser) {
         User user = getUserById(id);
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if(!auth.getName().equalsIgnoreCase(user.getUsername()))
+        if(!loggedUser.getUsername().equalsIgnoreCase(user.getUsername()))
             throw new CustomException(message.getMessage("entity.noAccess", new String[] {"modify"}, Locale.US), FORBIDDEN,LocalDateTime.now());
 
         if(repository.existsByEmail(dto.getEmail()))
@@ -124,10 +123,9 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
 
     @Override
     @Transactional
-    public void deleteUserById(Long id) {
+    public void deleteUserById(Long id, User loggedUser) {
         User user =  getUserById(id);
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if(!auth.getName().equalsIgnoreCase(user.getUsername()))
+        if(!loggedUser.getUsername().equalsIgnoreCase(user.getUsername()))
             throw new CustomException(message.getMessage("entity.noAccess", new String[] {"delete"}, Locale.US), FORBIDDEN, LocalDateTime.now());
         repository.deleteById(id);
     }

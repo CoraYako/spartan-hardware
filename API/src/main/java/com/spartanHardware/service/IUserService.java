@@ -15,11 +15,11 @@ public interface IUserService {
     UserResponseRegisterDTO registerUser(UserRequestDTO dto);
     UserResponseRegisterDTO registerAdmin(UserRequestDTO dto);
     LoginResponseDto loginUser(LoginRequestDto dto);
-    UserResponseDTO updateUser(UserRequestUpdateDto dto, Long id);
+    UserResponseDTO updateUser(UserRequestUpdateDto dto, Long id, User loggedUser);
     List<UserResponseDTO> getAllUsers();
     User getUserById(Long id);
     UserResponseDTO getUserDtoById(Long id);
-    void deleteUserById(Long id);
+    void deleteUserById(Long id, User loggedUser);
 
 
 }
