@@ -1,20 +1,26 @@
 package com.spartanHardware.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "product_attribute")
+@AllArgsConstructor
+@NoArgsConstructor
 @Setter
 @Getter
 public class ProductAttribute {
+
+    public ProductAttribute(String attribute, String value) {
+        this.attribute = attribute;
+        this.value = value;
+    }
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -29,8 +35,7 @@ public class ProductAttribute {
     @Column(name = "attribute")
     private String attribute;
 
-    @OneToMany(mappedBy = "productAttribute")
-    @JsonIgnoreProperties("productAttribute")
-    private List<AttributeValue> attributeValues;
-
+    @NotNull
+    @Column(name = "value")
+    private String value;
 }
