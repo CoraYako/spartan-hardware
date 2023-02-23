@@ -9,7 +9,7 @@ export const Recommend = () => {
       </div>
       <CardContainer>
 	<RecommendCard title={"PC's BÁSICA"}/>
-	<RecommendCard title={"PC's ALTA"}/>
+	<RecommendCard title={"PC's MEDIA"}/>
 	<RecommendCard title={"PC's ALTA"}/>
       </CardContainer>
     </>
