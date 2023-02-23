@@ -2,14 +2,10 @@ import { AnimatePresence } from 'framer-motion'
 import styled from 'styled-components'
 import { Navbar } from './Navbar'
 import { Footer } from './Footer'
-<<<<<<< HEAD
-import CardRecommend from './Cardrecord'
-=======
 import Modal from './Modal'
 import { GlobalContext } from '@/context/GlobalContext'
 import { useContext } from 'react'
 import { LoginModal } from '../public/LoginModal'
->>>>>>> fc4e90550dc1beccf3ba7e55216dfdc06d6bafb0
 
 const Layout = ({ children }) => {
   const { contextDataGlobal, setContextDataGlobal } = useContext(GlobalContext)
@@ -41,9 +37,7 @@ const PageContainer = styled.div`
   width: 100%;
   position: relative;
   display: flex;
-  justify-content: center;		
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-`;
-
-
+`
