@@ -149,7 +149,7 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
 | <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
 |:-:|
 | Javier Gaitan|
-| <a href="https://www.behance.net/andrsplazas1"><img src="https://img.shields.io/badge/Behance-%2320232a.svg?style=for-the-badge&logo=Behance&logoColor=%%2361DAFB"/></a> <a href="https://www.linkedin.com/in/eafuentes"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+| <a href="https://www.behance.net/javiergaitan"><img src="https://img.shields.io/badge/Behance-%2320232a.svg?style=for-the-badge&logo=Behance&logoColor=%%2361DAFB"/></a> <a href="https://www.linkedin.com/in/javier-gaitan-ortiz-a8665027"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
 ## ✔ QA
 
@@ -162,7 +162,7 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
 | <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
 |:-:|
 | Lucio Sanfilippo |
-|<a href="https://github.com/Aplietexe"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/pietropalombini/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|<a href="https://github.com/luciosanfi"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/lucio-sanfilippo-5a620621a"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
 
 ### 👉🏻 Team Leader
