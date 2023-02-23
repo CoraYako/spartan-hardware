@@ -1,47 +1,46 @@
-import Tilt from "react-parallax-tilt";
+import Tilt from 'react-parallax-tilt'
+import img1 from '@/public/images/pc.png'
+import Image from 'next/image'
+import { Button } from '../Button'
 import {
   CardWrapper,
   CardImage,
   CardTextWrapper,
-  CardTextDate,
   CardTextTitle,
   CardTextBody,
-  CardStatWrapper,
-  CardStats,
-  LinkText
-} from "./CardStyles";
+} from './CardStyles'
 
-export const CardRe = ({ title, date, imgUrl }) => {
+export const CardRe = ({ title }) => {
   return (
     <Tilt>
       <CardWrapper>
-        <CardImage props={imgUrl} />
+        <CardImage>
+          <Image src={img1} alt="PC" width="123" height="165" />
+        </CardImage>
         <CardTextWrapper>
-          <CardTextDate>{date} days ago</CardTextDate>
           <CardTextTitle>{title}</CardTextTitle>
           <CardTextBody>
-           Conozca todas nuestras PC's
-	    para trabajo básico y de bajo
-	    desempeño
+            Conozca todas nuestras PC's, <br />
+            para trabajo básico y de bajo <br />
+            desempeño
           </CardTextBody>
+          <div>
+            <p>
+              <br />
+            </p>
+          </div>
+          <div>
+            <p>
+              <br />
+            </p>
+          </div>
+          <div>
+            <Button text="Cotizar" />
+          </div>
         </CardTextWrapper>
-        <CardStatWrapper>
-          {/* <CardStats>
-            <div>
-              1<sup>m</sup>
-            </div>
-            <div>read</div>
-          </CardStats> */}
-          <CardStats>
-            <LinkText href="#">website</LinkText>
-          </CardStats>
-          <CardStats>
-            <LinkText href="#">github</LinkText>
-          </CardStats>
-        </CardStatWrapper>
       </CardWrapper>
     </Tilt>
-  );
-};
+  )
+}
 
-export default CardRe;
+export default CardRe
