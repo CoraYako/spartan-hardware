@@ -1,10 +1,8 @@
 spring:
-  profiles:
-    active: "application-prod"
   datasource:
-    url: jdbc:mysql://containers-us-west-24.railway.app:5479/railway
+    url: jdbc:mysql://localhost:3306/ecommerce
     username: root
-    password: DJzLOGthHnC9RRu91LFO
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
