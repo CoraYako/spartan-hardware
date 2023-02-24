@@ -2,8 +2,11 @@ package com.spartanHardware.model.mapper;
 
 import com.spartanHardware.model.dto.request.UserRequestDTO;
 import com.spartanHardware.model.dto.request.UserRequestUpdateDto;
+import com.spartanHardware.model.dto.response.UserProfileResponseDto;
 import com.spartanHardware.model.dto.response.UserResponseDTO;
+import com.spartanHardware.model.entity.Address;
 import com.spartanHardware.model.entity.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +15,10 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Component
+@RequiredArgsConstructor
 public class UserMapper {
+
+    private AddressMapper addressMapper;
 
     public UserResponseDTO toDto(User user) {
         return new  UserResponseDTO(
@@ -24,6 +30,24 @@ public class UserMapper {
                         .map(GrantedAuthority::getAuthority)
                         .collect(Collectors.toList()),
                 user.getCreationDate()
+        );
+    }
+
+    public UserProfileResponseDto toDtoProfile(User user){
+        return new  UserProfileResponseDto(
+                user.getUsername(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getAuthorities()
+                        .stream()
+                        .map(GrantedAuthority::getAuthority)
+                        .collect(Collectors.toList()),
+                addressMapper.toDto(
+                        user.getAddresses()
+                                .stream()
+                                .filter(address -> address.isDefaultAddress())
+                                .collect(Collectors.toList())
+                                .get(0))
         );
     }
 

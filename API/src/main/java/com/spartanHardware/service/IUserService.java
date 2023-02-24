@@ -2,6 +2,7 @@ package com.spartanHardware.service;
 
 import com.spartanHardware.model.dto.request.UserRequestDTO;
 import com.spartanHardware.model.dto.request.UserRequestUpdateDto;
+import com.spartanHardware.model.dto.response.UserProfileResponseDto;
 import com.spartanHardware.model.dto.response.UserResponseDTO;
 import com.spartanHardware.model.entity.User;
 
@@ -15,6 +16,7 @@ public interface IUserService {
     List<UserResponseDTO> getAllUsers();
     User getUserById(Long id);
     UserResponseDTO getUserDtoById(Long id);
+    UserProfileResponseDto getUserProfile(Long id, User loggedUser);
     void deleteUserById(Long id);
 
 

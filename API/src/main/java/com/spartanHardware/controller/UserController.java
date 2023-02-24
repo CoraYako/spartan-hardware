@@ -2,12 +2,15 @@ package com.spartanHardware.controller;
 
 import com.spartanHardware.model.dto.request.UserRequestDTO;
 import com.spartanHardware.model.dto.request.UserRequestUpdateDto;
+import com.spartanHardware.model.dto.response.UserProfileResponseDto;
 import com.spartanHardware.model.dto.response.UserResponseDTO;
+import com.spartanHardware.model.entity.User;
 import com.spartanHardware.service.IUserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +30,12 @@ public class UserController {
     public ResponseEntity<UserResponseDTO> getUserById(@PathVariable Long id){
         UserResponseDTO user = service.getUserDtoById(id);
         return ResponseEntity.status(HttpStatus.OK).body(user);
+    }
+
+    @GetMapping("/profile/{id}")
+    public ResponseEntity<UserProfileResponseDto> getProfileUserById(@PathVariable Long id, @AuthenticationPrincipal User loggedUser){
+        UserProfileResponseDto profileUser = service.getUserProfile(id, loggedUser);
+        return ResponseEntity.status(HttpStatus.OK).body(profileUser);
     }
 
     @PatchMapping("/{id}")

@@ -3,6 +3,7 @@ package com.spartanHardware.service.impl;
 import com.spartanHardware.exception.CustomException;
 import com.spartanHardware.model.dto.request.UserRequestDTO;
 import com.spartanHardware.model.dto.request.UserRequestUpdateDto;
+import com.spartanHardware.model.dto.response.UserProfileResponseDto;
 import com.spartanHardware.model.dto.response.UserResponseDTO;
 import com.spartanHardware.model.entity.Authority;
 import com.spartanHardware.model.entity.User;
@@ -91,6 +92,14 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
     @Override
     public UserResponseDTO getUserDtoById(Long id) {
         return mapper.toDto(getUserById(id));
+    }
+
+    @Override
+    public UserProfileResponseDto getUserProfile(Long id, User loggedUser) {
+        User user =  getUserById(id);
+        if(!loggedUser.getUsername().equals(user.getUsername()))
+            throw new CustomException(message.getMessage("entity.noAccess", new String[] {"delete"}, Locale.US), FORBIDDEN, LocalDateTime.now());
+        return mapper.toDtoProfile(user);
     }
 
     @Override
