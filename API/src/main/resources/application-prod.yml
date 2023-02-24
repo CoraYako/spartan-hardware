@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:mysql://containers-us-west-24.railway.app:5479/railway
+    username: root
+    password: DJzLOGthHnC9RRu91LFO
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  output:
+    ansi:
+      enabled: ALWAYS
+server:
+  error:
+    whitelabel:
+      enabled: false
