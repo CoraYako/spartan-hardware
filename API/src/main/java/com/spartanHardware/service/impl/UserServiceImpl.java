@@ -126,7 +126,7 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
     public UserProfileResponseDto getUserProfile(Long id, User loggedUser) {
         User user =  getUserById(id);
         if(!loggedUser.getUsername().equals(user.getUsername()))
-            throw new CustomException(message.getMessage("entity.noAccess", new String[] {"delete"}, Locale.US), FORBIDDEN, LocalDateTime.now());
+            throw new CustomException(message.getMessage("entity.noAccess", new String[] {"get profile"}, Locale.US), FORBIDDEN, LocalDateTime.now());
         return mapper.toDtoProfile(user);
     }
 
