@@ -33,7 +33,7 @@ export const Content = ({ data }) => {
       <div className="left">
         <h2 className="name_product">{data.name}</h2>
         <p className="detail">
-          12 cuotas sin interés de {FormatPrice(data.price, true)} a precio de
+          12 cuotas sin interés de ${FormatPrice(data.price, true)} a precio de
           lista
         </p>
         <CarouselProduct />

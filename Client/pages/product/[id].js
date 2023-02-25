@@ -46,6 +46,7 @@ const data = {
   model: '15-dkee56wm',
   category: 'notebook',
   subCategory: 'gaming',
+  specialPrice: 310100,
   price: 390900,
   quantity: 5,
   description:

@@ -29,10 +29,10 @@ export const Info = ({ data }) => {
   return (
     <Container>
       <div className="price">
-        <h2>{data.specialPrice}</h2>
+        <h2>${FormatPrice(data.specialPrice, false, quantity)}</h2>
         <h4>Precio especial</h4>
         <h4 className="list">
-          Precio de lista: {FormatPrice(data.price, false, quantity)}
+          Precio de lista: ${FormatPrice(data.price, false, quantity)}
         </h4>
       </div>
       <div className="info">
