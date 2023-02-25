@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import styled from 'styled-components'
-import MockImage from '@/public/images/MockBaner.png'
+import MockImage from '@/public/images/mockBaner.png'
 
 // import required modules
 import { Autoplay, Pagination } from 'swiper'
