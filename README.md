@@ -1,19 +1,31 @@
 # c9-22-t-javareact
 
-<img align="center" src="#" alt="Spartan Hadware Logo">
-
+<div align="center">
+  
+![Spartan Hadware Logo](https://i.postimg.cc/NjsSkkTc/Spartan-Hardware-Logo.png)
+</div>
 
 <h3> We know that on the web there are thousands of pages to buy electronic devices💻💖, but today we will tell you about a new and excellent alternative😊🦾. Spartan Hardware offers top quality equipment 🖱️⌨️, at a very good price 👛. What are you waiting for? Take a look at our website🔍.</h3>
-<p align="center" ><img width="50px" align="center"src="https://res.cloudinary.com/diyk4to11/image/upload/v1665058097/Imagenes%20Dise%C3%B1o%20UX/Gif%20Carga%20de%20Pantallas/Carga_Pantalla_-_Animacion_vztvtb.gif"></p> 
 
+<div align="center">
+  
+![Logo Spartan Hardware](https://i.postimg.cc/FKhbwTpP/main-logo-color-new-1.png)
+</div>
 <hr/>
 
-<img align="center" src="#" alt="Home Page">
+<div align="center">
+  
+![Home Page]()
+</div>
 
 <h3 align="center"  ><b>You can check out our webpage here:</b></h3>
-<h3 align="center"><a href="https://c9-22-t-javareact.vercel.app/" target="_blank" rel="noopener noreferrer"> 🐾 SPARTAN HADWARE 🐾</a></h3>
+<h3 align="center"><a href="https://c9-22-t-javareact.vercel.app/" target="_blank" rel="noopener noreferrer"> SPARTAN HADWARE </a></h3>
 <p  align="center" ><a href="" target="_blank" rel="noopener noreferrer"> <img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
-<p align="center" ><img width="50px" align="center"src="https://res.cloudinary.com/diyk4to11/image/upload/v1665058097/Imagenes%20Dise%C3%B1o%20UX/Gif%20Carga%20de%20Pantallas/Carga_Pantalla_-_Animacion_vztvtb.gif"></p> 
+<div align="center">
+  
+![Logo Spartan Hardware](https://i.postimg.cc/FKhbwTpP/main-logo-color-new-1.png)
+
+</div>
 
 <hr/>
 
