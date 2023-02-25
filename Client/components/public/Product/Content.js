@@ -2,55 +2,58 @@ import GraphicsIcon from '@/public/icons/Graphics'
 import ProcessorIcon from '@/public/icons/Processor'
 import RamIcon from '@/public/icons/Ram'
 import StorageIcon from '@/public/icons/Storage'
+import FormatPrice from '@/utils/FormatPrice'
 import styled from 'styled-components'
 import { CarouselProduct } from './CarouselProduct'
+import { Info } from './Info'
 
-export const Content = () => {
+export const Content = ({ data }) => {
   return (
     <Container>
       <div className="bar">
         <div className="info">
           <ProcessorIcon />
-          <p>Intel Pentium G6 405</p>
+          <p> {data.brand}</p>
         </div>
         <div className="info">
           <RamIcon />
-          <p>DDR4 8GB</p>
+          <p>{data.category}</p>
         </div>
         <div className="info">
           <StorageIcon />
-          <p>SSD 240GB</p>
+          <p>{data.subCategory}</p>
         </div>
         <div className="info">
           <GraphicsIcon />
-          <p>GT 210</p>
+          <p>{data.model}</p>
         </div>
-
         <div className="triangle_top" />
         <div className="triangle_bot" />
       </div>
       <div className="left">
-        <h2 className="name_product">
-          PC de Escritorio Armada Completa Intel Celeron G5905 8GB SSD 240GB
-        </h2>
+        <h2 className="name_product">{data.name}</h2>
         <p className="detail">
-          12 cuotas sin interés de $12.690,19 a precio de lista
+          12 cuotas sin interés de {FormatPrice(data.price, true)} a precio de
+          lista
         </p>
         <CarouselProduct />
       </div>
-      <div className="right"></div>
+      <div className="right">
+        <Info data={data} />
+      </div>
     </Container>
   )
 }
 
 const Container = styled.div`
   max-width: 1300px;
-  margin: 50px 20px;
+  margin: 50px auto;
   height: 680px;
   display: flex;
   flex-direction: row;
   position: relative;
   border: 1px solid #cecece;
+  border-radius: 8px;
   background: linear-gradient(
     270deg,
     rgba(209, 209, 209, 0.17) 0%,
@@ -109,6 +112,7 @@ const Container = styled.div`
     }
   }
   .left {
+    border-radius: 8px 0 0 8px;
     display: flex;
     flex-direction: column;
     background: #120628;
