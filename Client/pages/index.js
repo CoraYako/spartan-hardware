@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { Outstanding } from '@/components/public/home/Outstanding'
-import { PromotionCard } from '@/components/common/PromotionCard'
 import { Promotions } from '@/components/public/home/Promotions'
 import {Recommend} from '@/components/public/home/Recommned'
 

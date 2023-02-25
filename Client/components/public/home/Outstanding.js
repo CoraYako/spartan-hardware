@@ -21,7 +21,7 @@ const Main = styled(motion.section)`
   max-width: 1300px;
   display: flex;
   flex-direction: column;
-  margin: 25rem auto 0;
+  margin: 70px auto 0;
   padding: 0 2.5rem;
   .title {
     display: flex;
