@@ -86,10 +86,10 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
 - Users validation wiith JWT and Google.
 - Sending emails with Nodemailer for contact, welcome and password recovery.
 - Signing up subscribers for Newsletter with Mailchimp.
-- Deployed on Heroku
+- Deployed on Railway
 
 ### 👉🏻 Built with 🛠️
-![Java](https://img.shields.io/badge/Java-orange?style=for-the-badge&logo=java&logoColor=white)
+![Java](https://img.shields.io/badge/Java-orange?style=for-the-badge&logo=Java&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-%234ea94b.svg?style=for-the-badge&logo=MySQL&logoColor=000)
 ![JWT](https://img.shields.io/badge/JWT-blue.svg?style=for-the-badge&logo=JSONWebTokens&logoColor=%)
 ![Spring](https://img.shields.io/badge/Spring-gree?style=for-the-badge&logo=Spring&logoColor=000)
@@ -100,13 +100,14 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
 ![SendGrid](https://img.shields.io/badge/SendGrid%20-039181.svg?&style=for-the-badge&logo=SendGrid&logoColor=000)
 ![Swagger](https://img.shields.io/badge/Swagger%20-0abf28.svg?&style=for-the-badge&logo=Swagger&logoColor=000)
 ![Maven](https://img.shields.io/badge/Maven%20-9e0e7d.svg?&style=for-the-badge&logo=maven&logoColor=000)
+![Railway](https://img.shields.io/badge/Railway%20-000.svg?&style=for-the-badge&logo=railway&logoColor=fff)
 
 ### 👉🏻 Developers
 
 | <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
 |:-:|:-:|:-:|
 | **Carolina Quevedo**  | **Hector Cortez**  | **Matias Carballo** |
-| <a href="https://github.com/CarolinaCQ"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/carolina-camila-quevedo/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/CoraYako"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/hector-cortez-cy"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/lokywolf2295"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/matias-es-carballo/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+| <a href="https://github.com/CarolinaCQ" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/carolina-camila-quevedo/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/CoraYako" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/hector-cortez-cy" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/lokywolf2295" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/matias-es-carballo/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
 <hr/>
 
@@ -130,8 +131,6 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
 ![React](https://img.shields.io/badge/React-149eca?style=for-the-badge&logo=react&logoColor=fff)
 ![NodeJS](https://img.shields.io/badge/Node.js-6DA55F?style=for-the-badge&logo=Node.js&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-%23404d59.svg?style=for-the-badge&logo=Express&logoColor=%2361DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript-blue.svg?style=for-the-badge&logo=TypeScript&logoColor=white)
-![Redux](https://img.shields.io/badge/Redux_Toolkit-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) 
 ![styled-components](https://img.shields.io/badge/styled_components-007FFF?style=for-the-badge&logo=styled-components&logoColor=fff)
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-d2c?style=for-the-badge&logo=Framer_Motion&logoColor=fff)
 ![React Query](https://img.shields.io/badge/React_Query-149eca?style=for-the-badge&logo=react-query&logoColor=fff)
@@ -145,7 +144,7 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
 | <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
 :-:|:-:|
 | **Agustin Jaime**  | **Antonio Villacrés**  |
-| <a href="https://github.com/AgustinJaime99"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/agustin-diego-jaime-4033041b7/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/hackermate"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/antonio-v-5671a390/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+| <a href="https://github.com/AgustinJaime99" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/agustin-diego-jaime-4033041b7/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/hackermate" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/antonio-v-5671a390/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
 ## ✔ UI/UX
 
@@ -161,7 +160,7 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
 | <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
 |:-:|
 | Javier Gaitan|
-| <a href="https://www.behance.net/javiergaitan"><img src="https://img.shields.io/badge/Behance-%2320232a.svg?style=for-the-badge&logo=Behance&logoColor=%%2361DAFB"/></a> <a href="https://www.linkedin.com/in/javier-gaitan-ortiz-a8665027"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+| <a href="https://www.behance.net/javiergaitan" target="_blank"><img src="https://img.shields.io/badge/Behance-%2320232a.svg?style=for-the-badge&logo=Behance&logoColor=%%2361DAFB"/></a> <a href="https://www.linkedin.com/in/javier-gaitan-ortiz-a8665027" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
 ## ✔ QA
 
@@ -174,7 +173,7 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
 | <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
 |:-:|
 | Lucio Sanfilippo |
-|<a href="https://github.com/luciosanfi"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/lucio-sanfilippo-5a620621a"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|<a href="https://github.com/luciosanfi" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/lucio-sanfilippo-5a620621a" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
 
 ### 👉🏻 Team Leader
@@ -182,4 +181,4 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
 | <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
 |:-:|
 | Pietro Palombini |
-|<a href="https://github.com/Aplietexe"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/pietropalombini/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|<a href="https://github.com/Aplietexe" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/pietropalombini/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
