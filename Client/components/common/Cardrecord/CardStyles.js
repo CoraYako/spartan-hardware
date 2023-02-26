@@ -14,7 +14,7 @@ export const CardWrapper = styled.div`
 
 export const CardImage = styled.div`
   grid-row: 2 / 2;
-  grid-column 1 / 1;
+  grid-column: 1 / 2;
   margin-left: 15px;
 `; 
 
@@ -27,10 +27,10 @@ export const CardTextWrapper = styled.div`
 
 export const CardTextTitle = styled.h2`
   margin-top: 0px;
-  font-size: 20px;
+  font-size: 1,25em;
   box-sizing: border-box;
   min-width: 0px;
-  line-height: 1.2;
+  line-height: 1,2;
   margin: 0px;
   background: linear-gradient(black, black, black);
   -webkit-background-clip: text;

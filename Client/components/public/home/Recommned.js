@@ -1,29 +1,43 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 import RecommendCard from '../../common/Cardrecord'
-  
-export const Recommend = () => {   
-  return(
+
+export const Recommend = () => {
+  return (
     <>
-      <div className="title">
-	<h2>PC's Recomendadas</h2>
-      </div>
       <CardContainer>
-	<RecommendCard title={"PC's BÁSICA"}/>
-	<RecommendCard title={"PC's MEDIA"}/>
-	<RecommendCard title={"PC's ALTA"}/>
+        <div className="title">
+          <h2>PC's Recomendadas</h2>
+        </div>
+        <div className="recommend">
+          <RecommendCard title={"PC's BÁSICA"} />
+          <RecommendCard title={"PC's MEDIA"} />
+          <RecommendCard title={"PC's ALTA"} />
+        </div>
       </CardContainer>
     </>
   )
 }
 
 const CardContainer = styled.div`
-  margin-top: 200px;
+  margin-top: 20em;
   height: auto;
-  display: flex;
-  gap: 100px;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 5rem;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-`;
+
+  .title {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20rem;
+  }
+
+  .recommend {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10rem;
+  }
+`

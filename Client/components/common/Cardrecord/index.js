@@ -10,12 +10,12 @@ import {
   CardTextBody,
 } from './CardStyles'
 
-export const CardRe = ({ title }) => {
+const CardRe = ({ title }) => {
   return (
     <Tilt>
       <CardWrapper>
         <CardImage>
-          <Image src={img1} alt="PC" width="123" height="165" />
+	  <Image src={img1} alt="PC" width="123" height="165" />
         </CardImage>
         <CardTextWrapper>
           <CardTextTitle>{title}</CardTextTitle>
