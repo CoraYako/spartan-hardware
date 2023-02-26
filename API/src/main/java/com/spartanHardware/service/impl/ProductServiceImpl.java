@@ -1,53 +1,55 @@
 package com.spartanHardware.service.impl;
 
 import com.spartanHardware.model.dto.request.ProductRequestDto;
+import com.spartanHardware.model.dto.request.ProductReviewRequestDto;
+import com.spartanHardware.model.dto.response.ProductCategoryResponseDto;
 import com.spartanHardware.model.dto.response.ProductResponseDto;
+import com.spartanHardware.model.dto.response.ProductReviewResponseDto;
+import com.spartanHardware.model.dto.response.ProductSubCategoryResponseDto;
 import com.spartanHardware.model.entity.ParentCategory;
 import com.spartanHardware.model.entity.Product;
-import com.spartanHardware.model.entity.ProductAttribute;
 import com.spartanHardware.model.entity.SubCategory;
+import com.spartanHardware.model.entity.User;
+import com.spartanHardware.model.mapper.ParentCategoryMapper;
 import com.spartanHardware.model.mapper.ProductMapper;
+import com.spartanHardware.model.mapper.SubCategoryMapper;
 import com.spartanHardware.repository.ParentCategoryRepository;
-import com.spartanHardware.repository.ProductAttributeRepository;
 import com.spartanHardware.repository.ProductRepository;
 import com.spartanHardware.repository.SubCategoryRepository;
-import com.spartanHardware.service.ProductService;
+import com.spartanHardware.service.IProductService;
+import com.spartanHardware.service.IReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Boolean.FALSE;
+import static java.time.LocalDateTime.now;
 
 @Service
 @RequiredArgsConstructor
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImpl implements IProductService {
 
-    // TODO: 20/2/2023 move this constant to a utility class
+    // TODO: 20/2/2023 move this constant into utility class
     private static final int PAGE_SIZE = 10;
 
     private final ProductRepository productRepository;
-    private final ProductMapper productMapper;
-    private final ProductAttributeRepository productAttributeRepository;
     private final ParentCategoryRepository categoryRepository;
     private final SubCategoryRepository subCategoryRepository;
+    private final ProductMapper productMapper;
+    private final ParentCategoryMapper categoryMapper;
+    private final SubCategoryMapper subCategoryMapper;
+    private final IReviewService reviewService;
 
     @Override
     public ProductResponseDto createProduct(ProductRequestDto productRequestDto) {
         Product product = productMapper.toEntity(productRequestDto);
-        List<ProductAttribute> attributes = new ArrayList<>();
 
         ParentCategory category = getCategoryByNameOrCreateNewOne(productRequestDto.getCategory());
         SubCategory subCategory = getSubCategoryByNameOrCreateNewOne(productRequestDto.getSubCategory());
-
-        productRequestDto.getAttributeAndValueMap().forEach((attribute, value) ->
-                attributes.add(new ProductAttribute(attribute, value))
-        );
 
         subCategory.getProducts().add(product);
         subCategory.setParentCategory(category);
@@ -60,10 +62,6 @@ public class ProductServiceImpl implements ProductService {
         product.setParentCategory(category);
         product.setSubCategory(subCategory);
 
-        productRepository.save(product);
-        attributes.forEach(attribute -> attribute.setProduct(product));
-        product.setAttributes(productAttributeRepository.saveAll(attributes));
-
         return productMapper.apply(productRepository.save(product));
     }
 
@@ -72,18 +70,8 @@ public class ProductServiceImpl implements ProductService {
         Product productFound = getProductById(id);
         ParentCategory category;
         SubCategory subCategory;
-        List<ProductAttribute> attributes;
 
-        if (productRequestDto.getName() != null && !productRequestDto.getName().trim().isEmpty())
-            productFound.setName(productRequestDto.getName());
-        if (productRequestDto.getBrand() != null && !productRequestDto.getBrand().trim().isEmpty())
-            productFound.setBrand(productRequestDto.getBrand());
-        if (productRequestDto.getModel() != null && !productRequestDto.getModel().trim().isEmpty())
-            productFound.setModel(productRequestDto.getModel());
-        if (productRequestDto.getPrice() != null && productRequestDto.getPrice() >= 0)
-            productFound.setPrice(BigDecimal.valueOf(productRequestDto.getPrice()));
-        if (productRequestDto.getQuantity() != null && productRequestDto.getQuantity() >= 0)
-            productFound.setQuantity(productRequestDto.getQuantity());
+        productFound = productMapper.refreshValues(productFound, productRequestDto);
 
         if (productRequestDto.getCategory() != null && !productRequestDto.getCategory().trim().isEmpty()) {
             category = getCategoryByNameOrCreateNewOne(productRequestDto.getCategory());
@@ -94,28 +82,7 @@ public class ProductServiceImpl implements ProductService {
             productFound.setSubCategory(subCategory);
         }
 
-        if (!productRequestDto.getAttributeAndValueMap().isEmpty()) {
-            attributes = new ArrayList<>();
-            productRequestDto.getAttributeAndValueMap().forEach((attribute, value) -> {
-                var attributeFound = getAttributeByAttributeNameAndProductId(attribute, productFound.getId());
-
-                if (attributeFound == null)
-                    attributeFound = new ProductAttribute(attribute, value);
-                else if (!attributeFound.getValue().equalsIgnoreCase(value))
-                    attributeFound.setValue(value);
-
-                attributes.add(attributeFound);
-            });
-
-            attributes.forEach(attribute -> {
-                if (attribute.getProduct() == null) {
-                    attribute.setProduct(productFound);
-                    productFound.getAttributes().add(attribute);
-                }
-            });
-            productAttributeRepository.saveAll(attributes);
-        }
-
+        productFound.setUpdateDate(now());
         return productMapper.apply(productRepository.save(productFound));
     }
 
@@ -132,14 +99,34 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getProductById(Long id) {
-        // TODO: 18/2/2023 change message to a properties value
-        return productRepository.findById(id).orElseThrow(() -> new NullPointerException("Product not found"));
+    public ProductReviewResponseDto reviewProduct(Long id, User loggedUser, ProductReviewRequestDto reviewRequestDto) {
+        Product productToReview = getProductById(id);
+        return reviewService.createReview(
+                productToReview,
+                loggedUser,
+                reviewRequestDto
+        );
     }
 
     @Override
-    public ProductAttribute getAttributeByAttributeNameAndProductId(String attribute, Long productId) {
-        return productAttributeRepository.findAttributeByProductId(attribute, productId).orElse(null);
+    public Page<ProductReviewResponseDto> getAllReviewsByProductId(Long id, int page) {
+        return reviewService.getAllReviewsByProductId(id, page);
+    }
+
+    @Override
+    public List<ProductCategoryResponseDto> getAllProductCategories() {
+        return categoryRepository.findAll().stream().map(categoryMapper).toList();
+    }
+
+    @Override
+    public List<ProductSubCategoryResponseDto> getAllProductSubCategories() {
+        return subCategoryRepository.findAll().stream().map(subCategoryMapper).toList();
+    }
+
+    @Override
+    public Product getProductById(Long id) {
+        // TODO: 18/2/2023 change message to a properties value
+        return productRepository.findById(id).orElseThrow(() -> new NullPointerException("Product not found"));
     }
 
     @Override
