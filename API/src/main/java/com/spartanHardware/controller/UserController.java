@@ -1,10 +1,12 @@
 package com.spartanHardware.controller;
 
+import com.spartanHardware.model.dto.request.PaymentMethodRequestDto;
 import com.spartanHardware.model.dto.request.UserRequestDTO;
 import com.spartanHardware.model.dto.request.UserRequestUpdateDto;
 import com.spartanHardware.model.dto.response.UserProfileResponseDto;
 import com.spartanHardware.model.dto.response.UserResponseDTO;
 import com.spartanHardware.model.entity.User;
+import com.spartanHardware.service.IPaymentMethodService;
 import com.spartanHardware.service.IUserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +23,8 @@ import java.util.List;
 public class UserController {
 
     private final IUserService service;
+    private final IPaymentMethodService paymentMethodService;
+
     @GetMapping()
     public ResponseEntity<List<UserResponseDTO>> getAllUsers(){
         List<UserResponseDTO> users = service.getAllUsers();
@@ -50,5 +54,16 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
+    @PostMapping("/payment-method")
+    public ResponseEntity<Void> createPaymentMethod(@Valid @RequestBody PaymentMethodRequestDto dto, @AuthenticationPrincipal User loggedUser) {
+        paymentMethodService.createPaymentMethod(dto, loggedUser);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @DeleteMapping("/payment-method/{id}")
+    public ResponseEntity<Void> createPaymentMethod(@PathVariable Long id, @AuthenticationPrincipal User loggedUser) {
+        paymentMethodService.deletePaymentMethod(id, loggedUser);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 
 }

@@ -96,7 +96,7 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
         User user = getUserById(id);
 
         if(!loggedUser.getUsername().equalsIgnoreCase(user.getUsername()))
-            throw new CustomException(message.getMessage("entity.noAccess", new String[] {"modify"}, Locale.US), FORBIDDEN,LocalDateTime.now());
+            throw new CustomException(message.getMessage("entity.noAccess", new String[] {"modify", "account"}, Locale.US), FORBIDDEN,LocalDateTime.now());
 
         if(repository.existsByEmail(dto.getEmail()))
             throw new CustomException(message.getMessage("entity.exists",null,Locale.US), BAD_REQUEST, LocalDateTime.now());
@@ -135,7 +135,7 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
     public void deleteUserById(Long id, User loggedUser) {
         User user =  getUserById(id);
         if(!loggedUser.getUsername().equalsIgnoreCase(user.getUsername()))
-            throw new CustomException(message.getMessage("entity.noAccess", new String[] {"delete"}, Locale.US), FORBIDDEN, LocalDateTime.now());
+            throw new CustomException(message.getMessage("entity.noAccess", new String[] {"delete", "account"}, Locale.US), FORBIDDEN, LocalDateTime.now());
         repository.deleteById(id);
     }
 
