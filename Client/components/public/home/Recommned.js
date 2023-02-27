@@ -31,13 +31,13 @@ const CardContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 20rem;
+    gap: 22rem;
   }
 
   .recommend {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 10rem;
+    gap: 12em;
   }
 `

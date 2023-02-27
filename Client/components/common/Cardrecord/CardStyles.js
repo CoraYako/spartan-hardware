@@ -30,7 +30,7 @@ export const CardTextTitle = styled.h2`
   font-size: 1,25em;
   box-sizing: border-box;
   min-width: 0px;
-  line-height: 1,2;
+  line-height: 1,2em;
   margin: 0px;
   background: linear-gradient(black, black, black);
   -webkit-background-clip: text;
