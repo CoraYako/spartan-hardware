@@ -7,8 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -19,6 +21,8 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Setter
 @Table(name = "payment_methods")
 @Entity
+@SQLDelete(sql = "UPDATE payment_methods SET deleted = true WHERE id = ?")
+@Where(clause = "deleted = false")
 public class PaymentMethod {
 
     @Id
@@ -38,11 +42,14 @@ public class PaymentMethod {
     private Provider provider;
 
     @Column(name = "card_number")
-    private Integer accountNumber;
+    private Long accountNumber;
 
     @Column(name = "expires_at")
-    private LocalDateTime expiryDate;
+    private LocalDate expiryDate;
 
     @Column(name = "default_payment")
     private boolean defaultMethod;
+
+    @Column(name = "deleted")
+    private boolean deleted;
 }
