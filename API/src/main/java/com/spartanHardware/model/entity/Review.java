@@ -14,7 +14,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "user_reviews")
+@Table(name = "user_product_reviews")
 @Entity
 public class Review {
 
@@ -36,6 +36,6 @@ public class Review {
     @Column(name = "rate")
     private Integer rate;
 
-    @Column(name = "comment")
+    @Column(name = "comment", nullable = false, length = 1000)
     private String comment;
 }

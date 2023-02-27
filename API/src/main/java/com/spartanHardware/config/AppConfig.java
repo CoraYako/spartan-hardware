@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -23,17 +22,27 @@ import java.util.Locale;
 @RequiredArgsConstructor
 public class AppConfig {
 
+    protected final String[] ALLOWED_ORIGINS = {
+            "https://c9-22-t-javareact.vercel.app",
+            "http://localhost:3000"
+    };
+    protected final String[] ALLOWED_METHODS = {
+            "GET",
+            "POST",
+            "PATCH",
+            "DELETE"
+    };
     private final UserRepository repository;
     private final MessageSource message;
 
     @Bean
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         return username -> repository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException(message.getMessage("entity.notFound", new String[] {"User", "email", username}, Locale.US)));
+                .orElseThrow(() -> new UsernameNotFoundException(message.getMessage("entity.notFound", new String[]{"User", "email", username}, Locale.US)));
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider(){
+    public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(userDetailsService());
         authenticationProvider.setPasswordEncoder(passwordEncoder());
@@ -51,22 +60,22 @@ public class AppConfig {
     }
 
     @Bean
-    public WebMvcConfigurer corsConfigurer() {
+    public WebMvcConfigurer corsConfigure() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/v1/users/**")
-                        .allowedOrigins("https://c9-22-t-javareact.vercel.app")
-                        .allowedMethods("GET", "POST", "PATCH", "DELETE");
+                        .allowedOrigins(ALLOWED_ORIGINS)
+                        .allowedMethods(ALLOWED_METHODS);
                 registry.addMapping("/api/v1/auth/**")
-                        .allowedOrigins("https://c9-22-t-javareact.vercel.app")
-                        .allowedMethods("GET", "POST", "PATCH", "DELETE");
+                        .allowedOrigins(ALLOWED_ORIGINS)
+                        .allowedMethods(ALLOWED_METHODS);
                 registry.addMapping("/api/v1/addresses/**")
-                        .allowedOrigins("https://c9-22-t-javareact.vercel.app")
-                        .allowedMethods("GET", "POST", "PATCH", "DELETE");
+                        .allowedOrigins(ALLOWED_ORIGINS)
+                        .allowedMethods(ALLOWED_METHODS);
                 registry.addMapping("/api/v1/products/**")
-                        .allowedOrigins("https://c9-22-t-javareact.vercel.app")
-                        .allowedMethods("GET", "POST", "PATCH", "DELETE");
+                        .allowedOrigins(ALLOWED_ORIGINS)
+                        .allowedMethods(ALLOWED_METHODS);
             }
 
         };

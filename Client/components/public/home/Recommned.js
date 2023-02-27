@@ -17,12 +17,11 @@ export const Recommend = () => {
 }
 
 const CardContainer = styled.div`
-  margin-top: 200px;
+  margin-top: 20em;
   height: auto;
-  display: flex;
-  gap: 100px;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 5rem;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
