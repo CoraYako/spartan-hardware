@@ -13,9 +13,11 @@ import { Button } from '../common/Button'
 import { RegisterContent } from './RegisterContent'
 
 import { GlobalContext } from '@/context/GlobalContext'
+import { UserContext } from '@/context/UserContext'
+import { loginUser } from '@/utils/services'
 
 const schema = yup.object().shape({
-  email: yup
+  username: yup
     .string()
     .email('Tiene que ser con formato de email')
     .required('El email es requerido'),
@@ -24,6 +26,7 @@ const schema = yup.object().shape({
 
 export const LoginModal = () => {
   const [visible, setVisible] = useState(false)
+  const { setUser } = useContext(UserContext)
   const {
     register,
     formState: { errors },
@@ -33,12 +36,20 @@ export const LoginModal = () => {
   const { contextDataGlobal, setContextDataGlobal } = useContext(GlobalContext)
 
   const onSubmit = (data) => {
-    reset()
-    setContextDataGlobal({
-      ...contextDataGlobal,
-      modalActive: '',
-      showModal: false,
-    })
+    const response = loginUser(data)
+    response
+      .then((res) => {
+        if (res?.status === 201) {
+          setUser(res.data)
+          reset()
+          setContextDataGlobal({
+            ...contextDataGlobal,
+            modalActive: '',
+            showModal: false,
+          })
+        }
+      })
+      .catch((e) => console.log('error: ', e))
   }
   return (
     <Container>
@@ -55,7 +66,10 @@ export const LoginModal = () => {
 
       {visible ? (
         <div className="form">
-          <RegisterContent />
+          <RegisterContent
+            setVisible={setContextDataGlobal}
+            visible={contextDataGlobal}
+          />
         </div>
       ) : (
         <div className="form">
@@ -63,11 +77,11 @@ export const LoginModal = () => {
           <p>Iniciar sesión con su cuenta</p>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Input
-              register={register('email')}
-              registerInput="email"
+              register={register('username')}
+              registerInput="username"
               placeholder="Ingresar correo"
               label="Ingresar correo"
-              errors={errors?.email?.message}
+              errors={errors?.username?.message}
               margin="24px 0 31px"
             />
             <Input

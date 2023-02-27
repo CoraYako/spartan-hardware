@@ -1,16 +1,16 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 import RecommendCard from '../../common/Cardrecord'
-  
-export const Recommend = () => {   
-  return(
+
+export const Recommend = () => {
+  return (
     <>
       <div className="title">
-	<h2>PC's Recomendadas</h2>
+        <h2>PC's Recomendadas</h2>
       </div>
       <CardContainer>
-	<RecommendCard title={"PC's BÁSICA"}/>
-	<RecommendCard title={"PC's MEDIA"}/>
-	<RecommendCard title={"PC's ALTA"}/>
+        <RecommendCard title={"PC's BÁSICA"} link="/pc-recommend-sale" />
+        <RecommendCard title={"PC's MEDIA"} link="/pc-recommend-sale" />
+        <RecommendCard title={"PC's ALTA"} link="/pc-recommend-sale" />
       </CardContainer>
     </>
   )
@@ -26,4 +26,4 @@ const CardContainer = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-`;
+`

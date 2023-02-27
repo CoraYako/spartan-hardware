@@ -5,6 +5,9 @@ import * as yup from 'yup'
 
 import { Input } from '../common/Input'
 import { Button } from '../common/Button'
+import { createUser } from '@/utils/services'
+import { useContext } from 'react'
+import { UserContext } from '@/context/UserContext'
 
 const schema = yup.object().shape({
   email: yup
@@ -21,10 +24,11 @@ const schema = yup.object().shape({
     .oneOf([yup.ref('password'), null], 'Las contraseñas deben ser iguales')
     .required('Campo requerido'),
   lastName: yup.string().required('Campo requerido'),
-  name: yup.string().required('Campo requerido'),
+  firstName: yup.string().required('Campo requerido'),
 })
 
-export const RegisterContent = () => {
+export const RegisterContent = ({ setVisible, visible }) => {
+  const { setUser } = useContext(UserContext)
   const {
     register,
     formState: { errors },
@@ -33,8 +37,20 @@ export const RegisterContent = () => {
   } = useForm({ resolver: yupResolver(schema) })
 
   const onSubmit = (data) => {
-    console.log(data)
-    reset()
+    const response = createUser(data)
+    response
+      .then((res) => {
+        if (res?.status === 201) {
+          setUser(res.data)
+          reset()
+          setVisible({
+            ...visible,
+            modalActive: '',
+            showModal: false,
+          })
+        }
+      })
+      .catch((e) => console.log('error: ', e))
   }
   return (
     <Container>
@@ -79,11 +95,11 @@ export const RegisterContent = () => {
         />
 
         <Input
-          register={register('name')}
-          registerInput="name"
+          register={register('firstName')}
+          registerInput="firstName"
           placeholder="Ingresar nombre"
           label="Nombre"
-          errors={errors?.name?.message}
+          errors={errors?.firstName?.message}
           margin="0px 0 21px"
         />
         <Button

@@ -5,9 +5,11 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { GlobalContext } from '@/context/GlobalContext'
 import { useContext } from 'react'
+import { UserContext } from '@/context/UserContext'
 
 export const MenuNav = () => {
   const { contextDataGlobal, setContextDataGlobal } = useContext(GlobalContext)
+  const { user } = useContext(UserContext)
   return (
     <Container
       initial={{ opacity: 0 }}
@@ -16,16 +18,18 @@ export const MenuNav = () => {
     >
       <Item
         onClick={() =>
-          setContextDataGlobal({
-            ...contextDataGlobal,
-            showModal: true,
-            modalActive: 'login',
-          })
+          user
+            ? null
+            : setContextDataGlobal({
+                ...contextDataGlobal,
+                showModal: true,
+                modalActive: 'login',
+              })
         }
       >
         <span className="bar" />
         <AccountIcon />
-        <p>Mi cuenta</p>
+        <p>{user ? user?.firstName : 'Mi cuenta'}</p>
       </Item>
       <Item>
         <span className="bar" />

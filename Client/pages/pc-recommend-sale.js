@@ -5,8 +5,12 @@ import { motion } from 'framer-motion'
 import BannerImg from '@/public/images/BannerPCSale.png'
 import { CatalogPcLow } from '@/components/public/PcRecommendSale/CatalogPcLow'
 import Link from 'next/link'
+import { getProducts } from '@/utils/services'
+import { useQuery } from 'react-query'
 
 export default function PcRecommend() {
+  const { isLoading, error, data } = useQuery('products', getProducts())
+  console.log(error)
   return (
     <>
       <Head>

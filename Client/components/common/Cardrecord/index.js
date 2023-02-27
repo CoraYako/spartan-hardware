@@ -10,7 +10,7 @@ import {
   CardTextBody,
 } from './CardStyles'
 
-export const CardRe = ({ title }) => {
+export const CardRe = ({ title, link }) => {
   return (
     <Tilt>
       <CardWrapper>
@@ -35,7 +35,7 @@ export const CardRe = ({ title }) => {
             </p>
           </div>
           <div>
-            <Button text="Cotizar" />
+            <Button text="Cotizar" to={link} />
           </div>
         </CardTextWrapper>
       </CardWrapper>
