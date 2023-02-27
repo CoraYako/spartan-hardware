@@ -1,9 +1,11 @@
 package com.spartanHardware.model.dto.response;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.Map;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,7 +18,13 @@ public class ProductResponseDto {
     private String model;
     private String category;
     private String subCategory;
+    private String shortDescription;
+    private String description;
+    private boolean recommended;
     private BigDecimal price;
+    private BigDecimal specialPrice;
     private Integer quantity;
-    private Map<String, String> attributeAndValueMap;
+    private boolean available;
+    private LocalDateTime inStockSince;
+    private LocalDateTime updateDate;
 }
