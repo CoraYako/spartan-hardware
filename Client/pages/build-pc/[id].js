@@ -24,7 +24,7 @@ export default function BuildPcPage() {
         <p style={{ margin: '0 0 0 20px' }}>
           Home / Arma Tu Pc / <strong>{id}</strong>
         </p>
-        {/* <BuildPcComponent router={id} /> */}
+        <BuildPcComponent router={id} />
       </motion.div>
     </>
   )

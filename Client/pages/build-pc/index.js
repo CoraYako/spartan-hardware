@@ -21,7 +21,7 @@ export default function BuildPcPagFirstStep() {
         <p style={{ margin: '0 0 0 20px' }}>
           Home / <strong>Arma Tu Pc</strong>
         </p>
-        {/* <BuildPcComponent /> */}
+        <BuildPcComponent />
       </motion.div>
     </>
   )

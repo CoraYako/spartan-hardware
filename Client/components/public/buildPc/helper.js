@@ -5,13 +5,14 @@ import GPUIcon from '@/public/images/GPUIcon.svg'
 import PowerIcon from '@/public/images/PowerIcon.svg'
 import RamIcon from '@/public/images/RamIcon.svg'
 import ServicesIcon from '@/public/images/servicesIcon.svg'
-import TowerIcon from '@/public/images/servicesIcon.svg'
+import TowerIcon from '@/public/images/TowerIcon.svg'
 import MonitorIcon from '@/public/images/MonitorIcon.svg'
 import OsIcon from '@/public/images/OsIcon.svg'
 import UtilsIcon from '@/public/images/UtilsIcon.svg'
 import WiFiIcon from '@/public/images/WiFiIcon.svg'
 import KeyboardIcon from '@/public/images/KeyboardIcon.svg'
 import MouseIcon from '@/public/images/MouseIcon.svg'
+import IconoCooler from '@/public/images/IconoCooler.svg'
 
 export const steps = [
   {
@@ -22,7 +23,7 @@ export const steps = [
   {
     name: 'Cooler',
     index: 1,
-    Icon: MotherboardIcon,
+    Icon: IconoCooler,
   },
   {
     name: 'Motherboard',
@@ -74,7 +75,7 @@ export const FullSteps = [
   {
     name: 'Cooler',
     index: 2,
-    Icon: MotherboardIcon,
+    Icon: IconoCooler,
   },
   {
     name: 'Motherboard',
