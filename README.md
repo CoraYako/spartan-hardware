@@ -34,7 +34,7 @@
 
 _1 - You will have to create a .env in **Front** and **Back** folders_
 
-_2 - You will have to create you own database in [MySQL](https://www.mongodb.com/cloud/atlas/lp/try2?utm_source=google&utm_campaign=gs_emea_france_search_core_brand_atlas_desktop&utm_term=mongo&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624521&adgroup=115749705063&gclid=CjwKCAjwqauVBhBGEiwAXOepkQjTRQPRmN-nR-TQye1UfooktuEkqnQ8TKT7mPD5p33PRWbZcOgSzxoCBOMQAvD_BwE) website_
+_2 - You will have to create you own database in MySQL
 
 _3 - You will have to create you own account for [nodeMailer](https://nodemailer.com/about/)_
 
@@ -52,7 +52,7 @@ _7 - Run the server with  **`npm run dev`** (development) or npm start (producti
 PORT = Number of the port where you wanna run api (ex. 4000).
 DB = For Db in MySQL.
 SECRET_KEY : Is the secret key used for JWT.
-BASE_URL = localhost of you api ( ex. http://localhost:5173).
+BASE_URL = localhost of you api ( ex. http://localhost:8080).
 EMAIL_PASSWORD = The Password of the email used in Nodemailer.
 EMAIL_API = The email there you want to use in Nodemailer.
 ```
@@ -104,7 +104,7 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
 
 ### 👉🏻 Developers
 
-| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
+| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>| <img src="https://i.postimg.cc/cCf4VYnx/Hector.jpg" alt="Photo Hector Cortez" width=80>| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
 |:-:|:-:|:-:|
 | **Carolina Quevedo**  | **Hector Cortez**  | **Matias Carballo** |
 | <a href="https://github.com/CarolinaCQ" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/carolina-camila-quevedo/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/CoraYako" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/hector-cortez-cy" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/lokywolf2295" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/matias-es-carballo/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
@@ -141,7 +141,7 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
 
 ### 👉🏻 Developers
 
-| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
+| <img src="https://i.postimg.cc/L8n3L8K9/Agus.jpg" alt="Photo Agustin Jaime" width=80>| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
 :-:|:-:|
 | **Agustin Jaime**  | **Antonio Villacrés**  |
 | <a href="https://github.com/AgustinJaime99" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/agustin-diego-jaime-4033041b7/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/hackermate" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/antonio-v-5671a390/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
