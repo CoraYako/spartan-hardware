@@ -21,6 +21,9 @@ import static org.springframework.http.HttpMethod.POST;
 public class AppSecurity {
 
     protected final String[] AUTH_WHITELIST = {
+            "/swagger-ui/**",
+            "/v3/**",
+            "/swagger-ui.html",
             "/api/v1/auth/register-user",
             "/api/v1/auth/login",
             "/api/v1/products/details/**",
