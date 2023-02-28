@@ -87,6 +87,7 @@ public class ProductController {
 
     @PostMapping("/upload-image")
     public ResponseEntity<String> uploadProductImage(@RequestPart(value = "file") MultipartFile file) {
+        awsS3Service.uploadFile(file);
         String response = file.getOriginalFilename();
         return ResponseEntity.status(CREATED).body(response);
     }
