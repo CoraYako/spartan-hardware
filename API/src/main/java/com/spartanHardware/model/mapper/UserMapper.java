@@ -90,7 +90,7 @@ public class UserMapper {
 
         if(!Objects.isNull(dto.getOldPassword()) && !dto.getOldPassword().isEmpty())
             if(!encoder.matches(dto.getOldPassword(), user.getPassword())) {
-                throw new CustomException("Old password incorrecta", BAD_REQUEST, LocalDateTime.now());
+                throw new CustomException("password", BAD_REQUEST, LocalDateTime.now());
             } else if (!Objects.isNull(dto.getNewPassword()) && !dto.getNewPassword().isEmpty()) {
                 user.setPassword(encoder.encode(dto.getNewPassword()));
             }
