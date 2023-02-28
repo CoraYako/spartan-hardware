@@ -16,6 +16,7 @@ import com.spartanHardware.model.mapper.SubCategoryMapper;
 import com.spartanHardware.repository.ParentCategoryRepository;
 import com.spartanHardware.repository.ProductRepository;
 import com.spartanHardware.repository.SubCategoryRepository;
+import com.spartanHardware.service.IAWSS3Service;
 import com.spartanHardware.service.IProductService;
 import com.spartanHardware.service.IReviewService;
 import lombok.RequiredArgsConstructor;
@@ -39,6 +40,7 @@ public class ProductServiceImpl implements IProductService {
     private final ProductRepository productRepository;
     private final ParentCategoryRepository categoryRepository;
     private final SubCategoryRepository subCategoryRepository;
+    private final IAWSS3Service awsS3Service;
     private final ProductMapper productMapper;
     private final ParentCategoryMapper categoryMapper;
     private final SubCategoryMapper subCategoryMapper;
