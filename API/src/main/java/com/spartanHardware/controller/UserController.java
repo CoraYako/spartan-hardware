@@ -3,6 +3,8 @@ package com.spartanHardware.controller;
 import com.spartanHardware.model.dto.request.PaymentMethodRequestDto;
 import com.spartanHardware.model.dto.request.UserRequestDTO;
 import com.spartanHardware.model.dto.request.UserRequestUpdateDto;
+import com.spartanHardware.model.dto.response.PaymentMethodResponseDto;
+import com.spartanHardware.model.dto.response.UserProfileResponseDto;
 import com.spartanHardware.model.dto.response.UserResponseDTO;
 import com.spartanHardware.model.entity.User;
 import com.spartanHardware.service.IPaymentMethodService;
@@ -35,6 +37,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
+    @GetMapping("/profile/{id}")
+    public ResponseEntity<UserProfileResponseDto> getProfileUserById(@PathVariable Long id, @AuthenticationPrincipal User loggedUser){
+        UserProfileResponseDto profileUser = service.getUserProfile(id, loggedUser);
+        return ResponseEntity.status(HttpStatus.OK).body(profileUser);
+    }
+
     @PatchMapping("/{id}")
     public ResponseEntity<UserResponseDTO> updateUser(@Valid @RequestBody UserRequestUpdateDto dto, @PathVariable Long id, @AuthenticationPrincipal User loggedUser){
         UserResponseDTO user = service.updateUser(dto, id, loggedUser);
@@ -45,6 +53,12 @@ public class UserController {
     public ResponseEntity<Void> deleteUser(@PathVariable Long id, @AuthenticationPrincipal User loggedUser){
         service.deleteUserById(id, loggedUser);
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @GetMapping("/payment-method/{id}")
+    public ResponseEntity<List<PaymentMethodResponseDto>> getAllPaymentMethodsByUser(@PathVariable Long id, @AuthenticationPrincipal User loggedUser) {
+        List<PaymentMethodResponseDto> list = service.paymentMethodsByUser(id, loggedUser);
+        return ResponseEntity.status(HttpStatus.OK).body(list);
     }
 
     @PostMapping("/payment-method")
@@ -58,5 +72,6 @@ public class UserController {
         paymentMethodService.deletePaymentMethod(id, loggedUser);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
 
 }

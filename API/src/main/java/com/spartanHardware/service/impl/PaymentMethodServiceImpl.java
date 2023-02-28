@@ -27,7 +27,8 @@ public class PaymentMethodServiceImpl implements IPaymentMethodService {
 
     @Override
     public void createPaymentMethod(PaymentMethodRequestDto dto, User loggedUser) {
-        repository.save(mapper.toPaymentMethod(dto, loggedUser));
+        PaymentMethod paymentMethod = repository.save(mapper.toPaymentMethod(dto, loggedUser));
+        loggedUser.getPaymentMethods().add(paymentMethod);
     }
 
     @Override
