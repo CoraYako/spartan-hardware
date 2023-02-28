@@ -2,7 +2,7 @@ import AccountIcon from '@/public/icons/Account'
 import CartIcon from '@/public/icons/Cart'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
+
 import { GlobalContext } from '@/context/GlobalContext'
 import { useContext } from 'react'
 import { UserContext } from '@/context/UserContext'

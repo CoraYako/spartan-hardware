@@ -42,6 +42,7 @@ export const RegisterContent = ({ setVisible, visible }) => {
       .then((res) => {
         if (res?.status === 201) {
           setUser(res.data)
+          localStorage.setItem('user', JSON.stringify(res.data))
           reset()
           setVisible({
             ...visible,

@@ -12,7 +12,7 @@ import MockImage from '@/public/images/mockBaner.png'
 import { Autoplay, Pagination } from 'swiper'
 import Image from 'next/image'
 
-export const CarouselProduct = () => {
+export const CarouselProduct = ({ images }) => {
   return (
     <CustomSwiper
       pagination={{

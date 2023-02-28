@@ -7,7 +7,7 @@ import '@/styles/globals.css'
 import GlobalContextProvider from '@/context/GlobalContext'
 //Components
 import Layout from '@/components/common/Layout'
-import UserContextProvider, { UserContext } from '@/context/UserContext'
+import UserContextProvider from '@/context/UserContext'
 
 export default function App({ Component, pageProps }) {
   const queryClient = new QueryClient()

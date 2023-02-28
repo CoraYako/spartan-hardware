@@ -1,9 +1,8 @@
 import styled from 'styled-components'
-import { useCycle } from 'framer-motion'
+import { useCycle, motion } from 'framer-motion'
 import { MenuButton } from './MenuButton'
 import { HiddenMenu } from './HiddenMenu'
 import { ButtonViolet } from './ButtonViolet'
-import { motion } from 'framer-motion'
 
 export const Submenu = () => {
   const [open, cycleOpen] = useCycle(false, true)

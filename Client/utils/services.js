@@ -5,8 +5,8 @@ const URL_API = process.env.NEXT_PUBLIC_URL_API
 export const getProducts = () => {
   return axios
     .get(`${URL_API}/products`)
-    .then((res) => console.log(res))
-    .catch((e) => console.log(e.response))
+    .then((res) => res)
+    .catch((e) => e)
 }
 
 export const createUser = (data) => {

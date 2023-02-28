@@ -14,9 +14,15 @@ export const ProductCard = ({
   isLoading,
   promotion,
   fastSend,
+  margin,
+  bypcbuild = false,
 }) => {
   return (
-    <CardContainer whileHover={{ scale: 1.05 }}>
+    <CardContainer
+      whileHover={{ scale: 1.05 }}
+      margin={margin}
+      bypcbuild={bypcbuild ? 1 : 0}
+    >
       {promotion && <Label typeLabel="promotion" msg="Promoción" />}
       {fastSend && <Label typeLabel="shipping" msg="Entrega inmediata" />}
       <div className="top-info">
@@ -34,18 +40,24 @@ export const ProductCard = ({
         <p>No aplica impuestos</p>
       </div>
       <div className="button-container">
-        <Button text="Detalle" />
-        <Button text="Cotizar" />
+        {bypcbuild ? (
+          <Button text="SUMAR AL CARRITO" />
+        ) : (
+          <>
+            <Button text="Detalle" />
+            <Button text="Cotizar" />
+          </>
+        )}
       </div>
     </CardContainer>
   )
 }
 
 const CardContainer = styled(motion.article)`
-  height: auto;
   width: 29.4rem;
+  max-height: 510px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
-  margin: 3rem 0;
+  margin: ${(props) => (props.margin ? props.margin : '3rem 0')};
   background-color: var(--gray4);
   position: relative;
 
@@ -79,6 +91,7 @@ const CardContainer = styled(motion.article)`
   .button-container {
     display: flex;
     padding: 2.5rem 3.5rem;
-    justify-content: space-between;
+    justify-content: ${(props) =>
+      props.bypcbuild ? 'center' : 'space-between'};
   }
 `
