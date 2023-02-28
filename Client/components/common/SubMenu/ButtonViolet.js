@@ -9,7 +9,7 @@ export const ButtonViolet = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 2 }}
     >
-      <Link passHref href="#">
+      <Link passHref href="/build-pc">
         <p> ARMA TU PC</p>
         <div className="gradient" />
       </Link>

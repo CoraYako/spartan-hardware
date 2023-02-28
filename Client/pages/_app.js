@@ -7,18 +7,21 @@ import '@/styles/globals.css'
 import GlobalContextProvider from '@/context/GlobalContext'
 //Components
 import Layout from '@/components/common/Layout'
+import UserContextProvider from '@/context/UserContext'
 
 export default function App({ Component, pageProps }) {
   const queryClient = new QueryClient()
 
   return (
     <GlobalContextProvider>
-      <QueryClientProvider client={queryClient}>
-        <GlobalStyles />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </QueryClientProvider>
+      <UserContextProvider>
+        <QueryClientProvider client={queryClient}>
+          <GlobalStyles />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </QueryClientProvider>
+      </UserContextProvider>
     </GlobalContextProvider>
   )
 }

@@ -9,9 +9,9 @@ export const Recommend = () => {
           <h2>PC's Recomendadas</h2>
         </div>
         <div className="recommend">
-          <RecommendCard title={"PC's BÁSICA"} />
-          <RecommendCard title={"PC's MEDIA"} />
-          <RecommendCard title={"PC's ALTA"} />
+          <RecommendCard title={"PC's BÁSICA"} link="/pc-recommend-sale" />
+          <RecommendCard title={"PC's MEDIA"} link="/pc-recommend-sale" />
+          <RecommendCard title={"PC's ALTA"} link="/pc-recommend-sale" />
         </div>
       </CardContainer>
     </>
