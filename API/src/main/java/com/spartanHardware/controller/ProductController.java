@@ -7,6 +7,7 @@ import com.spartanHardware.model.dto.response.ProductResponseDto;
 import com.spartanHardware.model.dto.response.ProductReviewResponseDto;
 import com.spartanHardware.model.dto.response.ProductSubCategoryResponseDto;
 import com.spartanHardware.model.entity.User;
+import com.spartanHardware.service.IAWSS3Service;
 import com.spartanHardware.service.IProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -25,6 +27,7 @@ import static org.springframework.http.HttpStatus.*;
 public class ProductController {
 
     private final IProductService productService;
+    private final IAWSS3Service awsS3Service;
 
     @GetMapping("/details/{id}")
     public ResponseEntity<ProductResponseDto> getProductDetails(@PathVariable Long id) {
@@ -80,5 +83,11 @@ public class ProductController {
                                                             @RequestBody ProductRequestDto productRequestDto) {
         ProductResponseDto productResponseDto = productService.updateProduct(id, productRequestDto);
         return ResponseEntity.status(OK).body(productResponseDto);
+    }
+
+    @PostMapping("/upload-image")
+    public ResponseEntity<String> uploadProductImage(@RequestPart(value = "file") MultipartFile file) {
+        String response = file.getOriginalFilename();
+        return ResponseEntity.status(CREATED).body(response);
     }
 }

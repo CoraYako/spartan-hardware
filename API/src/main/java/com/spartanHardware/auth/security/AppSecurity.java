@@ -47,6 +47,7 @@ public class AppSecurity {
                 .requestMatchers(POST, "/api/v1/auth/register-admin").hasAnyAuthority(Role.ADMIN.getSimpleRoleName())
                 .requestMatchers(GET, "/api/v1/users").hasAnyAuthority(Role.ADMIN.getSimpleRoleName())
                 .requestMatchers(GET, "/api/v1/users/{id}").hasAnyAuthority(Role.ADMIN.getSimpleRoleName())
+                .requestMatchers(POST, "/api/v3/products/upload-image").hasAnyAuthority(Role.ADMIN.getSimpleRoleName())
                 .anyRequest()
                 .authenticated()
                 .and()
