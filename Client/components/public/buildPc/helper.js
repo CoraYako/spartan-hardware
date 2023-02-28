@@ -1,4 +1,4 @@
-import MotherboardIcon from '@/public/images/MotherBoardIcon.svg'
+import MotherboardIcon from '@/public/images/MotherboardIcon.svg'
 import ProcessorIcon from '@/public/images/processorIcon.svg'
 import DiskIcon from '@/public/images/diskIcon.svg'
 import GPUIcon from '@/public/images/GPUIcon.svg'
