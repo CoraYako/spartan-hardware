@@ -13,4 +13,5 @@ public class UserProfileResponseDto {
     private String lastName;
     private List<String> authorities;
     private AddressResponseDTO defaultAddress;
+    private List<PaymentMethodResponseDto> paymentMethods;
 }

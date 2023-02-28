@@ -7,7 +7,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class UserRequestUpdateDto {
     private String email;
-    private String password;
+    private String oldPassword;
+    private String newPassword;
     private String firstName;
     private String lastName;
 }

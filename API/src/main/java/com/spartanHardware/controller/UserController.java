@@ -3,6 +3,7 @@ package com.spartanHardware.controller;
 import com.spartanHardware.model.dto.request.PaymentMethodRequestDto;
 import com.spartanHardware.model.dto.request.UserRequestDTO;
 import com.spartanHardware.model.dto.request.UserRequestUpdateDto;
+import com.spartanHardware.model.dto.response.PaymentMethodResponseDto;
 import com.spartanHardware.model.dto.response.UserProfileResponseDto;
 import com.spartanHardware.model.dto.response.UserResponseDTO;
 import com.spartanHardware.model.entity.User;
@@ -54,6 +55,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
+    @GetMapping("/payment-method/{id}")
+    public ResponseEntity<List<PaymentMethodResponseDto>> getAllPaymentMethodsByUser(@PathVariable Long id, @AuthenticationPrincipal User loggedUser) {
+        List<PaymentMethodResponseDto> list = service.paymentMethodsByUser(id, loggedUser);
+        return ResponseEntity.status(HttpStatus.OK).body(list);
+    }
+
     @PostMapping("/payment-method")
     public ResponseEntity<Void> createPaymentMethod(@Valid @RequestBody PaymentMethodRequestDto dto, @AuthenticationPrincipal User loggedUser) {
         paymentMethodService.createPaymentMethod(dto, loggedUser);
@@ -65,5 +72,6 @@ public class UserController {
         paymentMethodService.deletePaymentMethod(id, loggedUser);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
 
 }
