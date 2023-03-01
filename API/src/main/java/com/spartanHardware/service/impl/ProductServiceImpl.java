@@ -1,5 +1,6 @@
 package com.spartanHardware.service.impl;
 
+import com.spartanHardware.model.dto.request.ProductFilterRequest;
 import com.spartanHardware.model.dto.request.ProductRequestDto;
 import com.spartanHardware.model.dto.request.ProductReviewRequestDto;
 import com.spartanHardware.model.dto.response.ProductCategoryResponseDto;
@@ -16,6 +17,7 @@ import com.spartanHardware.model.mapper.SubCategoryMapper;
 import com.spartanHardware.repository.ParentCategoryRepository;
 import com.spartanHardware.repository.ProductRepository;
 import com.spartanHardware.repository.SubCategoryRepository;
+import com.spartanHardware.repository.specification.ProductSpecification;
 import com.spartanHardware.service.IAWSS3Service;
 import com.spartanHardware.service.IProductService;
 import com.spartanHardware.service.IReviewService;
@@ -26,6 +28,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static java.lang.Boolean.FALSE;
 import static java.time.LocalDateTime.now;
@@ -41,6 +44,7 @@ public class ProductServiceImpl implements IProductService {
     private final ParentCategoryRepository categoryRepository;
     private final SubCategoryRepository subCategoryRepository;
     private final IAWSS3Service awsS3Service;
+    private final ProductSpecification productSpecification;
     private final ProductMapper productMapper;
     private final ParentCategoryMapper categoryMapper;
     private final SubCategoryMapper subCategoryMapper;
@@ -148,5 +152,30 @@ public class ProductServiceImpl implements IProductService {
         Pageable pageable = PageRequest.of(page, PAGE_SIZE);
         pageable.next().getPageNumber();
         return productRepository.findAll(pageable).map(productMapper);
+    }
+
+    @Override
+    public Page<ProductResponseDto> getProductsFilteredByName(String query, int page) {
+        Pageable pageable = PageRequest.of(page, PAGE_SIZE);
+        pageable.next().getPageNumber();
+        Page<Product> products = productRepository.findAllByName(query, pageable);
+        if (products.isEmpty()) {
+            // TODO: 28/2/2023 change message to property
+            throw new NoSuchElementException("Products not founds for those categories or name");
+        }
+        return products.map(productMapper);
+    }
+
+    @Override
+    public Page<ProductResponseDto> getProductsFilteredByCategories(String category, String subCategory, int page) {
+        Pageable pageable = PageRequest.of(page, PAGE_SIZE);
+        pageable.next().getPageNumber();
+        Page<Product> products = productRepository.findAll(productSpecification.getByFilters(
+                new ProductFilterRequest(category, subCategory)), pageable);
+        if (products.isEmpty()) {
+            // TODO: 28/2/2023 change message to property
+            throw new NoSuchElementException("Products not founds for those categories or name");
+        }
+        return products.map(productMapper);
     }
 }
