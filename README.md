@@ -40,9 +40,9 @@ _3 - You will have to create you own account for [AWS](https://aws.amazon.com/es
 
 _4 - Install the dependencies with **`npm install`** at Client folder_
 
-_5 - Run the server with  **`npm run dev`** (development) or npm start (production)_
+_5 - Run the frontend server with  **`npm run dev`** (development) or npm start (production)_
 
-_6 - _
+_6 - Run the backend server with  **`mvn spring-boot:run`** To make it work you have to run the terminal inside the folder where the pom.xml is located_
 
 ##### _Back_ 
 
@@ -65,7 +65,7 @@ VITE_APP_PRESET_ADOPT_PETS= preset to upload pets photos in cloudinary.
 
 VITE_APP_CLOUDNAME = name of your cloudinary.
 
-VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
+VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:3000).
 ```
 
 
