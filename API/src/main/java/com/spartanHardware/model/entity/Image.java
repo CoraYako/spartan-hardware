@@ -16,6 +16,11 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 public class Image {
 
+    public Image(String src, Product product) {
+        this.src = src;
+        this.product = product;
+    }
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;

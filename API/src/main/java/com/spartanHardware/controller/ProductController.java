@@ -2,10 +2,7 @@ package com.spartanHardware.controller;
 
 import com.spartanHardware.model.dto.request.ProductRequestDto;
 import com.spartanHardware.model.dto.request.ProductReviewRequestDto;
-import com.spartanHardware.model.dto.response.ProductCategoryResponseDto;
-import com.spartanHardware.model.dto.response.ProductResponseDto;
-import com.spartanHardware.model.dto.response.ProductReviewResponseDto;
-import com.spartanHardware.model.dto.response.ProductSubCategoryResponseDto;
+import com.spartanHardware.model.dto.response.*;
 import com.spartanHardware.model.entity.User;
 import com.spartanHardware.service.IAWSS3Service;
 import com.spartanHardware.service.IProductService;
@@ -99,9 +96,8 @@ public class ProductController {
     }
 
     @PostMapping("/upload-image")
-    public ResponseEntity<String> uploadProductImage(@RequestPart(value = "file") MultipartFile file) {
-        awsS3Service.uploadFile(file);
-        String response = file.getOriginalFilename();
-        return ResponseEntity.status(CREATED).body(response);
+    public ResponseEntity<ImageURLResponseDto> uploadProductImage(@RequestPart(value = "file") MultipartFile file) {
+        ImageURLResponseDto responseDto = awsS3Service.uploadFile(file);
+        return ResponseEntity.status(CREATED).body(responseDto);
     }
 }

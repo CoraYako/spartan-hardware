@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static jakarta.persistence.FetchType.EAGER;
 import static jakarta.persistence.GenerationType.IDENTITY;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
@@ -66,7 +67,7 @@ public class Product {
     @Column(name = "special_price")
     private BigDecimal specialPrice;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", fetch = EAGER)
     private List<Image> productImages;
 
     @Column(name = "quantity")
