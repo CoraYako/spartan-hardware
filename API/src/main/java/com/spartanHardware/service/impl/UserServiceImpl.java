@@ -1,21 +1,24 @@
 package com.spartanHardware.service.impl;
 
+import com.spartanHardware.auth.filter.JwtService;
 import com.spartanHardware.exception.CustomException;
+import com.spartanHardware.model.dto.request.LoginRequestDto;
 import com.spartanHardware.model.dto.request.UserRequestDTO;
 import com.spartanHardware.model.dto.request.UserRequestUpdateDto;
-import com.spartanHardware.model.dto.response.UserResponseDTO;
+import com.spartanHardware.model.dto.response.*;
 import com.spartanHardware.model.entity.Authority;
 import com.spartanHardware.model.entity.User;
 import com.spartanHardware.model.enums.Role;
+import com.spartanHardware.model.mapper.PaymentMethodMapper;
 import com.spartanHardware.model.mapper.UserMapper;
 import com.spartanHardware.repository.AuthorityRepository;
 import com.spartanHardware.repository.UserRepository;
 import com.spartanHardware.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -34,39 +37,65 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
 
     private final UserRepository repository;
     private final AuthorityRepository authorityRepository;
-    private final PasswordEncoder encoder;
+    private final AuthenticationManager authenticationManager;
+    private final JwtService jwtService;
     private final UserMapper mapper;
+    private final PaymentMethodMapper paymentMethodMapper;
     private final MessageSource message;
 
     @Override
     @Transactional
-    public UserResponseDTO registerUser(UserRequestDTO dto) {
-         if(repository.existsByEmail(dto.getEmail()))
-             throw new CustomException(message.getMessage("entity.exists",null,Locale.US), BAD_REQUEST, LocalDateTime.now());
+    public UserResponseRegisterDTO registerUser(UserRequestDTO dto) {
+         if(repository.existsByEmail(dto.getEmail())) throw new CustomException(
+                 message.getMessage("entity.exists",null,Locale.US),
+                 BAD_REQUEST,
+                 LocalDateTime.now());
         User user = mapper.toUser(dto);
-        user.setPassword(encoder.encode(dto.getPassword()));
         addRoleToUser(Role.USER.getSimpleRoleName(), user);
-        return mapper.toDto(repository.save(user));
+
+        UserResponseRegisterDTO userResponse = mapper.toDtoRegister(repository.save(user));
+        String token = jwtService.generateToken(user);
+        userResponse.setToken(token);
+        return userResponse;
     }
 
     @Override
     @Transactional
-    public UserResponseDTO registerAdmin(UserRequestDTO dto) {
+    public UserResponseRegisterDTO registerAdmin(UserRequestDTO dto) {
         if(repository.existsByEmail(dto.getEmail()))
             throw new CustomException(message.getMessage("entity.exists",null,Locale.US), BAD_REQUEST, LocalDateTime.now());;
         User user = mapper.toUser(dto);
-        user.setPassword(encoder.encode(dto.getPassword()));
         addRoleToUser(Role.ADMIN.getSimpleRoleName(), user);
-        return mapper.toDto(repository.save(user));
+
+        UserResponseRegisterDTO userResponse = mapper.toDtoRegister(repository.save(user));
+        String token = jwtService.generateToken(user);
+        userResponse.setToken(token);
+        return userResponse;
+    }
+
+    @Override
+    public LoginResponseDto loginUser(LoginRequestDto dto) {
+        authenticationManager.authenticate( new UsernamePasswordAuthenticationToken(
+                dto.getUsername(),
+                dto.getPassword()
+                )
+        );
+        User user = repository.findByEmail(dto.getUsername()).orElseThrow();
+        String token = jwtService.generateToken(user);
+        return new LoginResponseDto(token);
     }
 
     @Override
     @Transactional
-    public UserResponseDTO updateUser(UserRequestUpdateDto dto, Long id) {
+    public UserResponseDTO updateUser(UserRequestUpdateDto dto, Long id, User loggedUser) {
         User user = getUserById(id);
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if(!auth.getName().equalsIgnoreCase(user.getUsername()))
-            throw new CustomException(message.getMessage("entity.noAccess", new String[] {"modify"}, Locale.US), FORBIDDEN,LocalDateTime.now());
+
+        if(!loggedUser.getUsername().equals(user.getUsername()))
+            throw new CustomException(message.getMessage("entity.noAccess", new String[] {"modify", "account"}, Locale.US), FORBIDDEN,LocalDateTime.now());
+
+        if(repository.existsByEmail(dto.getEmail()))
+            throw new CustomException(message.getMessage("entity.exists",null,Locale.US), BAD_REQUEST, LocalDateTime.now());
+
         User updatedUser = mapper.toUpdatedUser(dto,user);
         return mapper.toDto(repository.save(updatedUser));
     }
@@ -78,9 +107,10 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
 
     @Override
     public User getUserById(Long id) {
-        if(!repository.findById(id).isPresent())
-            throw new CustomException(message.getMessage("entity.notFound", new String[] {"User", "id", id.toString()}, Locale.US), NOT_FOUND, LocalDateTime.now());
-        return repository.findById(id).get();
+        return repository.findById(id).orElseThrow(() -> new CustomException(
+                message.getMessage("entity.notFound", new String[] {"User", "id", id.toString()}, Locale.US),
+                NOT_FOUND,
+                LocalDateTime.now()));
     }
 
     @Override
@@ -89,13 +119,32 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
     }
 
     @Override
-    @Transactional
-    public void deleteUserById(Long id) {
+    public UserProfileResponseDto getUserProfile(Long id, User loggedUser) {
         User user =  getUserById(id);
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if(!auth.getName().equalsIgnoreCase(user.getUsername()))
-            throw new CustomException(message.getMessage("entity.noAccess", new String[] {"delete"}, Locale.US), FORBIDDEN, LocalDateTime.now());
+        if(!loggedUser.getUsername().equals(user.getUsername()))
+            throw new CustomException(message.getMessage("entity.noAccess", new String[] {"get profile"}, Locale.US), FORBIDDEN, LocalDateTime.now());
+        return mapper.toDtoProfile(user);
+    }
+
+    @Override
+    @Transactional
+    public void deleteUserById(Long id, User loggedUser) {
+        User user =  getUserById(id);
+        if(!loggedUser.getUsername().equals(user.getUsername())) throw new CustomException(
+                message.getMessage("entity.noAccess", new String[] {"delete", "account"}, Locale.US),
+                FORBIDDEN,
+                LocalDateTime.now());
         repository.deleteById(id);
+    }
+
+    @Override
+    public List<PaymentMethodResponseDto> paymentMethodsByUser(Long id, User loggedUser) {
+        User user = getUserById(id);
+        if(!loggedUser.getUsername().equals(user.getUsername())) throw new CustomException(
+                message.getMessage("entity.noAccess", new String[] {"get", "payment method"}, Locale.US),
+                FORBIDDEN,
+                LocalDateTime.now());
+        return paymentMethodMapper.toDtoList(user.getPaymentMethods());
     }
 
     @Transactional
@@ -107,7 +156,6 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
 
         authority.getUsers().add(user);
     }
-
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

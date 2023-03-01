@@ -1,8 +1,6 @@
 package com.spartanHardware.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -15,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
+import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static java.time.LocalDateTime.now;
 
@@ -31,7 +30,6 @@ public class Product {
     @Column(name = "id")
     private Long id;
 
-    @NotNull
     @Column(name = "name")
     private String name;
 
@@ -49,22 +47,27 @@ public class Product {
     @JoinColumn(name = "sub_category_id")
     private SubCategory subCategory;
 
-    @OneToMany(mappedBy = "product")
-    @JsonIgnoreProperties("product")
-    private List<ProductAttribute> attributes;
+    @Column(name = "short_description",
+            nullable = false,
+            length = 500)
+    private String shortDescription;
 
-    @NotNull
+    @Column(name = "description",
+            nullable = false,
+            length = 1000)
+    private String description;
+
+    @Column(name = "recommended")
+    private boolean recommended = FALSE;
+
     @Column(name = "price")
     private BigDecimal price;
 
-    @Column(name = "price_with_discount")
-    private BigDecimal priceWithDiscount;
+    @Column(name = "special_price")
+    private BigDecimal specialPrice;
 
-    @Column(name = "sku")
-    private String sku;
-
-    @Column(name = "photo")
-    private String photo;
+    @OneToMany(mappedBy = "product")
+    private List<Image> productImages;
 
     @Column(name = "quantity")
     private Integer quantity;
@@ -76,8 +79,13 @@ public class Product {
     @Column(name = "available")
     private Boolean available = TRUE;
 
+    @Column(name = "fast_shipping")
+    private boolean fastShipping = FALSE;
+
     @UpdateTimestamp
     @Column(name = "updated_on_date")
     private LocalDateTime updateDate;
 
+    @OneToMany(mappedBy = "product")
+    private List<Review> productReviews;
 }

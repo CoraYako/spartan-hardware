@@ -15,10 +15,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
+import static jakarta.persistence.FetchType.EAGER;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 
@@ -31,6 +30,10 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @SQLDelete(sql = "UPDATE user SET enable = false WHERE id = ?")
 @Where(clause = "enable = true")
 public class User implements UserDetails {
+
+    // TODO: 28/2/2023 Find the best practice to initialize the List
+
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
@@ -45,7 +48,7 @@ public class User implements UserDetails {
     private String password;
 
     @NotNull
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = EAGER)
     @JoinTable(
             name = "user_authority",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -66,7 +69,8 @@ public class User implements UserDetails {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = EAGER)
+    @JsonIgnoreProperties("user")
     private List<Address> addresses;
 
     @Column(name = "phone_number")
@@ -89,7 +93,8 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<ShoppingCart> shoppingCarts;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = EAGER)
+    @JsonIgnoreProperties("user")
     private List<PaymentMethod> paymentMethods;
 
     @Override
@@ -101,6 +106,9 @@ public class User implements UserDetails {
     public String getUsername() {
         return email;
     }
+
+    @Override
+    public String getPassword(){ return password;}
 
     @Override
     public boolean isAccountNonExpired() {

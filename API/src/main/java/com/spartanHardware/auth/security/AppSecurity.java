@@ -1,74 +1,62 @@
 package com.spartanHardware.auth.security;
 
+import com.spartanHardware.auth.filter.JWTAuthenticationFilter;
 import com.spartanHardware.model.enums.Role;
-import com.spartanHardware.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 
 @EnableWebSecurity
 @Configuration
 @RequiredArgsConstructor
 public class AppSecurity {
 
-    private final UserRepository repository;
+    protected final String[] AUTH_WHITELIST = {
+            "/swagger-ui/**",
+            "/v3/**",
+            "/swagger-ui.html",
+            "/api/v1/auth/register-user",
+            "/api/v1/auth/login",
+            "/api/v1/products/details/**",
+            "/api/v1/products/paginated",
+            "/api/v1/products/categories",
+            "/api/v1/products/sub-categories",
+            "/api/v1/products/all-reviews/**"
+    };
+
+    private final JWTAuthenticationFilter jwtFilter;
+    private final AuthenticationProvider authenticationProvider;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/auth/register-user")
+                .requestMatchers(AUTH_WHITELIST)
                 .permitAll()
+                .requestMatchers(POST, "/api/v1/auth/register-admin").hasAnyAuthority(Role.ADMIN.getSimpleRoleName())
+                .requestMatchers(GET, "/api/v1/users").hasAnyAuthority(Role.ADMIN.getSimpleRoleName())
+                .requestMatchers(GET, "/api/v1/users/{id}").hasAnyAuthority(Role.ADMIN.getSimpleRoleName())
+                .requestMatchers(POST, "/api/v3/products/upload-image").hasAnyAuthority(Role.ADMIN.getSimpleRoleName())
                 .anyRequest()
                 .authenticated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authenticationProvider(authenticationProvider())
-        //.addFilterBefore()
-        ;
+                .authenticationProvider(authenticationProvider)
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService(){
-        return username -> repository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException(""));
-    }
-
-    @Bean
-    public AuthenticationProvider authenticationProvider(){
-        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetailsService(userDetailsService());
-        authenticationProvider.setPasswordEncoder(passwordEncoder());
-        return authenticationProvider;
-    }
-
-    @Bean
-    public AuthenticationManager authenticationManagerBean(AuthenticationConfiguration config) throws Exception {
-        return config.getAuthenticationManager();
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 }

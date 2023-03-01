@@ -1,7 +1,5 @@
 package com.spartanHardware.model.dto.request;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -9,7 +7,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class UserRequestUpdateDto {
     private String email;
-    private String password;
+    private String oldPassword;
+    private String newPassword;
     private String firstName;
     private String lastName;
 }

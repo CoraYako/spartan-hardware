@@ -72,4 +72,25 @@ const Btn = styled(motion.button)`
         'var(--secondaryViolet1)'};
   border-radius: 3px;
 `
-const CustomLink = styled(Link)``
+const CustomLink = styled(Link)`
+  border: none;
+  width: ${(props) => props.width};
+  min-width: 9rem;
+  margin: ${(props) => props.margin};
+  cursor: pointer;
+  font-family: 'Prompt';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  background-color: ${(props) =>
+    props.secondary === 'green'
+      ? 'var(--primaryGreen1)'
+      : (props.secondary === 'violet' && 'var(--tertiaryNavy1)') ||
+        'var(--secondaryViolet1)'};
+  border-radius: 3px;
+`
