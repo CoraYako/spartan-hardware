@@ -32,21 +32,19 @@
 
 ### ✔ Requirements 📋
 
-_1 - You will have to create a .env in **Front** and **Back** folders_
+_1 - You will have to create a .env in **Client** and **API** folders_
 
-_2 - You will have to create you own database in MySQL
+_2 - You will have to create you own database in MySQL_
 
-_3 - You will have to create you own account for [nodeMailer](https://nodemailer.com/about/)_
+_3 - You will have to create you own account for [AWS](https://aws.amazon.com/es/)_
 
-_4 - You will have to create you own account for [Cloudinary](https://cloudinary.com/)_
+_4 - Install the dependencies with **`npm install`** at Client folder_
 
-_5 - You will have to create you own account for [Google Maps](https://developers.google.com/)_
+_5 - Run the server with  **`npm run dev`** (development) or npm start (production)_
 
-_6 - Install the dependencies with **`npm install`** at Back and Front folders_
+_6 - _
 
-_7 - Run the server with  **`npm run dev`** (development) or npm start (production)_
-
-##### _Back .env_
+##### _Back_ 
 
 ```
 PORT = Number of the port where you wanna run api (ex. 4000).
@@ -60,10 +58,6 @@ EMAIL_API = The email there you want to use in Nodemailer.
 ##### _Front .env_
 
 ```
-VITE_APP_ID_CLIENT_GOOGLE = For use Login with Google.
-VITE_APP_GMAPS_API_KEY = For use Google Maps Api.
-
-VITE_APP_MAILCHIMP_URL = For use mailchimp for send newsletter email.
 
 VITE_APP_PRESET_USER = preset to upload user photos in cloudinary.
 VITE_APP_PRESET_PRODUCTS = preset to upload products photos in cloudinary.
@@ -79,13 +73,15 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
 
 ### 👉🏻 Task List ✅
 
-- Development of Rest Api for Lost and Found pets with NodeJs, TypeScript and Express.
-- Validations with Express Validator.
-- MongoDb Database.
-- Creating filters with Mongoose and regular expressions.
-- Users validation wiith JWT and Google.
-- Sending emails with Nodemailer for contact, welcome and password recovery.
-- Signing up subscribers for Newsletter with Mailchimp.
+- Development of Rest Api for Lost and Found pets with Java 17, Spring Boot 3.
+- Validations with SpringBoot Validation.
+- MySQL Database.
+- Creating filters with Spring JPA Specification.
+- Users validation wiith JWT and Spriong Security.
+- Sending emails with Java Mail Sender for contact, welcome and password recovery.
+- Images Persistence with AWS S3.
+- Data Persistence with Hibernate/JPA.
+- Mercado Pago api integration
 - Deployed on Railway
 
 ### 👉🏻 Built with 🛠️
