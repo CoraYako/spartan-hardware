@@ -39,4 +39,8 @@ public interface IProductService {
     SubCategory getSubCategoryByNameOrCreateNewOne(String subCategory);
 
     Page<ProductResponseDto> getAllProducts(int page);
+
+    Page<ProductResponseDto> getProductsFilteredByName(String query, int page);
+
+    Page<ProductResponseDto> getProductsFilteredByCategories(String category, String subCategory, int page);
 }

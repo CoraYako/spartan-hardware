@@ -56,6 +56,19 @@ public class ProductController {
         return ResponseEntity.status(OK).body(productService.getAllProductSubCategories());
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<Page<ProductResponseDto>> getProductsBySearch(@RequestParam(name = "query") String productName,
+                                                                        @RequestParam(name = "page") int page) {
+        return ResponseEntity.status(OK).body(productService.getProductsFilteredByName(productName, page));
+    }
+
+    @GetMapping("/filter")
+    public ResponseEntity<Page<ProductResponseDto>> getProductsByCategories(@RequestParam(required = false, name = "category") String category,
+                                                                            @RequestParam(required = false, name = "subCategory") String subCategory,
+                                                                            @RequestParam(name = "page") int page) {
+        return ResponseEntity.status(OK).body(productService.getProductsFilteredByCategories(category, subCategory, page));
+    }
+
     // all bellow endpoints only logged in
     @PostMapping("/review/{id}")
     public ResponseEntity<ProductReviewResponseDto> reviewProduct(@PathVariable Long id,
