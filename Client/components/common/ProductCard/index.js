@@ -5,6 +5,9 @@ import Image from 'next/image'
 import { Details } from './Details'
 import { Button } from '../Button'
 import { Label } from '../Label'
+import FormatPrice from '@/utils/FormatPrice'
+import { useContext } from 'react'
+import { CartContext } from '@/context/CartContext'
 
 export const ProductCard = ({
   img,
@@ -16,7 +19,11 @@ export const ProductCard = ({
   fastSend,
   margin,
   bypcbuild = false,
+  id,
+  product,
 }) => {
+  const { addToCart } = useContext(CartContext)
+
   return (
     <CardContainer
       whileHover={{ scale: 1.05 }}
@@ -34,7 +41,7 @@ export const ProductCard = ({
         </div>
       </div>
       <div className="price">
-        <h3>$ 12.150</h3>
+        <h3>{FormatPrice(price, 0, 1)}</h3>
       </div>
       <div className="info">
         <p>No aplica impuestos</p>
@@ -45,7 +52,7 @@ export const ProductCard = ({
         ) : (
           <>
             <Button text="Detalle" />
-            <Button text="Cotizar" />
+            <Button text="Agregar" action={() => addToCart(product)} />
           </>
         )}
       </div>

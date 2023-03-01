@@ -9,8 +9,7 @@ import { getProducts } from '@/utils/services'
 import { useQuery } from 'react-query'
 
 export default function PcRecommend() {
-  const { isLoading, error, data } = useQuery('products', getProducts())
-  console.log(error)
+  // const { isLoading, error, data } = useQuery('products', getProducts())
   return (
     <>
       <Head>

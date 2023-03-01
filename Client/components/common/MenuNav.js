@@ -4,12 +4,22 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
 import { GlobalContext } from '@/context/GlobalContext'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { UserContext } from '@/context/UserContext'
+import { CartContext } from '@/context/CartContext'
 
 export const MenuNav = () => {
+  const [quantity, setQuantity] = useState('0')
+  const { cart } = useContext(CartContext)
   const { contextDataGlobal, setContextDataGlobal } = useContext(GlobalContext)
   const { user } = useContext(UserContext)
+
+  useEffect(() => {
+    setQuantity(
+      cart.reduce((total, product) => total + product.quantityInCart, 0),
+    )
+  }, [cart])
+
   return (
     <Container
       initial={{ opacity: 0 }}
@@ -37,7 +47,7 @@ export const MenuNav = () => {
         <p>Mi carrito</p>
       </Item>
       <motion.div whileHover={{ scale: 1.1 }} className="number-cart">
-        <p>10</p>
+        {cart && <p>{quantity}</p>}
       </motion.div>
     </Container>
   )
