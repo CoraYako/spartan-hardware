@@ -1,15 +1,9 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
-
-import BannerImg from '@/public/images/BannerPCSale.png'
-import { CatalogPcLow } from '@/components/public/PcRecommendSale/CatalogPcLow'
 import Link from 'next/link'
-import { getProducts } from '@/utils/services'
-import { useQuery } from 'react-query'
+import { CartSection } from '@/components/public/cart'
 
 export default function PcRecommend() {
-  // const { isLoading, error, data } = useQuery('products', getProducts())
   return (
     <>
       <Head>
@@ -25,19 +19,13 @@ export default function PcRecommend() {
         key="login"
         style={{ width: '100%' }}
       >
-        <Image
-          src={BannerImg}
-          alt="banner"
-          style={{ marginTop: '137px', width: '100%' }}
-          quality={100}
-        />
-        <p style={{ margin: '10px 0 0 20px' }}>
+        <p style={{ margin: '164px 0 0 20px' }}>
           <Link passHref href="/">
             Home
           </Link>
-          / <strong>PC´s Recomendadas</strong>
+          / <strong>Carrito de Compra</strong>
         </p>
-        <CatalogPcLow />
+        <CartSection />
       </motion.div>
     </>
   )
