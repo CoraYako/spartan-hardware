@@ -104,7 +104,7 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
 
 ### 👉🏻 Developers
 
-| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>| <img src="https://i.postimg.cc/cCf4VYnx/Hector.jpg" alt="Photo Hector Cortez" width=80>| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
+| <img src="https://i.postimg.cc/hj1wzDrn/Carolina.jpg" alt="Photo Carolina Quevedo" width=80>| <img src="https://i.postimg.cc/cCf4VYnx/Hector.jpg" alt="Photo Hector Cortez" width=80>| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
 |:-:|:-:|:-:|
 | **Carolina Quevedo**  | **Hector Cortez**  | **Matias Carballo** |
 | <a href="https://github.com/CarolinaCQ" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/carolina-camila-quevedo/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/CoraYako" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/hector-cortez-cy" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/lokywolf2295" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/matias-es-carballo/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
@@ -141,7 +141,7 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
 
 ### 👉🏻 Developers
 
-| <img src="https://i.postimg.cc/L8n3L8K9/Agus.jpg" alt="Photo Agustin Jaime" width=80>| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
+| <img src="https://i.postimg.cc/L8n3L8K9/Agus.jpg" alt="Photo Agustin Jaime" width=80>| <img src="https://i.postimg.cc/gJtVB1cR/Antonio.jpg" alt="Photo Antonio Villacrés" width=80>|
 :-:|:-:|
 | **Agustin Jaime**  | **Antonio Villacrés**  |
 | <a href="https://github.com/AgustinJaime99" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/agustin-diego-jaime-4033041b7/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/hackermate" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/antonio-v-5671a390/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
@@ -157,9 +157,9 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
 
 ### 👉🏻 Designer
 
-| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
+| <img src="https://i.postimg.cc/3xwDzn6F/Javier.jpg" alt="Photo Javier Gaitan" width=80>|
 |:-:|
-| Javier Gaitan|
+| Javier Gaitan |
 | <a href="https://www.behance.net/javiergaitan" target="_blank"><img src="https://img.shields.io/badge/Behance-%2320232a.svg?style=for-the-badge&logo=Behance&logoColor=%%2361DAFB"/></a> <a href="https://www.linkedin.com/in/javier-gaitan-ortiz-a8665027" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
 ## ✔ QA
@@ -170,7 +170,7 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:4000).
 
 ### 👉🏻 Tester
 
-| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
+| <img src="https://i.postimg.cc/LX4dVgh5/Lucio.jpg" alt="Photo Lucio Sanfilippo" width=80>|
 |:-:|
 | Lucio Sanfilippo |
 |<a href="https://github.com/luciosanfi" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/lucio-sanfilippo-5a620621a" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> <a href="https://drive.google.com/drive/folders/1f_Z0JHSFBOnRCV6wHzmiyjDHO93vQ0Vz" target="_blank"><img src="https://img.shields.io/badge/Testing-%23fff.svg?&style=for-the-badge&logo=googledrive&logoColor=green"/></a>||
