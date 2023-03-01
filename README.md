@@ -58,7 +58,6 @@ EMAIL_API = The email there you want to use in Nodemailer.
 ##### _Front .env_
 
 ```
-
 VITE_APP_PRESET_USER = preset to upload user photos in cloudinary.
 VITE_APP_PRESET_PRODUCTS = preset to upload products photos in cloudinary.
 VITE_APP_PRESET_ADOPT_PETS= preset to upload pets photos in cloudinary.
@@ -174,7 +173,7 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:3000).
 
 ## ✔ Team Leader
 
-| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
+| <img src="https://i.postimg.cc/tJ3b36Gq/Portrait-compressed.jpg" alt="Photo Pietro PalombiniS" width=80>|
 |:-:|
 | Pietro Palombini |
 |<a href="https://github.com/Aplietexe" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/pietropalombini/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
