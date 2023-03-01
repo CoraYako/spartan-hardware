@@ -1,16 +1,18 @@
-import { useMemo, useState, createContext } from 'react'
+import { useMemo, useState, createContext, useEffect } from 'react'
 
 export const CartContext = createContext()
 
 const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState(() => {
+  const [cart, setCart] = useState([])
+
+  useEffect(() => {
     if (typeof window !== 'undefined') {
       const cartFromLocalStorage = localStorage.getItem('cart')
-      return cartFromLocalStorage ? JSON.parse(cartFromLocalStorage) : []
-    } else {
-      return []
+      return cartFromLocalStorage
+        ? setCart(JSON.parse(cartFromLocalStorage))
+        : []
     }
-  })
+  }, [])
 
   const saveCartToLocalStorage = (cart) => {
     localStorage.setItem('cart', JSON.stringify(cart))

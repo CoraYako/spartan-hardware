@@ -7,6 +7,7 @@ import { GlobalContext } from '@/context/GlobalContext'
 import { useContext, useEffect, useState } from 'react'
 import { UserContext } from '@/context/UserContext'
 import { CartContext } from '@/context/CartContext'
+import Link from 'next/link'
 
 export const MenuNav = () => {
   const [quantity, setQuantity] = useState('0')
@@ -41,11 +42,13 @@ export const MenuNav = () => {
         <AccountIcon />
         <p>{user ? user?.firstName : 'Mi cuenta'}</p>
       </Item>
-      <Item>
-        <span className="bar" />
-        <CartIcon />
-        <p>Mi carrito</p>
-      </Item>
+      <Link passHref href="/cart">
+        <Item>
+          <span className="bar" />
+          <CartIcon />
+          <p>Mi carrito</p>
+        </Item>
+      </Link>
       <motion.div whileHover={{ scale: 1.1 }} className="number-cart">
         {cart && <p>{quantity}</p>}
       </motion.div>
