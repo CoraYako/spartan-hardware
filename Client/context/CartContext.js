@@ -59,8 +59,13 @@ const CartProvider = ({ children }) => {
     updateCartAndSaveToLocalStorage(updatedCart)
   }
 
+  const emptyCart = () => {
+    const updateCart = []
+    updateCartAndSaveToLocalStorage(updateCart)
+  }
+
   const cartValues = useMemo(
-    () => ({ cart, addToCart, removeFromCart }),
+    () => ({ cart, addToCart, removeFromCart, emptyCart }),
     [cart],
   )
 
