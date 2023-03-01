@@ -7,18 +7,15 @@ import com.spartanHardware.model.dto.response.ProductCategoryResponseDto;
 import com.spartanHardware.model.dto.response.ProductResponseDto;
 import com.spartanHardware.model.dto.response.ProductReviewResponseDto;
 import com.spartanHardware.model.dto.response.ProductSubCategoryResponseDto;
-import com.spartanHardware.model.entity.ParentCategory;
-import com.spartanHardware.model.entity.Product;
-import com.spartanHardware.model.entity.SubCategory;
-import com.spartanHardware.model.entity.User;
+import com.spartanHardware.model.entity.*;
 import com.spartanHardware.model.mapper.ParentCategoryMapper;
 import com.spartanHardware.model.mapper.ProductMapper;
 import com.spartanHardware.model.mapper.SubCategoryMapper;
+import com.spartanHardware.repository.ImageRepository;
 import com.spartanHardware.repository.ParentCategoryRepository;
 import com.spartanHardware.repository.ProductRepository;
 import com.spartanHardware.repository.SubCategoryRepository;
 import com.spartanHardware.repository.specification.ProductSpecification;
-import com.spartanHardware.service.IAWSS3Service;
 import com.spartanHardware.service.IProductService;
 import com.spartanHardware.service.IReviewService;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +24,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -43,7 +41,7 @@ public class ProductServiceImpl implements IProductService {
     private final ProductRepository productRepository;
     private final ParentCategoryRepository categoryRepository;
     private final SubCategoryRepository subCategoryRepository;
-    private final IAWSS3Service awsS3Service;
+    private final ImageRepository imageRepository;
     private final ProductSpecification productSpecification;
     private final ProductMapper productMapper;
     private final ParentCategoryMapper categoryMapper;
@@ -53,6 +51,12 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public ProductResponseDto createProduct(ProductRequestDto productRequestDto) {
         Product product = productMapper.toEntity(productRequestDto);
+
+        List<Image> images = new ArrayList<>();
+        productRequestDto.getImages().forEach(imageUrl -> {
+            images.add(new Image(imageUrl, product));
+        });
+        product.setProductImages(images);
 
         ParentCategory category = getCategoryByNameOrCreateNewOne(productRequestDto.getCategory());
         SubCategory subCategory = getSubCategoryByNameOrCreateNewOne(productRequestDto.getSubCategory());
@@ -68,7 +72,10 @@ public class ProductServiceImpl implements IProductService {
         product.setParentCategory(category);
         product.setSubCategory(subCategory);
 
-        return productMapper.apply(productRepository.save(product));
+        Product productSaved = productRepository.save(product);
+        imageRepository.saveAll(images);
+
+        return productMapper.apply(productSaved);
     }
 
     @Override
