@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.HttpStatus.OK;
 
@@ -30,8 +32,8 @@ public class AddressController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<AddressResponseDTO> getAllAddresses(@AuthenticationPrincipal User loggedUser) {
-        AddressResponseDTO addressResponseDto = (AddressResponseDTO) service.getAllAddresses(loggedUser);
+    public ResponseEntity<List<AddressResponseDTO>> getAllAddresses(@AuthenticationPrincipal User loggedUser) {
+        List<AddressResponseDTO> addressResponseDto = service.getAllAddresses(loggedUser);
         return ResponseEntity.status(OK).body(addressResponseDto);
     }
 
