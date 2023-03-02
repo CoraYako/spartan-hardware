@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import { Accordion } from './Accordion'
 import { FirstStep } from './FirstStep'
+import { StepTwo } from './StepTwo'
 
 export const Steps = () => {
   const [expanded, setExpanded] = useState(1)
@@ -32,7 +33,7 @@ export const Steps = () => {
         title="2. SELECCIONA EL METODO DE PAGO Y FINANCIACIÓN"
         disabled={stepsCompleted?.step1}
       >
-        Test
+        <StepTwo />
       </Accordion>
       <Accordion
         i={3}

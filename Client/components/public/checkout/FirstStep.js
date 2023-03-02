@@ -20,7 +20,13 @@ export const FirstStep = ({ onClick }) => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({ resolver: yupResolver(schema) })
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      state: user?.state || '',
+      code: user?.code || '',
+    },
+  })
 
   const onSubmit = (data) => {
     setUser({ ...user, state: data.state, code: data.code })
@@ -31,7 +37,7 @@ export const FirstStep = ({ onClick }) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Container
         variants={{ collapsed: { scale: 0.8 }, open: { scale: 1 } }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.4 }}
         key="content"
         initial="collapsed"
         animate="open"
