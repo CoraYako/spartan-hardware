@@ -18,7 +18,12 @@ export const Steps = () => {
         title="1. Elegi la opción de retiro o envio de tu compra"
         disabled={true}
       >
-        <FirstStep />
+        <FirstStep
+          onClick={() => {
+            setStepsCompleted({ ...stepsCompleted, step1: true })
+            setExpanded(2)
+          }}
+        />
       </Accordion>
       <Accordion
         i={2}
@@ -45,5 +50,4 @@ export const Steps = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 15px;
 `

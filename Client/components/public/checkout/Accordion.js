@@ -28,7 +28,7 @@ export const Accordion = ({
       >
         <h2>{title}</h2>
       </AccordionHeader>
-      <AnimatePresence initial={false}>
+      <AnimatePresence initial={false} mode="wait">
         {isOpen && (
           <motion.section
             key="content"
@@ -40,6 +40,7 @@ export const Accordion = ({
               collapsed: { opacity: 0, height: 0 },
             }}
             transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
+            style={{ marginBottom: '20px' }}
           >
             {children}
           </motion.section>
@@ -52,7 +53,7 @@ export const Accordion = ({
 const AccordionHeader = styled(motion.div)`
   width: 100%;
   height: 52px;
-  border-radius: 8px;
+  border-radius: 8px 8px 0 0;
   display: flex;
   align-items: center;
   padding: 0 16px;
