@@ -104,7 +104,7 @@ function CheckboxSpring({ onChange, disabled, text = '', quantity }) {
         />
       </animated.svg>
       <p>
-        {text} ({quantity})
+        {text} {quantity}
       </p>
     </CheckboxContainer>
   )

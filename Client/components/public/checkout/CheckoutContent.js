@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import styled from 'styled-components'
 import { TotalAmount } from '../cart/TotalAmount'
 import { CarouselProduct } from '../Product/CarouselProduct'
+import { Steps } from './Steps'
 
 export const CheckoutContent = () => {
   const { cart } = useContext(CartContext)
@@ -17,7 +18,9 @@ export const CheckoutContent = () => {
     <Container>
       <h2>Estas a punto de terminar tu compra!</h2>
       <div className="cart">
-        <div className="steps"></div>
+        <div className="steps">
+          <Steps />
+        </div>
         <div className="details">
           <div className="product">
             <CarouselProduct images={images} />
@@ -63,7 +66,5 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
-    max-height: 600px;
-    overflow-y: scroll;
   }
 `

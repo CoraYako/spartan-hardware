@@ -26,6 +26,7 @@ export const TotalAmount = ({ checkout }) => {
         )}
         <div className="list">
           {cart &&
+            checkout &&
             cart.map((item) => (
               <CartCard
                 key={item.id}
