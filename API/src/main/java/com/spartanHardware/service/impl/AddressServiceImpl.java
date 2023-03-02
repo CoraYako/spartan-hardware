@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +26,10 @@ public class AddressServiceImpl implements IAddressService {
     @Override
     @Transactional
     public AddressResponseDTO registerAddress(AddressRequestDTO dto,User loggedUser) {
+        if(repository.findIfAddressExist(dto.getStreet(),dto.getNumber())){
+            // TODO: 01/3/2023 Cambiar mensaje por properties
+            throw new RuntimeException("Esta dirección ya existe");
+        }
         Address address = mapper.toAddress(dto);
         loggedUser.getAddresses().add(address);
         address.setUser(loggedUser);
@@ -55,10 +60,8 @@ public class AddressServiceImpl implements IAddressService {
 
     @Override
     public Address getAddressById(Long id) {
-        if(repository.findById(id).isEmpty())
-            // TODO: 22/2/2023 Cambiar mensaje por properties
-            throw new RuntimeException("La dirección no coincide");
-        return repository.findById(id).get();
+
+        return repository.findById(id).orElseThrow(() -> new NullPointerException("Address not found"));
     }
 
     @Override
