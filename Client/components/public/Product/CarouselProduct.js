@@ -10,10 +10,8 @@ import styled from 'styled-components'
 // import required modules
 import { Autoplay, Pagination } from 'swiper'
 import Image from 'next/image'
-import MockImage from '@/public/images/mockBaner.png'
 
 export const CarouselProduct = ({ images, name }) => {
-  console.log(images)
   return (
     <CustomSwiper
       pagination={{

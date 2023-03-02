@@ -4,21 +4,40 @@ import DeleteIcon from '@/public/icons/Delete'
 import FormatPrice from '@/utils/FormatPrice'
 import { useContext } from 'react'
 import styled from 'styled-components'
+import { CartCard } from './CartCard'
 
-export const TotalAmount = () => {
+export const TotalAmount = ({ checkout }) => {
   const { cart, emptyCart } = useContext(CartContext)
   const totalPrice = cart.reduce((total, product) => total + product.price, 0)
   return (
-    <Container>
+    <Container checkout={checkout}>
       <div className="top">
         <h4>RESUMEN DEL PEDIDO</h4>
       </div>
       <div className="bot">
         <h4>TOTAL: ${FormatPrice(totalPrice, 0, 1)}</h4>
-        <div className="empty_cart" onClick={() => emptyCart()}>
-          <DeleteIcon />
+        {!checkout && (
+          <>
+            <div className="empty_cart" onClick={() => emptyCart()}>
+              <DeleteIcon />
+            </div>
+            <Button text="CONTINUAR" to="/checkout" />
+          </>
+        )}
+        <div className="list">
+          {cart &&
+            cart.map((item) => (
+              <CartCard
+                key={item.id}
+                checkout={checkout}
+                img={item.img}
+                id={item.id}
+                name={item.title}
+                price={item.price}
+                quantity={item.quantityInCart}
+              />
+            ))}
         </div>
-        <Button text="CONTINUAR" />
       </div>
     </Container>
   )
@@ -29,6 +48,15 @@ const Container = styled.div`
   flex-direction: column;
   border-radius: 8px;
   border: 1px solid #9e9e9e;
+  .list {
+    margin: 15px 0 0 0;
+    overflow-y: scroll;
+    max-height: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 8px;
+  }
   .empty_cart {
     padding: 10px;
     background: #de0303;
@@ -51,7 +79,8 @@ const Container = styled.div`
   .bot {
     padding: 20px 16px 14px 16px;
     display: flex;
-    flex-direction: row;
+    flex-direction: ${(props) => (props.checkout ? 'column' : 'row')};
+    align-items: center;
     h4 {
       font-family: 'Raleway';
       font-style: normal;

@@ -12,10 +12,11 @@ export const CartCard = ({
   price = 200000,
   quantity = 1,
   id = 1,
+  checkout,
 }) => {
   const { removeFromCart } = useContext(CartContext)
   return (
-    <Card>
+    <Card checkout={checkout}>
       <div className="image">
         <Image src={img || MockImage} alt="product" />
       </div>
@@ -58,11 +59,11 @@ const Card = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 64px 0 0;
+    margin: ${(props) => (props.checkout ? '0 10px' : ' 0 64px 0 0')};
     gap: 20px;
   }
   .image {
-    padding: 0 40px;
+    padding: ${(props) => (props.checkout ? '0 10px' : '0 40px')};
     border-right: 1px solid #b7b7b799;
   }
   h5 {
