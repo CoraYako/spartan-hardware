@@ -10,7 +10,9 @@ const CartProvider = ({ children }) => {
       const cartFromLocalStorage = localStorage.getItem('cart')
       return cartFromLocalStorage
         ? setCart(JSON.parse(cartFromLocalStorage))
-        : []
+        : setCart([])
+    } else {
+      setCart([])
     }
   }, [])
 
