@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -27,6 +29,7 @@ public class ShopOrder {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @CreationTimestamp
     @Column(name = "order_date")
     private LocalDateTime orderDate;
 
@@ -42,5 +45,5 @@ public class ShopOrder {
     private List<ShoppingCartItem> products;
 
     @Column(name = "order_total")
-    private Double orderTotal;
+    private BigDecimal orderTotal;
 }
