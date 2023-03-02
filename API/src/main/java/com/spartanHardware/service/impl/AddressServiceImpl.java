@@ -8,8 +8,6 @@ import com.spartanHardware.model.mapper.AddressMapper;
 import com.spartanHardware.repository.AddressRepository;
 import com.spartanHardware.service.IAddressService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,7 +36,7 @@ public class AddressServiceImpl implements IAddressService {
     public AddressResponseDTO updateAddress(AddressRequestDTO dto, Long id, User
                                              loggedUser) {
         Address address = getAddressById(id);
-        if(!address.getUser().equals(loggedUser))
+        if(!loggedUser.getUsername().equals(address.getUser().getUsername()))
             // TODO: 22/2/2023 Cambiar mensaje por properties
             throw new RuntimeException("Esta dirección no coincide con el usuario logeado");
 
@@ -64,7 +62,7 @@ public class AddressServiceImpl implements IAddressService {
     @Override
     public AddressResponseDTO getAddressDtoById(Long id, User loggedUser) {
         Address address = getAddressById(id);
-        if(!address.getUser().equals(loggedUser))
+        if(!loggedUser.getUsername().equals(address.getUser().getUsername()))
             // TODO: 22/2/2023 Cambiar mensaje por properties
             throw new RuntimeException("Esta dirección no coincide con el usuario logeado");
         return mapper.toDto(address);
@@ -74,7 +72,7 @@ public class AddressServiceImpl implements IAddressService {
     @Transactional
     public void deleteAddressById(Long id, User loggedUser) {
         Address address = getAddressById(id);
-        if(!address.getUser().equals(loggedUser))
+        if(!loggedUser.getUsername().equals(address.getUser().getUsername()))
             // TODO: 22/2/2023 Cambiar mensaje por properties
             throw new RuntimeException("Esta dirección no coincide con el usuario logeado");
         repository.deleteById(id);
