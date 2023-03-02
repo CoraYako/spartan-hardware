@@ -20,7 +20,7 @@ public class ProductDataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        loadProductsData();
+    //    loadProductsData();
     }
 
     private void loadProductsData() {
