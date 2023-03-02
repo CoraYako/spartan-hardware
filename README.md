@@ -99,9 +99,9 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:3000).
 
 ### 👉🏻 Developers
 
-| <img src="https://i.postimg.cc/hj1wzDrn/Carolina.jpg" alt="Photo Carolina Quevedo" width=80>| <img src="https://i.postimg.cc/cCf4VYnx/Hector.jpg" alt="Photo Hector Cortez" width=80>| <img src="https://res.cloudinary.com/diyk4to11/image/upload/v1666206668/Integrantes/4b94dc66375663.62dc2dd79dd14_tkhwac.png" width=80>|
+| <img src="https://i.postimg.cc/hj1wzDrn/Carolina.jpg" alt="Photo Carolina Quevedo" width=80>| <img src="https://i.postimg.cc/cCf4VYnx/Hector.jpg" alt="Photo Hector Cortez" width=80>| <img src="https://i.postimg.cc/90cMMwqD/Yo-panal.jpg" alt="Photo Matías Carballo" width=80>|
 |:-:|:-:|:-:|
-| **Carolina Quevedo**  | **Hector Cortez**  | **Matias Carballo** |
+| **Carolina Quevedo**  | **Hector Cortez**  | **Matías Carballo** |
 | <a href="https://github.com/CarolinaCQ" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/carolina-camila-quevedo/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/CoraYako" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/hector-cortez-cy" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/lokywolf2295" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/matias-es-carballo/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
 
 <hr/>
