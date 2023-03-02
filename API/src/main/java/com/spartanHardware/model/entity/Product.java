@@ -50,12 +50,12 @@ public class Product {
 
     @Column(name = "short_description",
             nullable = false,
-            length = 500)
+            length = 1500)
     private String shortDescription;
 
     @Column(name = "description",
             nullable = false,
-            length = 1000)
+            length = 2500)
     private String description;
 
     @Column(name = "recommended")
