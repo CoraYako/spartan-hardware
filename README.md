@@ -47,12 +47,9 @@ _6 - Run the backend server with  **`mvn spring-boot:run`** To make it work you 
 ##### _Back_ 
 
 ```
-PORT = Number of the port where you wanna run api (ex. 4000).
 DB = For Db in MySQL.
 SECRET_KEY : Is the secret key used for JWT.
 BASE_URL = localhost of you api ( ex. http://localhost:8080).
-EMAIL_PASSWORD = The Password of the email used in Nodemailer.
-EMAIL_API = The email there you want to use in Nodemailer.
 ```
 
 ##### _Front .env_
