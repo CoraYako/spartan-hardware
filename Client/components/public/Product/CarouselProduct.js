@@ -10,10 +10,8 @@ import styled from 'styled-components'
 // import required modules
 import { Autoplay, Pagination } from 'swiper'
 import Image from 'next/image'
-import MockImage from '@/public/images/mockBaner.png'
 
-export const CarouselProduct = ({ images, name }) => {
-  console.log(images)
+export const CarouselProduct = ({ images, name, byCart = false }) => {
   return (
     <CustomSwiper
       pagination={{
@@ -23,7 +21,7 @@ export const CarouselProduct = ({ images, name }) => {
       modules={[Pagination, Autoplay]}
       className="mySwiper"
       slidesPerView={3}
-      spaceBetween={30}
+      spaceBetween={100}
       autoplay={{
         delay: 1000,
         disableOnInteraction: true,
@@ -31,9 +29,18 @@ export const CarouselProduct = ({ images, name }) => {
     >
       {images &&
         images.map((item) => (
-          <SwiperSlide key={item.id}>
+          <SwiperSlide key={Math.random()}>
             <h2> {item.name}</h2>
-            <Image src={item.images} alt="product" />
+            <Image
+              src={
+                !byCart
+                  ? 'http://' + item?.slice(8)
+                  : 'http://' + item?.images?.slice(8)
+              }
+              alt="product"
+              width={200}
+              height={200}
+            />
           </SwiperSlide>
         ))}
     </CustomSwiper>
@@ -45,6 +52,7 @@ const CustomSwiper = styled(Swiper)`
   max-width: 550px;
   .swiper-wrapper {
     height: 350px;
+    width: 2000px;
   }
   .swiper-slide {
     color: #fff;

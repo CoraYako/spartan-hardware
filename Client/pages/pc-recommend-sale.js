@@ -5,11 +5,19 @@ import { motion } from 'framer-motion'
 import BannerImg from '@/public/images/BannerPCSale.png'
 import { CatalogPcLow } from '@/components/public/PcRecommendSale/CatalogPcLow'
 import Link from 'next/link'
-import { getProducts } from '@/utils/services'
 import { useQuery } from 'react-query'
+import axios from 'axios'
 
 export default function PcRecommend() {
-  // const { isLoading, error, data } = useQuery('products', getProducts())
+  const URL_API = process.env.NEXT_PUBLIC_URL_API
+
+  const { isLoading, error, data } = useQuery('products', () =>
+    axios
+      .get(`${URL_API}/api/v1/products/paginated?page=0`)
+      .then((res) => res.data)
+      .catch((e) => console.log(e.response)),
+  )
+
   return (
     <>
       <Head>
@@ -37,7 +45,7 @@ export default function PcRecommend() {
           </Link>
           / <strong>PC´s Recomendadas</strong>
         </p>
-        <CatalogPcLow />
+        <CatalogPcLow items={data?.content} />
       </motion.div>
     </>
   )

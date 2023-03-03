@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import styled from 'styled-components'
 
 export const CardCategory = ({
@@ -10,13 +11,18 @@ export const CardCategory = ({
   isColumn = false,
   action,
   step,
+  setcategory,
+  slug,
 }) => {
+  selected && setcategory(slug)
   return (
     <CardContainer
       disabled={disabled}
       selected={selected}
       isColumn={isColumn}
-      onClick={() => action(step)}
+      onClick={() => {
+        action(step)
+      }}
     >
       <Image src={icon} alt="icon" />
       <div className="text">

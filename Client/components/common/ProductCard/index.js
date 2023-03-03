@@ -2,12 +2,12 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import ImageMock from '@/public/images/img_keyboard_test.png'
 import Image from 'next/image'
-import { Details } from './Details'
 import { Button } from '../Button'
 import { Label } from '../Label'
 import FormatPrice from '@/utils/FormatPrice'
 import { useContext } from 'react'
 import { CartContext } from '@/context/CartContext'
+import { useRouter } from 'next/router'
 
 export const ProductCard = ({
   img,
@@ -21,8 +21,11 @@ export const ProductCard = ({
   bypcbuild = false,
   id,
   product,
+  step,
+  setStep,
 }) => {
   const { addToCart } = useContext(CartContext)
+  const router = useRouter()
 
   return (
     <CardContainer
@@ -33,11 +36,11 @@ export const ProductCard = ({
       {promotion && <Label typeLabel="promotion" msg="Promoción" />}
       {fastSend && <Label typeLabel="shipping" msg="Entrega inmediata" />}
       <div className="top-info">
-        <Image src={img || ImageMock} alt="image-name" />
+        <Image src={img || ImageMock} alt={title} width={150} height={150} />
         <div className="divider" />
         <div className="text">
           <h3>{title || 'Teclado Mecanico Redragon Draconic K530'}</h3>
-          <Details details={details} />
+          <p className="details">{details}</p>
         </div>
       </div>
       <div className="price">
@@ -48,10 +51,19 @@ export const ProductCard = ({
       </div>
       <div className="button-container">
         {bypcbuild ? (
-          <Button text="SUMAR AL CARRITO" />
+          <Button
+            text="SUMAR AL CARRITO"
+            action={() => {
+              if (step === 12) {
+                addToCart(product), router.push('/cart')
+              } else {
+                addToCart(product), setStep(++step)
+              }
+            }}
+          />
         ) : (
           <>
-            <Button text="Detalle" />
+            <Button text="Detalle" to={`/product/${id}`} />
             <Button text="Agregar" action={() => addToCart(product)} />
           </>
         )}
@@ -62,11 +74,18 @@ export const ProductCard = ({
 
 const CardContainer = styled(motion.article)`
   width: 29.4rem;
-  max-height: 510px;
+  min-height: 520px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
   margin: ${(props) => (props.margin ? props.margin : '3rem 0')};
   background-color: var(--gray4);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .details {
+    margin-top: 20px;
+  }
 
   .price {
     background-color: var(--primaryGreen1);

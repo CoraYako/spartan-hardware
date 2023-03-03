@@ -9,11 +9,13 @@ export const CartSection = () => {
   const { cart } = useContext(CartContext)
   const images = cart.map((item) => {
     return {
-      images: item.img,
-      name: item.title,
+      images: item.urlImages[0],
+      name: item.name,
       id: item.id,
     }
   })
+
+  console.log(cart)
 
   return (
     <Container>
@@ -23,9 +25,9 @@ export const CartSection = () => {
           {cart &&
             cart.map((item) => (
               <CartCard
-                img={item.img}
+                img={'http://' + item?.urlImages[0]?.slice(8)}
                 id={item.id}
-                name={item.title}
+                name={item.name}
                 price={item.price}
                 quantity={item.quantityInCart}
                 key={item.id}
@@ -35,7 +37,7 @@ export const CartSection = () => {
         </div>
         <div className="details">
           <div className="product">
-            <CarouselProduct images={images} />
+            <CarouselProduct images={images} byCart />
           </div>
           <div className="total_amount">
             <TotalAmount />

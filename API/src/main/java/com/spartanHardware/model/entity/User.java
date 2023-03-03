@@ -87,10 +87,10 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<Review> reviews;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = EAGER)
     private List<ShopOrder> shopOrders;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = EAGER)
     private List<ShoppingCart> shoppingCarts;
 
     @OneToMany(mappedBy = "user", fetch = EAGER)
