@@ -36,6 +36,7 @@ export const CatalogPcLow = () => {
               price={item.price}
               promotion={item.promotion}
               fastSend={item.fastSend}
+              product={item}
             />
           ))}
       </div>

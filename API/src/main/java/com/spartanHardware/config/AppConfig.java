@@ -24,6 +24,7 @@ public class AppConfig {
 
     protected final String[] ALLOWED_ORIGINS = {
             "https://c9-22-t-javareact.vercel.app",
+            "http://localhost",
             "http://localhost:3000"
     };
     protected final String[] ALLOWED_METHODS = {
@@ -80,5 +81,4 @@ public class AppConfig {
 
         };
     }
-
 }

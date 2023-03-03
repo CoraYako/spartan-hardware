@@ -8,6 +8,7 @@ import GlobalContextProvider from '@/context/GlobalContext'
 //Components
 import Layout from '@/components/common/Layout'
 import UserContextProvider from '@/context/UserContext'
+import CartProvider from '@/context/CartContext'
 
 export default function App({ Component, pageProps }) {
   const queryClient = new QueryClient()
@@ -15,12 +16,14 @@ export default function App({ Component, pageProps }) {
   return (
     <GlobalContextProvider>
       <UserContextProvider>
-        <QueryClientProvider client={queryClient}>
-          <GlobalStyles />
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </QueryClientProvider>
+        <CartProvider>
+          <QueryClientProvider client={queryClient}>
+            <GlobalStyles />
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </QueryClientProvider>
+        </CartProvider>
       </UserContextProvider>
     </GlobalContextProvider>
   )
