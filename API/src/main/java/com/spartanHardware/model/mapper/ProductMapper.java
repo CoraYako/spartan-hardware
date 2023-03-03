@@ -26,6 +26,9 @@ public class ProductMapper implements Function<Product, ProductResponseDto> {
         product.setPrice(BigDecimal.valueOf(productRequestDto.getPrice()));
         product.setQuantity(productRequestDto.getQuantity());
 
+        if (productRequestDto.getSpecialPrice() != null && productRequestDto.getSpecialPrice() > 0)
+            product.setSpecialPrice(BigDecimal.valueOf(productRequestDto.getSpecialPrice()));
+
         return product;
     }
 
@@ -39,8 +42,8 @@ public class ProductMapper implements Function<Product, ProductResponseDto> {
         productResponseDto.setModel(product.getModel());
         productResponseDto.setUrlImages(
                 product.getProductImages()
-                .stream()
-                .map(Image::getSrc).toList()
+                        .stream()
+                        .map(Image::getSrc).toList()
         );
         productResponseDto.setCategory(product.getParentCategory().getCategory());
         productResponseDto.setSubCategory(product.getSubCategory().getSubCategory());
@@ -53,6 +56,7 @@ public class ProductMapper implements Function<Product, ProductResponseDto> {
         productResponseDto.setAvailable(product.getAvailable());
         productResponseDto.setInStockSince(product.getInStockSince());
         productResponseDto.setUpdateDate(product.getUpdateDate());
+        productResponseDto.setFastShipping(product.isFastShipping());
 
         return productResponseDto;
     }

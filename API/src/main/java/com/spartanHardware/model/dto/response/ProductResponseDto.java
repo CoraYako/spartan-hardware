@@ -29,4 +29,5 @@ public class ProductResponseDto {
     private boolean available;
     private LocalDateTime inStockSince;
     private LocalDateTime updateDate;
+    private boolean fastShipping;
 }

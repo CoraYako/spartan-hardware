@@ -55,9 +55,11 @@ public class ProductServiceImpl implements IProductService {
         Product product = productMapper.toEntity(productRequestDto);
 
         List<Image> images = new ArrayList<>();
-        productRequestDto.getImages().forEach(imageUrl -> {
-            images.add(new Image(imageUrl, product));
-        });
+        if (!productRequestDto.getImages().isEmpty()) {
+            productRequestDto.getImages().forEach(imageUrl ->
+                images.add(new Image(imageUrl, product))
+            );
+        }
         product.setProductImages(images);
 
         ParentCategory category = getCategoryByNameOrCreateNewOne(productRequestDto.getCategory());
