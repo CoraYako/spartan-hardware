@@ -9,7 +9,7 @@ export const Outstanding = ({ props }) => {
   const URL_API = process.env.NEXT_PUBLIC_URL_API
   const { isLoading, error, data } = useQuery(['recommended'], () =>
     axios
-      .get(`${URL_API}/products/recommended`)
+      .get(`${URL_API}/api/v1/products/recommended`)
       .then((res) => res.data)
       .catch((e) => console.log(e.response)),
   )

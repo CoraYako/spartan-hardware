@@ -14,7 +14,7 @@ export default function BuildPcPage() {
 
   const { isLoading, error, data } = useQuery(['byCategories', category], () =>
     axios
-      .get(`${URL_API}/products/filter?category=${category}&page=0`)
+      .get(`${URL_API}/api/v1/products/filter?category=${category}&page=0`)
       .then((res) => res.data)
       .catch((e) => console.log(e.response)),
   )

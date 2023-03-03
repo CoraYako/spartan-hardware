@@ -17,7 +17,7 @@ export default function Product() {
   const URL_API = process.env.NEXT_PUBLIC_URL_API
   const { isLoading, error, data } = useQuery(['products', id], () =>
     axios
-      .get(`${URL_API}/products/details/${id}`)
+      .get(`${URL_API}/api/v1/products/details/${id}`)
       .then((res) => res.data)
       .catch((e) => console.log(e.response)),
   )

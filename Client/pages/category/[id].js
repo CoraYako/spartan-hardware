@@ -15,7 +15,7 @@ export default function CategoriesList() {
 
   const { isLoading, error, data } = useQuery(['byCategories', id], () =>
     axios
-      .get(`${URL_API}/products/filter?category=${id}&page=0`)
+      .get(`${URL_API}/api/v1/products/filter?category=${id}&page=0`)
       .then((res) => res.data)
       .catch((e) => console.log(e.response)),
   )

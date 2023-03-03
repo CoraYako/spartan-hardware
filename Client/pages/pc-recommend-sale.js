@@ -13,7 +13,7 @@ export default function PcRecommend() {
 
   const { isLoading, error, data } = useQuery('products', () =>
     axios
-      .get(`${URL_API}/products/paginated?page=0`)
+      .get(`${URL_API}/api/v1/products/paginated?page=0`)
       .then((res) => res.data)
       .catch((e) => console.log(e.response)),
   )
