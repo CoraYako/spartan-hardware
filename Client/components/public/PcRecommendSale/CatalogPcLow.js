@@ -1,9 +1,8 @@
 import { ProductCard } from '@/components/common/ProductCard'
 import styled from 'styled-components'
 import CheckboxSpring from '../../common/Checkbox'
-import { Items } from './mock'
 
-export const CatalogPcLow = () => {
+export const CatalogPcLow = ({ items }) => {
   return (
     <Container>
       <div className="categories">
@@ -26,15 +25,16 @@ export const CatalogPcLow = () => {
         </div>
       </div>
       <div className="products">
-        {Items &&
-          Items.map((item) => (
+        {items &&
+          items.map((item) => (
             <ProductCard
               key={item.id}
-              img={item.img}
-              title={item.title}
-              details={item.details}
+              id={item.id}
+              img={'http://' + item.urlImages[0].slice(8)}
+              title={item.name}
+              details={item.shortDescription}
               price={item.price}
-              promotion={item.promotion}
+              promotion={item.recommended}
               fastSend={item.fastSend}
               product={item}
             />

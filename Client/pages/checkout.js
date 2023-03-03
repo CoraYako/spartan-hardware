@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { CheckoutContent } from '@/components/public/checkout/CheckoutContent'
 
-export default function PcRecommend() {
+export default function CheckoutPage() {
   return (
     <>
       <Head>

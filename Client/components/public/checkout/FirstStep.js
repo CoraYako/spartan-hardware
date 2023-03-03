@@ -46,14 +46,12 @@ export const FirstStep = ({ onClick }) => {
         <div className="inputs">
           <Input
             register={register('state')}
-            registerInput={'state'}
             errors={errors?.state?.message}
             label="Ingresa tu provincia"
             placeholder="Provincia"
           />
           <Input
             register={register('code')}
-            registerInput={'code'}
             errors={errors?.code?.message}
             label="Numero postal"
             placeholder="Numero postal"

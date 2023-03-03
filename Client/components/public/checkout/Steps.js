@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import { Accordion } from './Accordion'
 import { FirstStep } from './FirstStep'
+import { StepThree } from './StepThree'
 import { StepTwo } from './StepTwo'
 
 export const Steps = () => {
@@ -46,7 +47,7 @@ export const Steps = () => {
         title="3. Finaliza tu compra"
         disabled={stepsCompleted?.step2}
       >
-        Test
+        <StepThree />
       </Accordion>
     </Container>
   )

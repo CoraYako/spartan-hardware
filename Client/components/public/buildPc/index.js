@@ -5,8 +5,9 @@ import LogoIntel from '@/public/images/Intel-Logo.png'
 import { CardCategory } from './CardCategory'
 import { steps } from './helper'
 import { Steps } from './Steps'
+import { Button } from '@/components/common/Button'
 
-export const BuildPcComponent = ({ router }) => {
+export const BuildPcComponent = ({ router, data, setcategory }) => {
   return (
     <Container>
       <h2 className="title">Arma tu Pc</h2>
@@ -17,6 +18,12 @@ export const BuildPcComponent = ({ router }) => {
           primero que vas hacer es seleccionar el procesador de tu gusto y
           despues cada componente, vamos a empezar.
         </p>
+      )}
+      {router && (
+        <div className="container_button">
+          <p>Crees que terminaste?</p>
+          <Button text="FINALIZAR COMPRA" to="/cart" />
+        </div>
       )}
       <div className="content">
         {!router ? (
@@ -46,7 +53,7 @@ export const BuildPcComponent = ({ router }) => {
             </div>
           </>
         ) : (
-          <Steps />
+          <Steps dataProducts={data} setcategory={setcategory} />
         )}
       </div>
     </Container>
@@ -59,6 +66,15 @@ const Container = styled.div`
   flex-direction: column;
   margin: 10px auto 0;
   padding: 0 2.5rem;
+  .container_button {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    p {
+      margin: 10px 0 20px;
+    }
+    margin: 20px 0 0;
+  }
   .options {
     display: flex;
     flex-direction: row;

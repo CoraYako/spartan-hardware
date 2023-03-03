@@ -1,19 +1,21 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-
+import { useRouter } from 'next/router'
 import BannerImg from '@/public/images/BannerPCSale.png'
 import { CatalogPcLow } from '@/components/public/PcRecommendSale/CatalogPcLow'
 import Link from 'next/link'
 import { useQuery } from 'react-query'
 import axios from 'axios'
 
-export default function PcRecommend() {
+export default function CategoriesList() {
   const URL_API = process.env.NEXT_PUBLIC_URL_API
+  const router = useRouter()
+  const { id } = router.query
 
-  const { isLoading, error, data } = useQuery('products', () =>
+  const { isLoading, error, data } = useQuery(['byCategories', id], () =>
     axios
-      .get(`${URL_API}/products/paginated?page=0`)
+      .get(`${URL_API}/products/filter?category=${id}&page=0`)
       .then((res) => res.data)
       .catch((e) => console.log(e.response)),
   )
@@ -43,7 +45,7 @@ export default function PcRecommend() {
           <Link passHref href="/">
             Home
           </Link>
-          / <strong>PC´s Recomendadas</strong>
+          / <strong>{router.query.id}</strong>
         </p>
         <CatalogPcLow items={data?.content} />
       </motion.div>

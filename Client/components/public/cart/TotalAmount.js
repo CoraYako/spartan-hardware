@@ -8,7 +8,10 @@ import { CartCard } from './CartCard'
 
 export const TotalAmount = ({ checkout }) => {
   const { cart, emptyCart } = useContext(CartContext)
-  const totalPrice = cart.reduce((total, product) => total + product.price, 0)
+  const totalPrice = cart.reduce(
+    (total, product) => total + product.price * product.quantityInCart,
+    0,
+  )
   return (
     <Container checkout={checkout}>
       <div className="top">
@@ -29,13 +32,13 @@ export const TotalAmount = ({ checkout }) => {
             checkout &&
             cart.map((item) => (
               <CartCard
-                key={item.id}
-                checkout={checkout}
-                img={item.img}
+                img={'http://' + item?.urlImages[0]?.slice(8)}
                 id={item.id}
-                name={item.title}
+                name={item.name}
                 price={item.price}
                 quantity={item.quantityInCart}
+                key={item.id}
+                checkout
               />
             ))}
         </div>

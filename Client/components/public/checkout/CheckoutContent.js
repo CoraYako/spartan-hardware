@@ -9,7 +9,7 @@ export const CheckoutContent = () => {
   const { cart } = useContext(CartContext)
   const images = cart.map((item) => {
     return {
-      images: item.img,
+      images: item.urlImages[0],
       name: item.title,
       id: item.id,
     }
@@ -23,7 +23,7 @@ export const CheckoutContent = () => {
         </div>
         <div className="details">
           <div className="product">
-            <CarouselProduct images={images} />
+            <CarouselProduct images={images} byCart />
           </div>
           <div className="total_amount">
             <TotalAmount checkout />

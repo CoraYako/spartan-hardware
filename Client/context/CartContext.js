@@ -25,7 +25,7 @@ const CartProvider = ({ children }) => {
     saveCartToLocalStorage(updatedCart)
   }
 
-  const addToCart = (product) => {
+  const addToCart = (product, quantityInCart = 1) => {
     const existingProductIndex = cart.findIndex(
       (item) => item.id === product.id,
     )
@@ -34,7 +34,7 @@ const CartProvider = ({ children }) => {
       const existingProduct = cart[existingProductIndex]
       const updatedProduct = {
         ...existingProduct,
-        quantityInCart: existingProduct?.quantityInCart + 1,
+        quantityInCart: existingProduct?.quantityInCart + quantityInCart,
       }
 
       if (updatedProduct.quantityInCart > product.quantity) {
@@ -45,7 +45,7 @@ const CartProvider = ({ children }) => {
       updatedCart[existingProductIndex] = updatedProduct
       updateCartAndSaveToLocalStorage(updatedCart)
     } else {
-      const updatedProduct = { ...product, quantityInCart: 1 }
+      const updatedProduct = { ...product, quantityInCart: quantityInCart }
 
       if (updatedProduct.quantityInCart > product.quantity) {
         updatedProduct.quantityInCart = product.quantity
