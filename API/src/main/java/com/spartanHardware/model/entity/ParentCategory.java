@@ -7,6 +7,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.data.repository.cdi.Eager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +27,6 @@ public class ParentCategory {
     // TODO: 18/2/2023 Find the best practice to initialize the HashMap
     public ParentCategory(String category) {
         this.category = category;
-        this.products = new ArrayList<>();
-        this.subCategories = new ArrayList<>();
     }
 
     @Id
@@ -37,11 +38,11 @@ public class ParentCategory {
     @Column(name = "category")
     private String category;
 
-    @OneToMany(mappedBy = "parentCategory")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "parentCategory")
     @JsonIgnoreProperties("parentCategory")
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 
-    @OneToMany(mappedBy = "parentCategory")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "parentCategory", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("parentCategory")
-    private List<SubCategory> subCategories;
+    private List<SubCategory> subCategories = new ArrayList<>();
 }

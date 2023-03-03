@@ -2,6 +2,10 @@ package com.spartanHardware.util;
 
 
 import com.spartanHardware.model.dto.request.ProductRequestDto;
+import com.spartanHardware.model.entity.ParentCategory;
+import com.spartanHardware.model.entity.SubCategory;
+import com.spartanHardware.repository.ParentCategoryRepository;
+import com.spartanHardware.repository.SubCategoryRepository;
 import com.spartanHardware.service.IProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -17,10 +21,12 @@ import static java.lang.Boolean.TRUE;
 public class ProductDataLoader implements CommandLineRunner {
 
     private final IProductService productService;
+    private final ParentCategoryRepository categoryRepository;
+    private final SubCategoryRepository subCategoryRepository;
 
     @Override
     public void run(String... args) throws Exception {
-    //    loadProductsData();
+        //loadProductsData();
     }
 
     private void loadProductsData() {
@@ -28,7 +34,9 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Notebook Dell Inspiron 3515 15.5, AMD Ryzen 5, AMD Radeon RX Vega 8, Windows 11 Home")
                 .brand("Dell")
                 .model("Inspiron 3515")
-//                .images()
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799531897hubble_30dor_potw2305a_main.jpg",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799572951iss068-e-40596_lrg.jpg",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799600507curiosity_selfie.jpg"))
                 .category("Notebook")
                 .subCategory("Oficina")
                 .shortDescription("Notebook Dell Inspiron 3515 plateada 15.5, AMD Ryzen 5 3450U 8GB de RAM 256GB SSD, " +
@@ -63,7 +71,9 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Notebook I5 Acer Nitro 5 Intel Core 256 Gb Ssd 8 Gb Ram")
                 .brand("Acer")
                 .model("Nitro 5")
-//                .images()
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799531897hubble_30dor_potw2305a_main.jpg",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799572951iss068-e-40596_lrg.jpg",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799600507curiosity_selfie.jpg"))
                 .category("Notebook")
                 .subCategory("Gamer")
                 .shortDescription("Acer Nitro 5 i5-11400H Notebook 39.6 cm (15.6 pulgadas) " +
@@ -98,7 +108,9 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("MSI Thin GF63 Core i5 8GB de RAM 512GB SSD GTX 1650")
                 .brand("MSI")
                 .model("Thin GF63")
-//                .images()
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799531897hubble_30dor_potw2305a_main.jpg",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799572951iss068-e-40596_lrg.jpg",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799600507curiosity_selfie.jpg"))
                 .category("Notebook")
                 .subCategory("Gamer")
                 .shortDescription("Notebook gamer MSI Thin GF63 negra 15.6 pulgadas, Intel Core i5 10300H 8GB de RAM " +
@@ -121,7 +133,9 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Asus X515ea Intel Core I3 1115g4 4gb De Ram 256gb Ssd Intel Uhd")
                 .brand("Asus")
                 .model("X515ea")
-//                .images()
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799531897hubble_30dor_potw2305a_main.jpg",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799572951iss068-e-40596_lrg.jpg",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799600507curiosity_selfie.jpg"))
                 .category("Notebook")
                 .subCategory("Oficina")
                 .shortDescription("Notebook Asus X515ea Gris 15.6 , Intel Core I3 1115g4 4gb De Ram 256gb Ssd, " +
@@ -146,7 +160,9 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Notebook Lenovo I5-1235u 512gb Ssd 8gb 15.6 Win11 Pro")
                 .brand("Lenovo")
                 .model("I5-1235u")
-//                .images()
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799531897hubble_30dor_potw2305a_main.jpg",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799572951iss068-e-40596_lrg.jpg",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799600507curiosity_selfie.jpg"))
                 .category("Notebook")
                 .subCategory("Oficina")
                 .shortDescription("Notebook Lenovo I5-1235u 512gb Ssd 8gb 15.6 Win11 Pro")
@@ -164,10 +180,20 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Mouse gaming Soul Master Player XM 1000")
                 .brand("Lenovo")
                 .model("I5-1235u")
-//                .images()
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799531897hubble_30dor_potw2305a_main.jpg",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799572951iss068-e-40596_lrg.jpg",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677799600507curiosity_selfie.jpg"))
                 .category("Notebook")
                 .subCategory("Oficina")
                 .shortDescription("Para trabajar desde casa con la computadora o aprovechar los momentos de ocio, " +
+                        "necesitás comodidad y facilidad de movimiento. Con tu Soul XM 1000 encontrá eso que " +
+                        "buscás en un solo aparato con la mejor tecnología. " +
+                        "Solo debés colocar el receptor en un puerto USB de la computadora y ya podés empezar a usarlo. " +
+                        "No hace falta emparejar el mouse ni descargar software para utilizarlo. " +
+                        "Con batería recargable incorporada que podés cargar fácilmente con el cable USB incluido sin " +
+                        "necesidad de reemplazarla. Para prolongar la duración, usá el conmutador de encendido para " +
+                        "apagar el mouse cuando no lo estés usando.")
+                .description("Para trabajar desde casa con la computadora o aprovechar los momentos de ocio, " +
                         "necesitás comodidad y facilidad de movimiento. Con tu Soul XM 1000 encontrá eso que " +
                         "buscás en un solo aparato con la mejor tecnología. " +
                         "Solo debés colocar el receptor en un puerto USB de la computadora y ya podés empezar a usarlo. " +

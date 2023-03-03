@@ -40,11 +40,11 @@ public class Product {
     @Column(name = "model")
     private String model;
 
-    @ManyToOne
+    @ManyToOne(fetch = EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "parent_category_id")
     private ParentCategory parentCategory;
 
-    @ManyToOne
+    @ManyToOne(fetch = EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "sub_category_id")
     private SubCategory subCategory;
 
@@ -87,6 +87,6 @@ public class Product {
     @Column(name = "updated_on_date")
     private LocalDateTime updateDate;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", fetch = EAGER)
     private List<Review> productReviews;
 }
