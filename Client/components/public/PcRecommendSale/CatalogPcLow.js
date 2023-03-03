@@ -5,7 +5,7 @@ import CheckboxSpring from '../../common/Checkbox'
 export const CatalogPcLow = ({ items }) => {
   return (
     <Container>
-      <div className="categories">
+      {/* <div className="categories">
         <h3>Ordenar productos</h3>
         <p>Menor precio</p>
         <p>Marca</p>
@@ -23,7 +23,7 @@ export const CatalogPcLow = ({ items }) => {
           <CheckboxSpring text="Intel Celeron" quantity="5" />
           <CheckboxSpring text="Intel I5 Cuarta G" quantity="15" />
         </div>
-      </div>
+      </div> */}
       <div className="products">
         {items &&
           items.map((item) => (
