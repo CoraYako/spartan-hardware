@@ -44,7 +44,7 @@ export const HiddenMenu = ({ open, action }) => {
   const URL_API = process.env.NEXT_PUBLIC_URL_API
   const { data } = useQuery('categories', () =>
     axios
-      .get(`${URL_API}/products/categories`)
+      .get(`${URL_API}/api/v1/products/categories`)
       .then((res) => res.data)
       .then((e) => e),
   )
