@@ -2,6 +2,7 @@ package com.spartanHardware.model.mapper;
 
 import com.spartanHardware.model.dto.request.ProductRequestDto;
 import com.spartanHardware.model.dto.response.ProductResponseDto;
+import com.spartanHardware.model.entity.Image;
 import com.spartanHardware.model.entity.Product;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +26,15 @@ public class ProductMapper implements Function<Product, ProductResponseDto> {
         product.setPrice(BigDecimal.valueOf(productRequestDto.getPrice()));
         product.setQuantity(productRequestDto.getQuantity());
 
+        if (productRequestDto.getSpecialPrice() != null && productRequestDto.getSpecialPrice() > 0)
+            product.setSpecialPrice(BigDecimal.valueOf(productRequestDto.getSpecialPrice()));
+
+        if (productRequestDto.isRecommended())
+            product.setRecommended(true);
+
+        if (productRequestDto.isFastShipping())
+            product.setFastShipping(true);
+
         return product;
     }
 
@@ -36,6 +46,11 @@ public class ProductMapper implements Function<Product, ProductResponseDto> {
         productResponseDto.setName(product.getName());
         productResponseDto.setBrand(product.getBrand());
         productResponseDto.setModel(product.getModel());
+        productResponseDto.setUrlImages(
+                product.getProductImages()
+                        .stream()
+                        .map(Image::getSrc).toList()
+        );
         productResponseDto.setCategory(product.getParentCategory().getCategory());
         productResponseDto.setSubCategory(product.getSubCategory().getSubCategory());
         productResponseDto.setShortDescription(product.getShortDescription());
@@ -47,6 +62,7 @@ public class ProductMapper implements Function<Product, ProductResponseDto> {
         productResponseDto.setAvailable(product.getAvailable());
         productResponseDto.setInStockSince(product.getInStockSince());
         productResponseDto.setUpdateDate(product.getUpdateDate());
+        productResponseDto.setFastShipping(product.isFastShipping());
 
         return productResponseDto;
     }

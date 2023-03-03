@@ -1,22 +1,21 @@
 package com.spartanHardware.service.impl;
 
+import com.spartanHardware.model.dto.request.ProductFilterRequest;
 import com.spartanHardware.model.dto.request.ProductRequestDto;
 import com.spartanHardware.model.dto.request.ProductReviewRequestDto;
 import com.spartanHardware.model.dto.response.ProductCategoryResponseDto;
 import com.spartanHardware.model.dto.response.ProductResponseDto;
 import com.spartanHardware.model.dto.response.ProductReviewResponseDto;
 import com.spartanHardware.model.dto.response.ProductSubCategoryResponseDto;
-import com.spartanHardware.model.entity.ParentCategory;
-import com.spartanHardware.model.entity.Product;
-import com.spartanHardware.model.entity.SubCategory;
-import com.spartanHardware.model.entity.User;
+import com.spartanHardware.model.entity.*;
 import com.spartanHardware.model.mapper.ParentCategoryMapper;
 import com.spartanHardware.model.mapper.ProductMapper;
 import com.spartanHardware.model.mapper.SubCategoryMapper;
+import com.spartanHardware.repository.ImageRepository;
 import com.spartanHardware.repository.ParentCategoryRepository;
 import com.spartanHardware.repository.ProductRepository;
 import com.spartanHardware.repository.SubCategoryRepository;
-import com.spartanHardware.service.IAWSS3Service;
+import com.spartanHardware.repository.specification.ProductSpecification;
 import com.spartanHardware.service.IProductService;
 import com.spartanHardware.service.IReviewService;
 import lombok.RequiredArgsConstructor;
@@ -24,10 +23,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 import static java.time.LocalDateTime.now;
 
 @Service
@@ -40,31 +43,42 @@ public class ProductServiceImpl implements IProductService {
     private final ProductRepository productRepository;
     private final ParentCategoryRepository categoryRepository;
     private final SubCategoryRepository subCategoryRepository;
-    private final IAWSS3Service awsS3Service;
+    private final ImageRepository imageRepository;
+    private final ProductSpecification productSpecification;
     private final ProductMapper productMapper;
     private final ParentCategoryMapper categoryMapper;
     private final SubCategoryMapper subCategoryMapper;
     private final IReviewService reviewService;
 
     @Override
+    @Transactional
     public ProductResponseDto createProduct(ProductRequestDto productRequestDto) {
         Product product = productMapper.toEntity(productRequestDto);
+
+        List<Image> images = new ArrayList<>();
+        if (!productRequestDto.getImages().isEmpty()) {
+            productRequestDto.getImages().forEach(imageUrl ->
+                images.add(new Image(imageUrl, product))
+            );
+        }
+        product.setProductImages(images);
 
         ParentCategory category = getCategoryByNameOrCreateNewOne(productRequestDto.getCategory());
         SubCategory subCategory = getSubCategoryByNameOrCreateNewOne(productRequestDto.getSubCategory());
 
-        subCategory.getProducts().add(product);
-        subCategory.setParentCategory(category);
-        subCategoryRepository.save(subCategory);
-
         category.getProducts().add(product);
         category.getSubCategories().add(subCategory);
-        categoryRepository.save(category);
+
+        subCategory.getProducts().add(product);
+        subCategory.setParentCategory(category);
 
         product.setParentCategory(category);
         product.setSubCategory(subCategory);
 
-        return productMapper.apply(productRepository.save(product));
+        Product productSaved = productRepository.save(product);
+        imageRepository.saveAll(images);
+
+        return productMapper.apply(productSaved);
     }
 
     @Override
@@ -134,13 +148,13 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public ParentCategory getCategoryByNameOrCreateNewOne(String category) {
         return categoryRepository.findByCategory(category)
-                .orElseGet(() -> categoryRepository.save(new ParentCategory(category)));
+                .orElseGet(() -> new ParentCategory(category));
     }
 
     @Override
     public SubCategory getSubCategoryByNameOrCreateNewOne(String subCategory) {
         return subCategoryRepository.findBySubCategory(subCategory)
-                .orElseGet(() -> subCategoryRepository.save(new SubCategory(subCategory)));
+                .orElseGet(() -> new SubCategory(subCategory));
     }
 
     @Override
@@ -148,5 +162,35 @@ public class ProductServiceImpl implements IProductService {
         Pageable pageable = PageRequest.of(page, PAGE_SIZE);
         pageable.next().getPageNumber();
         return productRepository.findAll(pageable).map(productMapper);
+    }
+
+    @Override
+    public Page<ProductResponseDto> getProductsFilteredByName(String query, int page) {
+        Pageable pageable = PageRequest.of(page, PAGE_SIZE);
+        pageable.next().getPageNumber();
+        Page<Product> products = productRepository.findAllByName(query, pageable);
+        if (products.isEmpty()) {
+            // TODO: 28/2/2023 change message to property
+            throw new NoSuchElementException("Products not founds for those categories or name");
+        }
+        return products.map(productMapper);
+    }
+
+    @Override
+    public Page<ProductResponseDto> getProductsFilteredByCategories(String category, String subCategory, int page) {
+        Pageable pageable = PageRequest.of(page, PAGE_SIZE);
+        pageable.next().getPageNumber();
+        Page<Product> products = productRepository.findAll(productSpecification.getByFilters(
+                new ProductFilterRequest(category, subCategory)), pageable);
+        if (products.isEmpty()) {
+            // TODO: 28/2/2023 change message to property
+            throw new NoSuchElementException("Products not founds for those categories or name");
+        }
+        return products.map(productMapper);
+    }
+
+    @Override
+    public List<ProductResponseDto> getAllProductsRecommended() {
+        return productRepository.finAllProductsIfRecommended(TRUE).stream().map(productMapper).toList();
     }
 }

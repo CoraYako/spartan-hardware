@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static jakarta.persistence.FetchType.EAGER;
 import static jakarta.persistence.GenerationType.IDENTITY;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
@@ -39,22 +40,22 @@ public class Product {
     @Column(name = "model")
     private String model;
 
-    @ManyToOne
+    @ManyToOne(fetch = EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "parent_category_id")
     private ParentCategory parentCategory;
 
-    @ManyToOne
+    @ManyToOne(fetch = EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "sub_category_id")
     private SubCategory subCategory;
 
     @Column(name = "short_description",
             nullable = false,
-            length = 500)
+            length = 1500)
     private String shortDescription;
 
     @Column(name = "description",
             nullable = false,
-            length = 1000)
+            length = 2500)
     private String description;
 
     @Column(name = "recommended")
@@ -66,7 +67,7 @@ public class Product {
     @Column(name = "special_price")
     private BigDecimal specialPrice;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", fetch = EAGER)
     private List<Image> productImages;
 
     @Column(name = "quantity")
@@ -86,6 +87,6 @@ public class Product {
     @Column(name = "updated_on_date")
     private LocalDateTime updateDate;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", fetch = EAGER)
     private List<Review> productReviews;
 }

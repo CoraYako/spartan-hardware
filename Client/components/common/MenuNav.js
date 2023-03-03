@@ -4,12 +4,23 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
 import { GlobalContext } from '@/context/GlobalContext'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { UserContext } from '@/context/UserContext'
+import { CartContext } from '@/context/CartContext'
+import Link from 'next/link'
 
 export const MenuNav = () => {
+  const [quantity, setQuantity] = useState('0')
+  const { cart } = useContext(CartContext)
   const { contextDataGlobal, setContextDataGlobal } = useContext(GlobalContext)
   const { user } = useContext(UserContext)
+
+  useEffect(() => {
+    setQuantity(
+      cart.reduce((total, product) => total + product.quantityInCart, 0),
+    )
+  }, [cart])
+
   return (
     <Container
       initial={{ opacity: 0 }}
@@ -31,13 +42,15 @@ export const MenuNav = () => {
         <AccountIcon />
         <p>{user ? user?.firstName : 'Mi cuenta'}</p>
       </Item>
-      <Item>
-        <span className="bar" />
-        <CartIcon />
-        <p>Mi carrito</p>
-      </Item>
+      <Link passHref href="/cart">
+        <Item>
+          <span className="bar" />
+          <CartIcon />
+          <p>Mi carrito</p>
+        </Item>
+      </Link>
       <motion.div whileHover={{ scale: 1.1 }} className="number-cart">
-        <p>10</p>
+        {cart && <p>{quantity}</p>}
       </motion.div>
     </Container>
   )
@@ -63,6 +76,10 @@ const Item = styled.div`
   align-items: center;
   cursor: pointer;
   transition: all ease-in-out 0.3s;
+
+  p {
+    margin: 0 10px;
+  }
 
   path {
     transition: all 0.3s ease-in-out;

@@ -21,7 +21,7 @@ const ContainerInput = styled.div`
   display: flex;
   flex-direction: column;
   margin: ${(props) => props.margin};
-  width: 100%;
+  max-width: 260px;
   min-width: 260px;
   position: relative;
   .label_input {

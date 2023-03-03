@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,6 +17,7 @@ public class ProductResponseDto {
     private String name;
     private String brand;
     private String model;
+    private List<String> urlImages;
     private String category;
     private String subCategory;
     private String shortDescription;
@@ -27,4 +29,5 @@ public class ProductResponseDto {
     private boolean available;
     private LocalDateTime inStockSince;
     private LocalDateTime updateDate;
+    private boolean fastShipping;
 }

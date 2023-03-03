@@ -5,12 +5,16 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 public class ProductRequestDto {
 
     @NotEmpty(message = "Must specify the name")
@@ -22,6 +26,8 @@ public class ProductRequestDto {
     @NotEmpty(message = "Must specify the brand")
     @NotBlank(message = "Product model cannot be whitespaces")
     private String model;
+    @NotNull(message = "Needs to set the ulr for product images")
+    private List<String> images;
     @NotEmpty(message = "Category is mandatory")
     @NotBlank(message = "Product category cannot be whitespaces")
     private String category;

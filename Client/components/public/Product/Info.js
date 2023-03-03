@@ -1,4 +1,5 @@
 import { Button } from '@/components/common/Button'
+import { CartContext } from '@/context/CartContext'
 import CardIcon from '@/public/icons/CardIcon'
 import CheckedIcon from '@/public/icons/Checked'
 import CheckedIconSquare from '@/public/icons/CheckedSquare'
@@ -9,10 +10,11 @@ import IncrementIcon from '@/public/icons/IncrementIcon'
 import ProductIcon from '@/public/icons/Product'
 import TrackIcon from '@/public/icons/Track'
 import FormatPrice from '@/utils/FormatPrice'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import styled from 'styled-components'
 
 export const Info = ({ data }) => {
+  const { addToCart } = useContext(CartContext)
   const [quantity, setQuantity] = useState(1)
 
   const handleIncrement = () => {
@@ -29,10 +31,15 @@ export const Info = ({ data }) => {
   return (
     <Container>
       <div className="price">
-        <h2>${FormatPrice(data.specialPrice, false, quantity)}</h2>
-        <h4>Precio especial</h4>
+        {data?.specialPrice && (
+          <>
+            {' '}
+            <h2>${FormatPrice(data?.specialPrice, false, quantity)}</h2>
+            <h4>Precio especial</h4>
+          </>
+        )}
         <h4 className="list">
-          Precio de lista: ${FormatPrice(data.price, false, quantity)}
+          Precio de lista: ${FormatPrice(data?.price, false, quantity)}
         </h4>
       </div>
       <div className="info">
@@ -51,7 +58,7 @@ export const Info = ({ data }) => {
         <div className="info_container">
           <CheckedIcon />
           <div className="text">
-            <h6>ULTIMAS {data.quantity} UNIDAD/ES</h6>
+            <h6>ULTIMAS {data?.quantity} UNIDAD/ES</h6>
             <p>Solo para venta Online</p>
           </div>
         </div>
@@ -98,7 +105,10 @@ export const Info = ({ data }) => {
               <IncrementIcon />
             </QuantityButtonRight>
           </QuantityContainer>
-          <Button text="AÑADIR AL CARRITO" />
+          <Button
+            text="AÑADIR AL CARRITO"
+            action={() => addToCart(data, quantity)}
+          />
         </div>
       </div>
     </Container>

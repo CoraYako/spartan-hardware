@@ -13,30 +13,30 @@ export const Content = ({ data }) => {
       <div className="bar">
         <div className="info">
           <ProcessorIcon />
-          <p> {data.brand}</p>
+          <p> {data?.brand}</p>
         </div>
         <div className="info">
           <RamIcon />
-          <p>{data.category}</p>
+          <p>{data?.category}</p>
         </div>
         <div className="info">
           <StorageIcon />
-          <p>{data.subCategory}</p>
+          <p>{data?.subCategory}</p>
         </div>
         <div className="info">
           <GraphicsIcon />
-          <p>{data.model}</p>
+          <p>{data?.model}</p>
         </div>
         <div className="triangle_top" />
         <div className="triangle_bot" />
       </div>
       <div className="left">
-        <h2 className="name_product">{data.name}</h2>
+        <h2 className="name_product">{data?.name}</h2>
         <p className="detail">
-          12 cuotas sin interés de ${FormatPrice(data.price, true)} a precio de
+          12 cuotas sin interés de ${FormatPrice(data?.price, true)} a precio de
           lista
         </p>
-        <CarouselProduct />
+        <CarouselProduct images={data?.urlImages} />
       </div>
       <div className="right">
         <Info data={data} />

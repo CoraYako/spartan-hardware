@@ -2,10 +2,7 @@ package com.spartanHardware.controller;
 
 import com.spartanHardware.model.dto.request.ProductRequestDto;
 import com.spartanHardware.model.dto.request.ProductReviewRequestDto;
-import com.spartanHardware.model.dto.response.ProductCategoryResponseDto;
-import com.spartanHardware.model.dto.response.ProductResponseDto;
-import com.spartanHardware.model.dto.response.ProductReviewResponseDto;
-import com.spartanHardware.model.dto.response.ProductSubCategoryResponseDto;
+import com.spartanHardware.model.dto.response.*;
 import com.spartanHardware.model.entity.User;
 import com.spartanHardware.service.IAWSS3Service;
 import com.spartanHardware.service.IProductService;
@@ -56,6 +53,23 @@ public class ProductController {
         return ResponseEntity.status(OK).body(productService.getAllProductSubCategories());
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<Page<ProductResponseDto>> getProductsBySearch(@RequestParam(name = "query") String productName,
+                                                                        @RequestParam(name = "page") int page) {
+        return ResponseEntity.status(OK).body(productService.getProductsFilteredByName(productName, page));
+    }
+
+    @GetMapping("/filter")
+    public ResponseEntity<Page<ProductResponseDto>> getProductsByCategories(@RequestParam(required = false, name = "category") String category,
+                                                                            @RequestParam(required = false, name = "subCategory") String subCategory,
+                                                                            @RequestParam(name = "page") int page) {
+        return ResponseEntity.status(OK).body(productService.getProductsFilteredByCategories(category, subCategory, page));
+    }
+    @GetMapping("/recommended")
+    public ResponseEntity<List<ProductResponseDto>> getAllProductsRecommended() {
+        return ResponseEntity.status(OK).body(productService.getAllProductsRecommended());
+    }
+
     // all bellow endpoints only logged in
     @PostMapping("/review/{id}")
     public ResponseEntity<ProductReviewResponseDto> reviewProduct(@PathVariable Long id,
@@ -86,9 +100,8 @@ public class ProductController {
     }
 
     @PostMapping("/upload-image")
-    public ResponseEntity<String> uploadProductImage(@RequestPart(value = "file") MultipartFile file) {
-        awsS3Service.uploadFile(file);
-        String response = file.getOriginalFilename();
-        return ResponseEntity.status(CREATED).body(response);
+    public ResponseEntity<ImageURLResponseDto> uploadProductImage(@RequestPart(value = "file") MultipartFile file) {
+        ImageURLResponseDto responseDto = awsS3Service.uploadFile(file);
+        return ResponseEntity.status(CREATED).body(responseDto);
     }
 }

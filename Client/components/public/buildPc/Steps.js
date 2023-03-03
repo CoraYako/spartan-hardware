@@ -1,11 +1,16 @@
 import { ProductCard } from '@/components/common/ProductCard'
-import { useState } from 'react'
+import { CartContext } from '@/context/CartContext'
+import FormatPrice from '@/utils/FormatPrice'
+import { useContext, useState } from 'react'
 import styled from 'styled-components'
-import { Items } from '../PcRecommendSale/mock'
 import { CardCategory } from './CardCategory'
 import { FullSteps } from './helper'
 
-export const Steps = () => {
+export const Steps = ({ dataProducts, setcategory }) => {
+  const { cart } = useContext(CartContext)
+  const totalPrice = Math.round(
+    cart.reduce((total, product) => total + product.price, 0),
+  )
   const [step, setStep] = useState(1)
   const changeIndex = (n) => {
     setStep(n)
@@ -15,9 +20,9 @@ export const Steps = () => {
     <>
       <Categories>
         <div className="steps">
-          <h4>Paso {step} de 16</h4>
+          <h4>Paso {step} de 12</h4>
         </div>
-        <h2>Total: ${price}</h2>
+        <h2>Total: ${totalPrice || '0'}</h2>
         <div className="list_categories">
           {FullSteps &&
             FullSteps.map((item) => (
@@ -29,22 +34,28 @@ export const Steps = () => {
                 isColumn
                 icon={item.Icon}
                 action={changeIndex}
+                setcategory={setcategory}
+                slug={item.slug}
               />
             ))}
         </div>
       </Categories>
       <ListItems>
-        {Items &&
-          Items.map((item) => (
+        {dataProducts &&
+          dataProducts.content?.map((item) => (
             <ProductCard
               key={item.id}
-              img={item.img}
-              title={item.title}
+              id={item.id}
+              img={'http://' + item.urlImages[0].slice(8)}
+              title={item.name}
+              details={item.shortDescription}
               price={item.price}
+              promotion={item.recommended}
               fastSend={item.fastSend}
-              promotion={item.promotion}
-              margin="0"
+              product={item}
               bypcbuild
+              setStep={setStep}
+              step={step}
             />
           ))}
       </ListItems>
@@ -62,6 +73,8 @@ const Categories = styled.div`
     gap: 8px;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
+    max-height: 600px;
   }
 
   h2 {
