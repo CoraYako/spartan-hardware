@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
 import java.util.List;
 
 import static java.lang.Boolean.FALSE;
@@ -21,7 +20,7 @@ public class ProductDataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        //loadProductsData();
+        loadProductsData();
     }
 
     private void loadProductsData() {
@@ -29,7 +28,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Notebook Dell Inspiron 3515 15.5, AMD Ryzen 5, AMD Radeon RX Vega 8, Windows 11 Home")
                 .brand("Dell")
                 .model("Inspiron 3515")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677811733446netbook-dell%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677811781165netbook-dell%203.png"))
                 .category("Notebook")
                 .subCategory("Oficina")
                 .shortDescription("Notebook Dell Inspiron 3515 plateada 15.5, AMD Ryzen 5 3450U 8GB de RAM 256GB SSD, " +
@@ -64,7 +64,9 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Notebook I5 Acer Nitro 5 Intel Core 256 Gb Ssd 8 Gb Ram")
                 .brand("Acer")
                 .model("Nitro 5")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677812002331netbook-acer%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677812183285netbook-acer%202.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677812238181netbook-acer%203.png"))
                 .category("Notebook")
                 .subCategory("Gamer")
                 .shortDescription("Acer Nitro 5 i5-11400H Notebook 39.6 cm (15.6 pulgadas) " +
@@ -123,7 +125,9 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Asus X515ea Intel Core I3 1115g4 4gb De Ram 256gb Ssd Intel Uhd")
                 .brand("Asus")
                 .model("X515ea")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677812299620netbook-asus%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677812328942netbook-asus%202.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677812350600netbook-asus%203.png"))
                 .category("Notebook")
                 .subCategory("Oficina")
                 .shortDescription("Notebook Asus X515ea Gris 15.6 , Intel Core I3 1115g4 4gb De Ram 256gb Ssd, " +
@@ -148,7 +152,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Notebook Lenovo I5-1235u 512gb Ssd 8gb 15.6 Win11 Pro")
                 .brand("Lenovo")
                 .model("I5-1235u")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813318453netbook-lenovo%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813348951netbook-lenovo%203.png"))
                 .category("Notebook")
                 .subCategory("Oficina")
                 .shortDescription("Notebook Lenovo I5-1235u 512gb Ssd 8gb 15.6 Win11 Pro")
@@ -166,7 +171,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Mouse de juego HyperX Pulsefire Haste Negro")
                 .brand("HyperX")
                 .model("Pulsefire Haste")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813396259Mouse%20Gamer%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813421078Mouse%20Gamer%202.png"))
                 .category("Mouse")
                 .subCategory("Gamer")
                 .shortDescription("Mouse de juego HyperX Pulsefire Haste color Negro")
@@ -194,7 +200,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Mouse inalámbrico Logitech M170 negro")
                 .brand("Logitech")
                 .model("M170")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813549888Mouse%20Logitech1.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813576559Mouse%20Logitech2.png"))
                 .category("Mouse")
                 .subCategory("Oficina")
                 .shortDescription("Mouse inalámbrico Logitech M170 color negro")
@@ -225,7 +232,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Teclado Mecanico Gamer Xk1000")
                 .brand("Soul")
                 .model("Xk1000")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813610592Teclado%20Gamer%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813636322Teclado%20Gamer%202.png"))
                 .category("Teclado")
                 .subCategory("Gamer")
                 .shortDescription("Teclado Mecanico Gamer Xk1000 Led Switch Kailh Blue Keycap")
@@ -244,7 +252,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Teclado Tkot Tk-t100")
                 .brand("Tkot")
                 .model("Tk-t100")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813672462Teclado%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813692167Teclado%202.png"))
                 .category("Teclado")
                 .subCategory("Oficina")
                 .shortDescription("Teclado Tkot Tk-t100 Multimedia")
@@ -270,7 +279,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Monitor gamer Samsung F27T350FHL led 27")
                 .brand("Samsung")
                 .model("F27T350FHL")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813746609Monitor%20gamer%20Samsung%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813768552Monitor%20gamer%20Samsung%202.png"))
                 .category("Monitor")
                 .subCategory("Gamer")
                 .shortDescription("Monitor gamer Samsung F27T350FHL led 27 dark blue gray 100V/240V")
@@ -292,7 +302,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Monitor Asus 24 Ips Fhd 75hz Hdmi Vga Va24ehe")
                 .brand("Asus")
                 .model("Va24ehe")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813792503Monitor%20Asus%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813811289Monitor%20Asus%202.png"))
                 .category("Monitor")
                 .subCategory("Oficina")
                 .shortDescription("Monitor ASUS VA24EHE Eye Care: 23.8 pulgadas- Full HD- IPS- sin marco- 75Hz- Adaptive-Sync / FreeSync™- Low Blue Light- Flicker Free- montable en la pared")
@@ -313,7 +324,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Procesador Core I7 12700 12 Cores 20 Hilos 4.9ghz Lga1700")
                 .brand("Intel")
                 .model("Core I7 12700")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813854773Intel%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813883957Intel%202.png"))
                 .category("Microprocesadores")
                 .subCategory("Intel")
                 .shortDescription("Microprocesador Core I7 12700 12 Cores 20 Hilos 4.9ghz Lga1700")
@@ -382,7 +394,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Procesador Amd Ryzen 5 5600g Sixcore 4.4ghz Turbo")
                 .brand("AMD")
                 .model("Ryzen 5 5600g")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813931886Ryzen%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677813959577Ryzen%202.png"))
                 .category("Microprocesadores")
                 .subCategory("AMD")
                 .shortDescription("Procesador Amd Ryzen 5 5600g Sixcore 4.4ghz Turbo")
@@ -414,7 +427,10 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Motherboard Gigabyte A520m H")
                 .brand("Gigabyte")
                 .model("A520m H")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814009357Board%20Gigabyte%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814028726Board%20Gigabyte%202.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814051552Board%20Gigabyte%203.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814070490Board%20Gigabyte%204.png"))
                 .category("Motherboard")
                 .subCategory("AMD")
                 .shortDescription("Placa Madre Gigabyte A520m H")
@@ -442,7 +458,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Motherboard Asus Prime H610m-k D4 Socket 1700")
                 .brand("Asus")
                 .model("Prime H610m-k")
-                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677790263233Board_Asus_1.png"))
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814108557Board_Asus_1.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814191481Board_Asus_2.png"))
                 .category("Motherboard")
                 .subCategory("Intel")
                 .shortDescription("Placa Madre Asus Prime H610m-k D4 Socket 1700")
@@ -531,7 +548,9 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Gabinete Aureox Orion Arx 350g C/vent")
                 .brand("Aureox")
                 .model("Orion Arx 350g")
-                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677790441182Gabinete%20Gamer%201.png"))
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677790441182Gabinete%20Gamer%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814262628Gabinete%20Gamer%202.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814288391Gabinete%20Gamer%203.png"))
                 .category("Gabinete")
                 .subCategory("Gamer")
                 .shortDescription("Gabinete Aureox Orion Arx 350g C/vent Gamer ")
@@ -559,7 +578,7 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Gabinete Solarmax Cm-5908")
                 .brand("Solarmax")
                 .model("Cm-5908")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814333620Gabinete%20Oficina%201.png"))
                 .category("Gabinete")
                 .subCategory("Oficina")
                 .shortDescription("Gabinete Solarmax Cm-5908")
@@ -582,7 +601,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Fan Aerocool Astro 12f Argb 120mm")
                 .brand("Astro")
                 .model("12f")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814362397Cooler%20RGB%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814411388Cooler%20RGB%202.png"))
                 .category("cooler")
                 .subCategory("gamer")
                 .shortDescription("Astro 12F PWM VENTILADOR DE PC ARGB 12CM Ventilador de 120 mm")
@@ -617,7 +637,9 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Fan Coolermaster Masterfan Mf120 S3 120mm Dual Ring")
                 .brand("Masterfan")
                 .model("Mf120 S3")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814460338Cooler%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814479121Cooler%202.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814496264Cooler%203.png"))
                 .category("cooler")
                 .subCategory("oficina")
                 .shortDescription("Fan Coolermaster Masterfan Mf120 S3 120mm Dual Ring")
@@ -637,7 +659,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Memoria Ram Xpg Spectrix D60 8gb Ddr4 3200")
                 .brand("XPG")
                 .model("AX4U320038G16A-ST60")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814603619Ram%20RGB%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814641149Ram%20RGB%202.png"))
                 .category("Memoria Ram")
                 .subCategory("Gamer")
                 .shortDescription("Memoria Ram Xpg Spectrix D60 8gb Ddr4 3200")
@@ -670,7 +693,9 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Memoria Ram Adata 8gb Ddr4 2666mhz Udimm")
                 .brand("Adata")
                 .model("PC4-21300")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814692804Ram%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814726450Ram%202.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814847945Ram%203.png"))
                 .category("Memoria Ram")
                 .subCategory("Oficina")
                 .shortDescription("Memoria Ram Adata 8gb Ddr4 2666mhz Udimm")
@@ -703,7 +728,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Placa De Video Gigabyte Rtx 3080 Gaming Oc 10gb Gddr6x 320bit Caja Negra Oem")
                 .brand("Gigabyte")
                 .model("Rtx 3080 Gaming")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814913380Video%20Card%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814931297Video%20Card%202.png"))
                 .category("Tarjeta de Video")
                 .subCategory("Gamer")
                 .shortDescription("Placa De Video Gigabyte Rtx 3080 Gaming Oc 10gb Gddr6x 320bit Caja Negra Oem")
@@ -734,7 +760,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Placa De Video MSI Asrock Rx 550 Phantom 2gb")
                 .brand("MSI")
                 .model("Asrock Rx 550")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677814965478Video%20Card%20MSI%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677815017548Video%20Card%20MSI%202.png"))
                 .category("Tarjeta de Video")
                 .subCategory("Gamer")
                 .shortDescription("Placa De Video MSI Asrock Rx 550 Phantom 2gb")
@@ -781,7 +808,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Disco Rigido Western Digital Blue 1tb Sata 6gb/s 64mb Buffer")
                 .brand("Western")
                 .model("Digital Blue")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677815061378disco-duro%201.png",
+                        "https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677815091229disco-duro%202.png"))
                 .category("Disco")
                 .subCategory("Rigido")
                 .shortDescription("Disco Rigido Western Digital Blue 1tb Sata 6gb/s 64mb Buffer")
@@ -811,7 +839,7 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Disco Ssd Adata Su630 Ultimate 240gb 2.5")
                 .brand("Adata")
                 .model("Su630 Ultimate")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677815109320Disco%20ssd.png"))
                 .category("Disco")
                 .subCategory("SSD")
                 .shortDescription("Disco Ssd Adata Su630 Ultimate 240gb 2.5")
@@ -834,7 +862,7 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Disco Ssd M.2 Wd Black Sn770 512 gb Nvme 5150 Mb/s")
                 .brand("Western Digital")
                 .model("Wd Black Sn770")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677815125613Disco%20SSD%20M2.png"))
                 .category("Disco")
                 .subCategory("M2")
                 .shortDescription("Disco Ssd M.2 Wd Black Sn770 2tb Nvme 5150 Mb/s")
@@ -865,7 +893,7 @@ public class ProductDataLoader implements CommandLineRunner {
                 .name("Fuente Aureox Unlimited Series 550w 80 Plus Bronze")
                 .brand("Aureox")
                 .model("Unlimited Series")
-                .images(List.of())
+                .images(List.of("https://ecommerce.spartan.images.s3.us-east-2.amazonaws.com/1677815159805Fuente.png"))
                 .category("Fuente")
                 .subCategory("Bronze")
                 .shortDescription("Fuente Aureox Unlimited Series 550w 80 Plus Bronze")
@@ -890,7 +918,8 @@ public class ProductDataLoader implements CommandLineRunner {
                 .available(TRUE)
                 .fastShipping(TRUE)
                 .build();
-        List<ProductRequestDto> list = List.of(notebook1, notebook2, notebook3, notebook4, notebook5, mouse1);
+
+        List<ProductRequestDto> list = List.of(notebook1, notebook2, notebook3, notebook4, notebook5, mouse1, mouse2, keyboard1, keyboard2, monitor1, monitor2, microprocessorIntel, microprocessorAMD, motherboardAMD, motherboardAsus, tower1, tower2, cooler1, cooler2, ram1, ram2, videoCard1, videoCard2, disco1, disco2, disco3, source);
 
         list.forEach(productService::createProduct);
     }
