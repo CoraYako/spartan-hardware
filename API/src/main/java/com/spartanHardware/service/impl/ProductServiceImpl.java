@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 import static java.time.LocalDateTime.now;
 
 @Service
@@ -186,5 +187,10 @@ public class ProductServiceImpl implements IProductService {
             throw new NoSuchElementException("Products not founds for those categories or name");
         }
         return products.map(productMapper);
+    }
+
+    @Override
+    public List<ProductResponseDto> getAllProductsRecommended() {
+        return productRepository.finAllProductsIfRecommended(TRUE).stream().map(productMapper).toList();
     }
 }

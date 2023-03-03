@@ -29,6 +29,12 @@ public class ProductMapper implements Function<Product, ProductResponseDto> {
         if (productRequestDto.getSpecialPrice() != null && productRequestDto.getSpecialPrice() > 0)
             product.setSpecialPrice(BigDecimal.valueOf(productRequestDto.getSpecialPrice()));
 
+        if (productRequestDto.isRecommended())
+            product.setRecommended(true);
+
+        if (productRequestDto.isFastShipping())
+            product.setFastShipping(true);
+
         return product;
     }
 

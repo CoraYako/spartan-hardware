@@ -65,6 +65,10 @@ public class ProductController {
                                                                             @RequestParam(name = "page") int page) {
         return ResponseEntity.status(OK).body(productService.getProductsFilteredByCategories(category, subCategory, page));
     }
+    @GetMapping("/recommended")
+    public ResponseEntity<List<ProductResponseDto>> getAllProductsRecommended() {
+        return ResponseEntity.status(OK).body(productService.getAllProductsRecommended());
+    }
 
     // all bellow endpoints only logged in
     @PostMapping("/review/{id}")

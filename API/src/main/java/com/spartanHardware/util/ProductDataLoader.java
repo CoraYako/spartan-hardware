@@ -92,7 +92,7 @@ public class ProductDataLoader implements CommandLineRunner {
                             "La batería de este equipo tiene una autonomía de alrededor de 8 horas. La duración varía según " +
                             "el uso, la configuración y otros factores, pero vas a poder usarla durante varias horas " +
                             "sin depender de los enchufes.")
-                    .recommended(TRUE)
+                    .recommended(FALSE)
                     .price(299999.00)
                     .specialPrice(249999.00)
                     .quantity(9)
@@ -144,7 +144,7 @@ public class ProductDataLoader implements CommandLineRunner {
                             "lo que le brinda velocidades rápidas de lectura / escritura de datos. " +
                             "Con un peso total de solo 1,8 kg, el ASUS X515 es el portátil liviano " +
                             "que se adapta a un estilo de vida vertiginoso.")
-                    .recommended(TRUE)
+                    .recommended(FALSE)
                     .price(148999.00)
                     .quantity(20)
                     .available(TRUE)
@@ -192,7 +192,7 @@ public class ProductDataLoader implements CommandLineRunner {
                             "\n" +
                             "Apto para fácil traslado\n" +
                             "Navegá rápidamente por documentos y páginas web gracias su diseño ultra delgado, ergonómico, liviano y conveniente para llevar a donde quieras o viajar.")
-                    .recommended(TRUE)
+                    .recommended(FALSE)
                     .price(19990.00)
                     .quantity(8)
                     .available(TRUE)
@@ -244,7 +244,7 @@ public class ProductDataLoader implements CommandLineRunner {
                             "\n" +
                             "Distinción a todo color\n" +
                             "Su retroiluminación le da un toque diferente a tu equipo y resalta su composición cuando es utilizado en espacios poco iluminados.")
-                    .recommended(TRUE)
+                    .recommended(FALSE)
                     .price(10704.99)
                     .quantity(10)
                     .available(TRUE)
@@ -271,11 +271,11 @@ public class ProductDataLoader implements CommandLineRunner {
                             "EAN/UPC:\n" +
                             "\n" +
                             "GARANTIA: 12")
-                    .recommended(FALSE)
+                    .recommended(TRUE)
                     .price(900.99)
                     .quantity(5)
                     .available(TRUE)
-                    .fastShipping(FALSE)
+                    .fastShipping(TRUE)
                     .build();
 
             ProductRequestDto monitor1 = ProductRequestDto.builder()
@@ -294,11 +294,11 @@ public class ProductDataLoader implements CommandLineRunner {
                             "\n" +
                             "Una experiencia visual de calidad\n" +
                             "Este monitor de 27\" te va a resultar cómodo para estudiar, trabajar o ver una película en tus tiempos de ocio. Asimismo, su resolución de 1920 x 1080 te permite disfrutar de momentos únicos gracias a una imagen de alta fidelidad. Una de sus virtudes es que posee pantalla antirreflejo, de esta manera no verás reflejado lo que está detrás de vos y vas a evitar forzar tu vista para enfocar el contenido. Su tiempo de respuesta de 5 ms lo hace ideal para gamers y cinéfilos porque es capaz de mostrar imágenes en movimiento sin halos o bordes borrosos.")
-                    .recommended(TRUE)
+                    .recommended(FALSE)
                     .price(75599.6)
                     .quantity(9)
                     .available(TRUE)
-                    .fastShipping(FALSE)
+                    .fastShipping(TRUE)
                     .build();
 
             ProductRequestDto monitor2 = ProductRequestDto.builder()
@@ -386,7 +386,7 @@ public class ProductDataLoader implements CommandLineRunner {
                             "Tecnología Intel SpeedStep® mejorada Sí\n" +
                             "Tecnologías de monitoreo térmico Sí\n" +
                             "Dispositivo de gestión de volúmenes (VMD) Intel® Sí")
-                    .recommended(TRUE)
+                    .recommended(FALSE)
                     .price(147767.6)
                     .quantity(9)
                     .available(TRUE)
@@ -540,7 +540,7 @@ public class ProductDataLoader implements CommandLineRunner {
                             "\n" +
                             "Factor de forma\n" +
                             "mATX 9.2 inch x 8.0 inch ( 23.4 cm x 20.3 cm )")
-                    .recommended(TRUE)
+                    .recommended(FALSE)
                     .price(35269.99)
                     .quantity(3)
                     .available(TRUE)
@@ -651,7 +651,7 @@ public class ProductDataLoader implements CommandLineRunner {
                             "- Air Balance Fan Design\n" +
                             "- Almohadillas antivibración\n" +
                             "RM 49")
-                    .recommended(TRUE)
+                    .recommended(FALSE)
                     .price(5786.00)
                     .quantity(9)
                     .available(TRUE)
@@ -719,7 +719,7 @@ public class ProductDataLoader implements CommandLineRunner {
                             "Fuente de alimentación de activación DRAM VPP= 2.5V (+0-25V / -0-125V)\n" +
                             "Especificaciones/VCC DRAM DDR4 STD 1-2V\n" +
                             "Temperaturas de operación 0°C a 85°C")
-                    .recommended(TRUE)
+                    .recommended(FALSE)
                     .price(15005.09)
                     .quantity(15)
                     .available(TRUE)
@@ -800,7 +800,7 @@ public class ProductDataLoader implements CommandLineRunner {
                             "- PSU recomendada - 350W\n" +
                             "- Accesorios - 1 x CD de Soporte; 1 x Guía de instalación rápida\n" +
                             "- Dimensiones - 169.58 x 130.89 x 42.05mm")
-                    .recommended(TRUE)
+                    .recommended(FALSE)
                     .price(35404.00)
                     .quantity(1)
                     .available(TRUE)
@@ -915,11 +915,11 @@ public class ProductDataLoader implements CommandLineRunner {
                             "1 x 20+4P\n" +
                             "1 x 4+4P\n" +
                             "1 x 6+2P")
-                    .recommended(TRUE)
+                    .recommended(FALSE)
                     .price(17179.00)
                     .quantity(13)
                     .available(TRUE)
-                    .fastShipping(TRUE)
+                    .fastShipping(FALSE)
                     .build();
 
             List<ProductRequestDto> list = List.of(notebook1, notebook2, notebook3, notebook4, notebook5, mouse1, mouse2, keyboard1, keyboard2, monitor1, monitor2, microprocessorIntel, microprocessorAMD, motherboardAMD, motherboardAsus, tower1, tower2, cooler1, cooler2, ram1, ram2, videoCard1, videoCard2, disco1, disco2, disco3, source);
