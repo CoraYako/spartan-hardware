@@ -2,6 +2,10 @@ package com.spartanHardware.util;
 
 
 import com.spartanHardware.model.dto.request.ProductRequestDto;
+import com.spartanHardware.model.entity.ParentCategory;
+import com.spartanHardware.model.entity.SubCategory;
+import com.spartanHardware.repository.ParentCategoryRepository;
+import com.spartanHardware.repository.SubCategoryRepository;
 import com.spartanHardware.service.IProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -17,10 +21,12 @@ import static java.lang.Boolean.TRUE;
 public class ProductDataLoader implements CommandLineRunner {
 
     private final IProductService productService;
+    private final ParentCategoryRepository categoryRepository;
+    private final SubCategoryRepository subCategoryRepository;
 
     @Override
     public void run(String... args) throws Exception {
-        loadProductsData();
+        //loadProductsData();
     }
 
     private void loadProductsData() {

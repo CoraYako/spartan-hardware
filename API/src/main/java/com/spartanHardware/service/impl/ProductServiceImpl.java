@@ -23,6 +23,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +50,7 @@ public class ProductServiceImpl implements IProductService {
     private final IReviewService reviewService;
 
     @Override
+    @Transactional
     public ProductResponseDto createProduct(ProductRequestDto productRequestDto) {
         Product product = productMapper.toEntity(productRequestDto);
 
@@ -61,13 +63,11 @@ public class ProductServiceImpl implements IProductService {
         ParentCategory category = getCategoryByNameOrCreateNewOne(productRequestDto.getCategory());
         SubCategory subCategory = getSubCategoryByNameOrCreateNewOne(productRequestDto.getSubCategory());
 
-        subCategory.getProducts().add(product);
-        subCategory.setParentCategory(category);
-        subCategoryRepository.save(subCategory);
-
         category.getProducts().add(product);
         category.getSubCategories().add(subCategory);
-        categoryRepository.save(category);
+
+        subCategory.getProducts().add(product);
+        subCategory.setParentCategory(category);
 
         product.setParentCategory(category);
         product.setSubCategory(subCategory);
@@ -145,13 +145,13 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public ParentCategory getCategoryByNameOrCreateNewOne(String category) {
         return categoryRepository.findByCategory(category)
-                .orElseGet(() -> categoryRepository.save(new ParentCategory(category)));
+                .orElseGet(() -> new ParentCategory(category));
     }
 
     @Override
     public SubCategory getSubCategoryByNameOrCreateNewOne(String subCategory) {
         return subCategoryRepository.findBySubCategory(subCategory)
-                .orElseGet(() -> subCategoryRepository.save(new SubCategory(subCategory)));
+                .orElseGet(() -> new SubCategory(subCategory));
     }
 
     @Override

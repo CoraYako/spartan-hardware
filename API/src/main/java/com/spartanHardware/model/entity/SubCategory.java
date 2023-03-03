@@ -11,6 +11,8 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jakarta.persistence.FetchType.EAGER;
+import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @AllArgsConstructor
@@ -36,13 +38,13 @@ public class SubCategory {
     @Column(name = "sub_category")
     private String subCategory;
 
-    @ManyToOne
+    @ManyToOne(fetch = EAGER)
     @JoinColumn(name = "parent_category_id")
     private ParentCategory parentCategory;
 
-    @OneToMany(mappedBy = "subCategory")
+    @OneToMany(mappedBy = "subCategory", fetch = EAGER)
     @JsonIgnoreProperties("subCategory")
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 }
 
 
