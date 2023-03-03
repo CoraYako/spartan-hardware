@@ -59,8 +59,7 @@ public class ProductController {
         return ResponseEntity.status(OK).body(productService.getProductsFilteredByName(productName, page));
     }
 
-    // /api/v1/products/filter/subCategory?page=0
-    @GetMapping("/api/v1/products/filter/category")
+    @GetMapping("/api/v1/products/filter")
     public ResponseEntity<Page<ProductResponseDto>> getProductsByCategories(@RequestParam(required = false, name = "category") String category,
                                                                             @RequestParam(required = false, name = "subCategory") String subCategory,
                                                                             @RequestParam(name = "page") int page) {
