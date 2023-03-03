@@ -19,6 +19,7 @@ import com.spartanHardware.repository.specification.ProductSpecification;
 import com.spartanHardware.service.IProductService;
 import com.spartanHardware.service.IReviewService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -27,6 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.NoSuchElementException;
 
 import static java.lang.Boolean.FALSE;
@@ -49,6 +51,7 @@ public class ProductServiceImpl implements IProductService {
     private final ParentCategoryMapper categoryMapper;
     private final SubCategoryMapper subCategoryMapper;
     private final IReviewService reviewService;
+    private final MessageSource message;
 
     @Override
     @Transactional
@@ -141,8 +144,9 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public Product getProductById(Long id) {
-        // TODO: 18/2/2023 change message to a properties value
-        return productRepository.findById(id).orElseThrow(() -> new NullPointerException("Product not found"));
+        return productRepository.findById(id).orElseThrow(() -> new NullPointerException(
+                message.getMessage("entity.notFound", new String[] {"Product", "id", id.toString()}, Locale.US)
+        ));
     }
 
     @Override
@@ -170,8 +174,9 @@ public class ProductServiceImpl implements IProductService {
         pageable.next().getPageNumber();
         Page<Product> products = productRepository.findAllByName(query, pageable);
         if (products.isEmpty()) {
-            // TODO: 28/2/2023 change message to property
-            throw new NoSuchElementException("Products not founds for those categories or name");
+            throw new NoSuchElementException(
+                    message.getMessage("product.categoryOrName", null, Locale.US)
+            );
         }
         return products.map(productMapper);
     }
@@ -183,8 +188,9 @@ public class ProductServiceImpl implements IProductService {
         Page<Product> products = productRepository.findAll(productSpecification.getByFilters(
                 new ProductFilterRequest(category, subCategory)), pageable);
         if (products.isEmpty()) {
-            // TODO: 28/2/2023 change message to property
-            throw new NoSuchElementException("Products not founds for those categories or name");
+            throw new NoSuchElementException(
+                    message.getMessage("product.categoryOrName", null, Locale.US)
+            );
         }
         return products.map(productMapper);
     }
