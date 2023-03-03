@@ -94,7 +94,7 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
             throw new CustomException(message.getMessage("entity.noAccess", new String[] {"modify", "account"}, Locale.US), FORBIDDEN,LocalDateTime.now());
 
         if(repository.existsByEmail(dto.getEmail()))
-            throw new CustomException(message.getMessage("entity.exists",null,Locale.US), BAD_REQUEST, LocalDateTime.now());
+            throw new CustomException(message.getMessage("entity.exists",new String[] {"account", "email"},Locale.US), BAD_REQUEST, LocalDateTime.now());
 
         User updatedUser = mapper.toUpdatedUser(dto,user);
         return mapper.toDto(repository.save(updatedUser));

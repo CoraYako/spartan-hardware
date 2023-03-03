@@ -8,12 +8,14 @@ import com.spartanHardware.model.mapper.AddressMapper;
 import com.spartanHardware.repository.AddressRepository;
 import com.spartanHardware.service.IAddressService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.MessageSource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -22,13 +24,15 @@ public class AddressServiceImpl implements IAddressService {
 
     private final AddressRepository repository;
     private final AddressMapper mapper;
+    private final MessageSource message;
 
     @Override
     @Transactional
     public AddressResponseDTO registerAddress(AddressRequestDTO dto,User loggedUser) {
         if(repository.findIfAddressExist(dto.getStreet(),dto.getNumber())){
-            // TODO: 01/3/2023 Cambiar mensaje por properties
-            throw new RuntimeException("Esta dirección ya existe");
+            throw new RuntimeException(
+                    message.getMessage("entity.exists", new String[] {"address", "street"}, Locale.US)
+            );
         }
         Address address = mapper.toAddress(dto);
         loggedUser.getAddresses().add(address);
@@ -44,8 +48,9 @@ public class AddressServiceImpl implements IAddressService {
                                              loggedUser) {
         Address address = getAddressById(id);
         if(!address.getUser().equals(loggedUser))
-            // TODO: 22/2/2023 Cambiar mensaje por properties
-            throw new RuntimeException("Esta dirección no coincide con el usuario logeado");
+            throw new RuntimeException(
+                    message.getMessage("entity.noAccess", new String[] {"modify", "address"}, Locale.US)
+            );
 
         Address updatedAddress = mapper.toUpdatedAddress(dto,address);
 
@@ -61,15 +66,18 @@ public class AddressServiceImpl implements IAddressService {
     @Override
     public Address getAddressById(Long id) {
 
-        return repository.findById(id).orElseThrow(() -> new NullPointerException("Address not found"));
+        return repository.findById(id).orElseThrow(() -> new NullPointerException(
+                message.getMessage("entity.notFound", new String[] {"Address", "id", id.toString()}, Locale.US)
+        ));
     }
 
     @Override
     public AddressResponseDTO getAddressDtoById(Long id, User loggedUser) {
         Address address = getAddressById(id);
         if(!address.getUser().equals(loggedUser))
-            // TODO: 22/2/2023 Cambiar mensaje por properties
-            throw new RuntimeException("Esta dirección no coincide con el usuario logeado");
+            throw new RuntimeException(
+                    message.getMessage("entity.noAccess", new String[] {"modify", "address"}, Locale.US)
+            );
         return mapper.toDto(address);
     }
 
@@ -78,8 +86,9 @@ public class AddressServiceImpl implements IAddressService {
     public void deleteAddressById(Long id, User loggedUser) {
         Address address = getAddressById(id);
         if(!address.getUser().equals(loggedUser))
-            // TODO: 22/2/2023 Cambiar mensaje por properties
-            throw new RuntimeException("Esta dirección no coincide con el usuario logeado");
+            throw new RuntimeException(
+                    message.getMessage("entity.noAccess", new String[] {"modify", "address"}, Locale.US)
+            );
         repository.deleteById(id);
     }
 }
