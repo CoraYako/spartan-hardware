@@ -10,8 +10,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class ShopOrderDto {
-    private List<ShoppingCartItem> items;
-    private Long idAddress;
-    private Long idPaymentMethod;
-    private BigDecimal priceTotal;
+    private List<ShoppingCartItem> cart;
+    private String typeOfPayment;
+    private BigDecimal totalAmount;
 }

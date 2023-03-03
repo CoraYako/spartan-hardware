@@ -12,7 +12,7 @@ public class ShoppingCartItemMapper {
     public ShoppingCartItem toEntity (ShoppingCartItemDto dto, Product product, ShoppingCart cart){
         ShoppingCartItem item = new ShoppingCartItem();
         item.setProduct(product);
-        item.setProductQuantity(dto.getProductQuantity());
+        item.setProductQuantity(dto.getQuantity());
         item.setShoppingCart(cart);
         return item;
     }

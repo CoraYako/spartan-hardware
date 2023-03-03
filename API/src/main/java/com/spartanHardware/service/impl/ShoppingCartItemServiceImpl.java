@@ -29,11 +29,11 @@ public class ShoppingCartItemServiceImpl implements IShoppingCartItemService {
 
         ShoppingCart cart = cartService.createShoppingCart(loggedUser);
 
-        List<ShoppingCartItem> items = dto.getDtoItems().stream()
-                .map(i -> mapper.toEntity(i, productService.getProductById(i.getProductId()), cart))
+        List<ShoppingCartItem> items = dto.getCart().stream()
+                .map(i -> mapper.toEntity(i, productService.getProductById(i.getId()), cart))
                 .collect(Collectors.toList());
 
-        ShopOrderDto orderDto = new ShopOrderDto(items, dto.getIdAddress(), dto.getIdPaymentMethod(), dto.getPriceTotal());
+        ShopOrderDto orderDto = new ShopOrderDto(items, dto.getTypeOfPayment(), dto.getTotalAmount());
         ShopOrder order = orderService.createShopOrder(loggedUser, orderDto);
 
         items.forEach(i-> {

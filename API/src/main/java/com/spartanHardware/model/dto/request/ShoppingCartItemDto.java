@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 public class ShoppingCartItemDto {
-    private Long productId;
-    private Integer productQuantity;
-    private BigDecimal productPrice;
+    private Long id;
+    private Integer quantity;
+    private BigDecimal price;
 }

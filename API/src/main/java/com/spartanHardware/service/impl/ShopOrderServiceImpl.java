@@ -4,6 +4,8 @@ import com.spartanHardware.model.dto.request.ShopOrderDto;
 import com.spartanHardware.model.entity.ShopOrder;
 import com.spartanHardware.model.entity.ShoppingCartItem;
 import com.spartanHardware.model.entity.User;
+import com.spartanHardware.model.enums.PaymentType;
+import com.spartanHardware.model.enums.StateShopOrder;
 import com.spartanHardware.repository.ShopOrderRepository;
 import com.spartanHardware.service.IAddressService;
 import com.spartanHardware.service.IPaymentMethodService;
@@ -19,17 +21,18 @@ import java.util.List;
 public class ShopOrderServiceImpl implements IShopOrderService {
 
     private final ShopOrderRepository repository;
-    private final IAddressService addressService;
-    private final IPaymentMethodService paymentMethodService;
 
     @Override
     public ShopOrder createShopOrder(User loggedUser, ShopOrderDto orderDto) {
         ShopOrder order = new ShopOrder();
         order.setUser(loggedUser);
-        order.setProducts(orderDto.getItems());
-        order.setPaymentMethod(paymentMethodService.getById(orderDto.getIdPaymentMethod()));
-        order.setShippingAddress(addressService.getAddressById(orderDto.getIdAddress()));
-        order.setOrderTotal(orderDto.getPriceTotal());
+        order.setProducts(orderDto.getCart());
+        //Todo: change to accept more payment methods
+        order.setType(PaymentType.DEPOSIT);
+        //Todo: add address
+        order.setOrderTotal(orderDto.getTotalAmount());
+        //Todo: change to accept more states
+        order.setState(StateShopOrder.PENDENT);
         repository.save(order);
         return order;
     }

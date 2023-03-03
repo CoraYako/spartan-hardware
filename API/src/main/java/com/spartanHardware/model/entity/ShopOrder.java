@@ -1,5 +1,7 @@
 package com.spartanHardware.model.entity;
 
+import com.spartanHardware.model.enums.PaymentType;
+import com.spartanHardware.model.enums.StateShopOrder;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,6 +13,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @AllArgsConstructor
@@ -37,6 +40,9 @@ public class ShopOrder {
     @JoinColumn(name = "payment_method_id")
     private PaymentMethod paymentMethod;
 
+    @Enumerated(STRING)
+    private PaymentType type;
+
     @ManyToOne
     @JoinColumn(name = "shipping_address_id")
     private Address shippingAddress;
@@ -46,4 +52,7 @@ public class ShopOrder {
 
     @Column(name = "order_total")
     private BigDecimal orderTotal;
+
+    @Enumerated(STRING)
+    private StateShopOrder state;
 }

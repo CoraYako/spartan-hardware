@@ -9,8 +9,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class ShoppingCartDto {
-    private List<ShoppingCartItemDto> dtoItems;
-    private Long idAddress;
-    private Long idPaymentMethod;
-    private BigDecimal priceTotal;
+    private List<ShoppingCartItemDto> cart;
+    private String typeOfPayment;
+    private BigDecimal totalAmount;
 }
