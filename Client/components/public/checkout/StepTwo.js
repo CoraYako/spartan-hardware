@@ -2,12 +2,19 @@ import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import MercadoPago from '@/public/images/mercado-pago.svg'
 import PaymentTranf from '@/public/images/trans.svg'
-import Cards from '@/public/images/vector.svg'
 import Visa from '@/public/images/Visa.svg'
 import mastercard from '@/public/images/mastercard.svg'
 import { Payments } from './Payments'
+import { useContext } from 'react'
+import { UserContext } from '@/context/UserContext'
 
-export const StepTwo = () => {
+export const StepTwo = ({ setStepsCompleted, stepsCompleted, setExpanded }) => {
+  const { user, setUser } = useContext(UserContext)
+  const setTypePayment = (type, id) => {
+    setUser({ ...user, payment: { type: type, id: id } })
+    setStepsCompleted({ ...stepsCompleted, step2: true })
+    setExpanded(3)
+  }
   return (
     <Container
       variants={{ collapsed: { scale: 0.8 }, open: { scale: 1 } }}
@@ -17,8 +24,18 @@ export const StepTwo = () => {
       animate="open"
       exit="collapsed"
     >
-      <Payments image={MercadoPago} title="Mercado Pago" />
-      <Payments image={PaymentTranf} title="Transferencia" />
+      <Payments
+        image={MercadoPago}
+        title="Mercado Pago"
+        action={() => setTypePayment('MP', 1)}
+        id={1}
+      />
+      <Payments
+        image={PaymentTranf}
+        title="Transferencia"
+        action={() => setTypePayment('Transf', 2)}
+        id={2}
+      />
       <Payments image={Visa} title="visa" disabled />
       <Payments image={mastercard} title="Mastercard" disabled />
     </Container>

@@ -33,7 +33,11 @@ export const Steps = () => {
         title="2. SELECCIONA EL METODO DE PAGO Y FINANCIACIÓN"
         disabled={stepsCompleted?.step1}
       >
-        <StepTwo />
+        <StepTwo
+          setExpanded={setExpanded}
+          stepsCompleted={stepsCompleted}
+          setStepsCompleted={setStepsCompleted}
+        />
       </Accordion>
       <Accordion
         i={3}

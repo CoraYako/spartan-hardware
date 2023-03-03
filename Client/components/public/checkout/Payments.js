@@ -1,11 +1,14 @@
+import { UserContext } from '@/context/UserContext'
 import Image from 'next/image'
+import { useContext } from 'react'
 import styled from 'styled-components'
 
-export const Payments = ({ image, title, action, disabled }) => {
+export const Payments = ({ image, title, action, disabled, id = 0 }) => {
+  const { user } = useContext(UserContext)
   return (
-    <Container disabled={disabled}>
+    <Container disabled={disabled} selected={id === user?.payment?.id}>
       <div onClick={action} className="image-container">
-        <Image src={image} />
+        <Image src={image} alt="payment_type" />
       </div>
       <h3>{title}</h3>
     </Container>
@@ -19,7 +22,10 @@ const Container = styled.div`
   cursor: ${(props) => (props.disabled ? 'inherit' : 'pointer')};
   opacity: ${(props) => props.disabled && '0.35'};
   .image-container {
-    background: rgba(217, 217, 217, 0.55);
+    background: ${(props) =>
+      props.selected
+        ? 'rgba(165, 124, 255, 0.6)'
+        : 'rgba(217, 217, 217, 0.55)'};
     border: 1px solid #cdcdcd;
     border-radius: 8px;
     transition: all ease-in-out 0.3s;
