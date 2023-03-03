@@ -1,7 +1,6 @@
 import CrossIcon from '@/public/icons/Cross'
 import Image from 'next/image'
 import styled from 'styled-components'
-import MockImage from '@/public/images/MockImage1.png'
 import FormatPrice from '@/utils/FormatPrice'
 import { useContext } from 'react'
 import { CartContext } from '@/context/CartContext'
@@ -12,18 +11,19 @@ export const CartCard = ({
   price = 200000,
   quantity = 1,
   id = 1,
+  checkout,
 }) => {
   const { removeFromCart } = useContext(CartContext)
   return (
-    <Card>
+    <Card checkout={checkout}>
       <div className="image">
-        <Image src={img || MockImage} alt="product" />
+        <Image src={img} alt="product" width={40} height={40} />
       </div>
       <div className="divider" />
       <h6>{name}</h6>
       <div className="info">
         <div className="quantity">
-          <h6>{quantity}</h6>
+          <h5>{quantity}</h5>
         </div>
         <h5>${FormatPrice(price, false, quantity)}</h5>
       </div>
@@ -42,6 +42,7 @@ const Card = styled.div`
   background: #ffffff;
   border-bottom: 1px solid #a3a3a3;
   border-radius: 8px;
+  overflow: hidden;
   .quantity {
     width: 50px;
     height: 50px;
@@ -58,11 +59,11 @@ const Card = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 64px 0 0;
+    margin: ${(props) => (props.checkout ? '0 10px' : ' 0 64px 0 0')};
     gap: 20px;
   }
   .image {
-    padding: 0 40px;
+    padding: ${(props) => (props.checkout ? '0 10px' : '0 40px')};
     border-right: 1px solid #b7b7b799;
   }
   h5 {
@@ -79,6 +80,10 @@ const Card = styled.div`
     font-weight: 600;
     font-size: 16px;
     line-height: 26px;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   img {

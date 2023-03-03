@@ -6,11 +6,22 @@ import BannerImg from '@/public/images/BannerPCSale.png'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+
+import { useQuery } from 'react-query'
+import axios from 'axios'
 import { ProductDetails } from '@/components/public/Product/ProductDetails'
 
 export default function Product() {
   const router = useRouter()
   const { id } = router.query
+  const URL_API = process.env.NEXT_PUBLIC_URL_API
+  const { isLoading, error, data } = useQuery(['products', id], () =>
+    axios
+      .get(`${URL_API}/products/details/${id}`)
+      .then((res) => res.data)
+      .catch((e) => console.log(e.response)),
+  )
+
   return (
     <>
       <Head>
@@ -38,19 +49,4 @@ export default function Product() {
       </motion.div>
     </>
   )
-}
-
-const data = {
-  name: 'Hp Pavilion Gaming, 16gb Ram+ 599gb Sad + 240 Gb M.2',
-  brand: 'HP',
-  model: '15-dkee56wm',
-  category: 'notebook',
-  subCategory: 'gaming',
-  specialPrice: 310100,
-  price: 390900,
-  quantity: 5,
-  description:
-    'Este es un portátil de gaming HP Pavilion con procesador Intel Core i5, tarjeta gráfica Nvidia GTX 1650, 16GB de RAM, 599GB de disco duro y 240GB de almacenamiento en estado sólido M.2. Tiene una pantalla de 15.6 pulgadas con una resolución de 1920x1080 píxeles y una frecuencia de actualización de 60Hz. Viene con Windows 11 Home preinstalado y tiene un peso de 2.23kg. El teclado tiene retroiluminación y no es táctil.',
-  shortDescription:
-    'Portátil de gaming HP Pavilion con procesador Intel Core i5, tarjeta gráfica Nvidia GTX 1650, 16GB de RAM, 599GB de disco duro y 240GB de almacenamiento en estado sólido M.2. Pantalla de 15.6 pulgadas con resolución de 1920x1080 y frecuencia de actualización de 60Hz. Windows 11 Home preinstalado. Peso de 2.23kg y teclado retroiluminado no táctil.',
 }

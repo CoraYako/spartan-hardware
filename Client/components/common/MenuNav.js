@@ -77,6 +77,10 @@ const Item = styled.div`
   cursor: pointer;
   transition: all ease-in-out 0.3s;
 
+  p {
+    margin: 0 10px;
+  }
+
   path {
     transition: all 0.3s ease-in-out;
   }

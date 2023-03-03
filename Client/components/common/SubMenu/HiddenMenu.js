@@ -1,6 +1,8 @@
+import axios from 'axios'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useQuery } from 'react-query'
 import styled from 'styled-components'
 
 const links = [
@@ -26,33 +28,41 @@ const itemVariants = {
 const sideVariants = {
   closed: {
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.02,
       staggerDirection: -1,
     },
   },
   open: {
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.09,
       staggerDirection: 1,
     },
   },
 }
 
 export const HiddenMenu = ({ open, action }) => {
+  const URL_API = process.env.NEXT_PUBLIC_URL_API
+  const { data } = useQuery('categories', () =>
+    axios
+      .get(`${URL_API}/products/categories`)
+      .then((res) => res.data)
+      .then((e) => e),
+  )
+
   const router = useRouter()
 
   return (
     <AnimatePresence>
       {open && (
         <Menu
-          initial={{ width: 0 }}
+          initial={{ transform: 'translateX(-300px)' }}
           animate={{
-            width: 300,
+            transform: 'translateX(0px)',
             borderRadius: '0 0 50px 0',
             transition: { duration: 0.2 },
           }}
           exit={{
-            width: 0,
+            transform: 'translateX(-300px)',
             transition: { delay: 0.7, duration: 0.2 },
           }}
         >
@@ -76,19 +86,25 @@ export const HiddenMenu = ({ open, action }) => {
               </Link>
             ))}
             <motion.span variants={itemVariants} />
-            {categories.map(({ name, to, id }) => (
-              <Link passHref key={id} href={to} style={null}>
-                <Text
-                  selected={router.pathname === to}
-                  whileHover={{ color: '#fff' }}
-                  variants={itemVariants}
-                  onClick={action}
+            {data &&
+              data.map((item) => (
+                <Link
+                  passHref
+                  key={item.id}
+                  href={`/category/${item.category}`}
+                  style={null}
                 >
-                  {name}
-                  <div className="bar" />
-                </Text>
-              </Link>
-            ))}
+                  <Text
+                    selected={router.pathname === item.category}
+                    whileHover={{ color: '#fff' }}
+                    variants={itemVariants}
+                    onClick={action}
+                  >
+                    {item.category}
+                    <div className="bar" />
+                  </Text>
+                </Link>
+              ))}
           </ContainerItems>
         </Menu>
       )}
@@ -97,9 +113,10 @@ export const HiddenMenu = ({ open, action }) => {
 }
 
 const Menu = styled(motion.aside)`
+  width: 300px;
   position: fixed;
   backdrop-filter: blur(2px);
-  height: 500px;
+  height: auto;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3));
   background-color: #000000cf;
   color: var(--primaryGreen1);
