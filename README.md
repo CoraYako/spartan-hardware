@@ -145,7 +145,7 @@ VITE_APP_API_ROUTE = Localhost of you api ( ex. http://localhost:3000).
 ![Figma](https://img.shields.io/badge/Figma-%23F24E1E.svg?style=for-the-badge&logo=Figma&logoColor=white)
 ![Cloudinary](https://img.shields.io/badge/Cloudinary-%231563FF.svg?&style=for-the-badge&logo=google-cloud&logoColor=white)
 
-### <a href="https://www.figma.com/file/fW6236VFmQsf3psHdGVPtY/maximus.com.ar?node-id=0%3A1&t=NlAA0oI7mcGYmzLJ-0"><img height="18px" src="https://img.icons8.com/color/344/figma--v1.png"/> Mockup</a>
+### <a href="https://www.figma.com/file/fW6236VFmQsf3psHdGVPtY/maximus.com.ar?node-id=344%3A581&t=qJD6ToFS5p57YkpC-0"><img height="18px" src="https://img.icons8.com/color/344/figma--v1.png"/> Mockup</a>
 
 ### 👉🏻 Designer
 
