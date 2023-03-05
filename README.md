@@ -20,7 +20,7 @@
 
 <h3 align="center"  ><b>You can check out our webpage here:</b></h3>
 <h3 align="center"><a href="https://c9-22-t-javareact.vercel.app/" target="_blank" rel="noopener noreferrer"> SPARTAN HADWARE </a></h3>
-<p  align="center" ><a href="" target="_blank" rel="noopener noreferrer"> <img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
+<p  align="center" ><a href="https://www.youtube.com/watch?v=tcsZWiNykFM" target="_blank" rel="noopener noreferrer"> <img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
 <div align="center">
   
 ![Logo Spartan Hardware](https://i.postimg.cc/FKhbwTpP/main-logo-color-new-1.png)
